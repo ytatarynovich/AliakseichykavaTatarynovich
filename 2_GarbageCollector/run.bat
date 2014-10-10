@@ -10,9 +10,12 @@ java -XX:+UseConcMarkSweepGC -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -Xms6m -
 
 java -XX:+UseConcMarkSweepGC -XX:ParallelCMSThreads=2 -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -Xms2m -Xmx18m -Xmn1m -XX:PermSize=24m -XX:MaxPermSize=36m -jar apptorun.jar
 
-java -XX:+UseParNewGC -XX:ParallelCMSThreads=2 -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -Xms4m -Xmx16m -Xmn3m -XX:PermSize=24m -XX:MaxPermSize=32m -jar apptorun.jar
+java -XX:+UseParallelGC -XX:ParallelGCThreads=2 -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -Xms4m -Xmx16m -Xmn3m -XX:PermSize=24m -XX:MaxPermSize=32m -jar apptorun.jar
 
 java -XX:+UseG1GC -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -Xms4m -Xmx16m -Xmn2m -XX:PermSize=12m -XX:MaxPermSize=18m -jar apptorun.jar
+
+
+
 
 
 
