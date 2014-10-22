@@ -17,7 +17,6 @@ public class ScannerUtils {
 	public static int scanInt() {
 
 		try {
-
 			Scanner scanner = new Scanner(System.in);
 			return scanner.nextInt();
 
@@ -29,7 +28,6 @@ public class ScannerUtils {
 	public static double scanDouble() {
 
 		try {
-
 			Scanner scanner = new Scanner(System.in);
 			return scanner.nextDouble();
 

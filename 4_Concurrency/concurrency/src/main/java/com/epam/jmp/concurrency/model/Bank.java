@@ -25,7 +25,7 @@ public class Bank {
 
 	@Override
 	public String toString() {
-		return "[Bank " + id + ": \"" + name + "\"]";
+		return "BANK " + id + ": \"" + name + "\"";
 	}
 
 	public List<Account> getAccounts() {

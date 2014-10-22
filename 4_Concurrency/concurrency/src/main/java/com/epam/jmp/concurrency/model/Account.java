@@ -21,7 +21,7 @@ public class Account {
 
 	@Override
 	public String toString() {
-		return "[Account " + id + " for " + person + "]";
+		return "ACCOUNT " + id + " for " + person + "; Amount: " + amount + "(" + accountCurrency +")";
 	}
 
 	public long getId() {
@@ -36,4 +36,13 @@ public class Account {
 		this.accountCurrency = accountCurrency;
 		this.amount = amount;
 	}
+
+	public Currency getAccountCurrency() {
+		return accountCurrency;
+	}
+
+	public double getAmount() {
+		return amount;
+	}
+
 }

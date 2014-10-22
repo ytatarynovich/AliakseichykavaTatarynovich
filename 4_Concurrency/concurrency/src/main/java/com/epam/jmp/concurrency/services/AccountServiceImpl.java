@@ -41,4 +41,9 @@ public class AccountServiceImpl implements AccountService {
 		return accounts;
 	}
 
+	@Override
+	public List<Account> getAllAccounts() {
+		return bank.getAccounts();
+	}
+
 }

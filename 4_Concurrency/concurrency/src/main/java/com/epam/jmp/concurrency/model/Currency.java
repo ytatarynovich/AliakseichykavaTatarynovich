@@ -40,6 +40,6 @@ public enum Currency {
 
 	@Override
 	public String toString() {
-		return "[" + code + " - " + super.toString() + "]";
+		return code + " - " + super.toString();
 	}
 }

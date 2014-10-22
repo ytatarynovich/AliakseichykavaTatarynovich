@@ -5,7 +5,10 @@ import org.apache.log4j.Logger;
 import com.epam.jmp.concurrency.services.AccountService;
 import com.epam.jmp.concurrency.utils.ScannerUtils;
 
-public class CreateAccountCommand implements BankCommand {
+/**
+ * @author Hanna_Aliakseichykava
+ */
+public class CreateAccountCommand extends AbstractBankCommand {
 
 	private static final Logger log = Logger.getLogger(BankCommand.class);
 

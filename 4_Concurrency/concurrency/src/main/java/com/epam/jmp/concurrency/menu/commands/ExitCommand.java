@@ -2,7 +2,10 @@ package com.epam.jmp.concurrency.menu.commands;
 
 import com.epam.jmp.concurrency.services.AccountService;
 
-public class ExitCommand implements BankCommand {
+/**
+ * @author Hanna_Aliakseichykava
+ */
+public class ExitCommand extends AbstractBankCommand {
 
 	@Override
 	public boolean execute(AccountService accountService) {

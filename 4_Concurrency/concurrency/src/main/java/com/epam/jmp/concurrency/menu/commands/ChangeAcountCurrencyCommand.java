@@ -5,12 +5,12 @@ import org.apache.log4j.Logger;
 import com.epam.jmp.concurrency.model.Account;
 import com.epam.jmp.concurrency.model.Currency;
 import com.epam.jmp.concurrency.services.AccountService;
-import com.epam.jmp.concurrency.utils.ScannerUtils;
+import com.epam.jmp.concurrency.utils.CurrencyUtil;
 
 /**
  * @author Hanna_Aliakseichykava
  */
-public class SetAcountAmountCommand extends AbstractBankCommand {
+public class ChangeAcountCurrencyCommand extends AbstractBankCommand {
 
 	private static final Logger log = Logger.getLogger(BankCommand.class);
 
@@ -29,13 +29,8 @@ public class SetAcountAmountCommand extends AbstractBankCommand {
 			return exit;
 		}
 
-		log.info("Input amount:");
-		double amount = ScannerUtils.scanDouble();
-		if(amount < 0) {
-			log.info("Account amount should be positive number. Transaction is interrupted.");
-		}
-
-		account.setAmount(currency, amount);
+		double amountInNewCurrency = CurrencyUtil.exchangeCurrency(account.getAmount(), account.getAccountCurrency(), currency);
+		account.setAmount(currency,  amountInNewCurrency);
 		log.info("Account is updated: " + account);
 
 		return false;

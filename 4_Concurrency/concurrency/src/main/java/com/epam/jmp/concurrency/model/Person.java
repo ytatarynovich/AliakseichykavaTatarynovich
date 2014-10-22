@@ -20,9 +20,9 @@ public class Person {
 
 	@Override
 	public String toString() {
-		return "[Person " + id + ": " + lastName + ", " + firstName + "]";
+		return "PERSON " + id + ": " + lastName + ", " + firstName;
 	}
-	
+
 	public boolean isMatchByName(String name) {
 
 		if(name.trim().equals("")) {

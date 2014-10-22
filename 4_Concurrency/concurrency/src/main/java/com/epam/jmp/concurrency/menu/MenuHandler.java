@@ -18,7 +18,7 @@ public class MenuHandler {
 
 	public void startMenu() {
 
-		log.info("\n\nAPP IS STARTED\n");
+		log.info("---- APP IS STARTED ----");
 
 		Bank bank = new Bank("Don't worry, be happy");
 		accountService = new AccountServiceImpl(bank);
@@ -35,12 +35,12 @@ public class MenuHandler {
 			exit = handleAction(actionCode);
 		}
 
-		log.info("----APP IS CLOSED-----");
+		log.info("---- APP IS CLOSED ----");
 	}
 
 	private void printMenu() {
 
-		log.info("\n------------ Select an option ------------");
+		log.info("\n\n------------ Select an option ------------");
 		for(BankAction action : BankAction.values()) {
 			log.info(action);
 		}
