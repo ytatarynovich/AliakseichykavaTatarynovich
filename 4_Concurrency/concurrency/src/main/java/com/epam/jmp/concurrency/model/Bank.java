@@ -3,6 +3,8 @@ package com.epam.jmp.concurrency.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.epam.jmp.concurrency.exceptions.AccountNotFoundException;
+
 /**
  * @author Hanna_Aliakseichykava
  */
@@ -44,6 +46,6 @@ public class Bank {
 				return account;
 			}
 		}
-		return null;
+		throw new AccountNotFoundException(accountId);
 	}
 }

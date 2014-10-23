@@ -12,6 +12,6 @@ public class FindAccountByIdCommand extends AbstractBankCommand {
 
 		finAccount(accountService);
 
-		return false;
+		return exit;
 	}
 }

@@ -1,5 +1,7 @@
 package com.epam.jmp.concurrency.model;
 
+import com.epam.jmp.concurrency.exceptions.CurrencyNotFoundException;
+
 /**
  * @author Hanna_Aliakseichykava
  */
@@ -25,7 +27,14 @@ public enum Currency {
 		return rate;
 	}
 
-	public double getExchangeRate(Currency anotherCurrency) {
+	public void setRate(double newRate) {
+		if(this == BY) {
+			throw new RuntimeException("Rate for BY can not be changed (base).");
+		}
+		this.rate = newRate;
+	}
+
+	public double getExchangeCoeff(Currency anotherCurrency) {
 		return rate / anotherCurrency.getRate();
 	}
 
@@ -35,11 +44,7 @@ public enum Currency {
 				return currency;
 			}
 		}
-		return null;
+		throw new CurrencyNotFoundException(code);
 	}
 
-	@Override
-	public String toString() {
-		return code + " - " + super.toString();
-	}
 }

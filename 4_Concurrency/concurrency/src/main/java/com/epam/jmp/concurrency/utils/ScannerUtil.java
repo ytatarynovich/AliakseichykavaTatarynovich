@@ -6,7 +6,7 @@ import java.util.Scanner;
 /**
  * @author Hanna_Aliakseichykava
  */
-public class ScannerUtils {
+public class ScannerUtil {
 
 	public static String scanStr() {
 

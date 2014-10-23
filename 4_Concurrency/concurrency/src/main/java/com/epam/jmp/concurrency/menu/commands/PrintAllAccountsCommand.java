@@ -23,6 +23,6 @@ public class PrintAllAccountsCommand extends AbstractBankCommand {
 
 		log.info("===========================");
 
-		return false;
+		return exit;
 	}
 }

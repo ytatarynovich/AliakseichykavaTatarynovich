@@ -7,8 +7,12 @@ import com.epam.jmp.concurrency.services.AccountService;
  */
 public class ExitCommand extends AbstractBankCommand {
 
+	public ExitCommand() {
+		this.exit = true;
+	}
+
 	@Override
 	public boolean execute(AccountService accountService) {
-		return true;
+		return exit;
 	}
 }

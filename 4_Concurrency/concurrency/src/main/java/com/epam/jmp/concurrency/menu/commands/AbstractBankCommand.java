@@ -6,41 +6,36 @@ import com.epam.jmp.concurrency.model.Account;
 import com.epam.jmp.concurrency.model.Currency;
 import com.epam.jmp.concurrency.services.AccountService;
 import com.epam.jmp.concurrency.utils.CurrencyUtil;
-import com.epam.jmp.concurrency.utils.ScannerUtils;
+import com.epam.jmp.concurrency.utils.ScannerUtil;
 
 public abstract class AbstractBankCommand implements BankCommand {
 
 	private static final Logger log = Logger.getLogger(BankCommand.class);
 
+	protected boolean exit = false;
+
 	public abstract boolean execute(AccountService accountService);
-	
+
 	protected Account finAccount(AccountService accountService) {
 
 		log.info("Input account id: ");
-		int id = ScannerUtils.scanInt();
+		int id = ScannerUtil.scanInt();
 
 		Account account = accountService.findAccountById(id);
-		if(account == null) {
-			log.info("Account with id [" + id + "] can not be found.");
-		} else {
-			log.info(account); 
-		}
+		log.info(account);
 
 		return account;
 	}
 
 	protected Currency findCurrency() {
 
-		log.info("\n\nSelect currency code: ");
 		CurrencyUtil.printAllCurrencies();
-		int currencyCode = ScannerUtils.scanInt();
+		log.info("Select currency code: ");
 
-		Currency currency = Currency.findByCode(currencyCode);
-		if(currency == null) {
-			log.info("Currency with code [" + currencyCode + "] can not be found. Transaction is interrupted.");
-		} else {
-			log.info(currency); 
-		}
+		int currencyCode = ScannerUtil.scanInt();
+
+		Currency currency = CurrencyUtil.findCurrencyByCode(currencyCode);
+		log.info(currency);
 
 		return currency;
 	}

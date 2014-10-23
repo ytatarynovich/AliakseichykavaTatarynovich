@@ -1,5 +1,6 @@
 package com.epam.jmp.concurrency.menu;
 
+import com.epam.jmp.concurrency.exceptions.ActionNotSupportedException;
 import com.epam.jmp.concurrency.menu.commands.*;
 import com.epam.jmp.concurrency.services.AccountService;
 
@@ -8,19 +9,21 @@ import com.epam.jmp.concurrency.services.AccountService;
  */
 public enum BankAction {
 
-	EXIT(0, "Exit", new ExitCommand()),
+	EXIT (0, "Exit", new ExitCommand()),
 
-	CREATE_ACCOUNT(1, "Create Account", new CreateAccountCommand()),
+	CREATE_ACCOUNT (1, "Create Account", new CreateAccountCommand()),
 
-	SET_ACCOUNT_AMOUNT(2, "Set Account's amount", new SetAcountAmountCommand()),
+	SET_ACCOUNT_AMOUNT (2, "Set Account's amount", new SetAcountAmountCommand()),
 	
-	CHANGE_ACCOUNT_CURRENCY(3, "Change Account's currency", new ChangeAcountCurrencyCommand()),
+	CHANGE_ACCOUNT_CURRENCY (3, "Change Account's currency", new ChangeAcountCurrencyCommand()),
 
-	FIND_ACCOUNT_BY_ID(4, "Find Account by id", new FindAccountByIdCommand()),
+	FIND_ACCOUNT_BY_ID (4, "Find Account by id", new FindAccountByIdCommand()),
 
-	FIND_ACCOUNT_BY_NAME(5, "Find Accounts by first or last person's name", new FindAccountByNameCommand()),
+	FIND_ACCOUNT_BY_NAME (5, "Find Accounts by first or last person's name", new FindAccountByNameCommand()),
 
-	PRINT_ALL_ACCOUNTs(6, "Print all accounts", new PrintAllAccountsCommand());
+	PRINT_ALL_ACCOUNTS (6, "Print all accounts", new PrintAllAccountsCommand()),
+
+	CHANGE_EXCHANGE_RATE (7, "Change exchange rate", new ChangeExchangeRateCommand());
 
 	private int code;
 	private String description;
@@ -47,7 +50,7 @@ public enum BankAction {
 				return action;
 			}
 		}
-		return null;
+		throw new ActionNotSupportedException(code);
 	}
 
 	public boolean executeCommand(AccountService accountService) {

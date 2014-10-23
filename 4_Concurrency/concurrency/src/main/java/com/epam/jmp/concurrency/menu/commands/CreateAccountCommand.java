@@ -3,7 +3,7 @@ package com.epam.jmp.concurrency.menu.commands;
 import org.apache.log4j.Logger;
 
 import com.epam.jmp.concurrency.services.AccountService;
-import com.epam.jmp.concurrency.utils.ScannerUtils;
+import com.epam.jmp.concurrency.utils.ScannerUtil;
 
 /**
  * @author Hanna_Aliakseichykava
@@ -15,9 +15,9 @@ public class CreateAccountCommand extends AbstractBankCommand {
 	@Override
 	public boolean execute(AccountService accountService) {
 		log.info("Input client first name:");
-		String firstName = ScannerUtils.scanStr();
+		String firstName = ScannerUtil.scanStr();
 		log.info("Input client last name:");
-		String lastName = ScannerUtils.scanStr();
+		String lastName = ScannerUtil.scanStr();
 
 		if(firstName.equals("") || lastName.equals("")) {
 			log.info("Client's first and last names should not be empty, try again.");
@@ -27,6 +27,6 @@ public class CreateAccountCommand extends AbstractBankCommand {
 			log.info(accountService.findAccountById(accountId));
 		}
 
-		return false;
+		return exit;
 	}
 }

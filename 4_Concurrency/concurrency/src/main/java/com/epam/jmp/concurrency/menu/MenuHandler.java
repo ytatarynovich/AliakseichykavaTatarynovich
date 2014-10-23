@@ -5,7 +5,7 @@ import org.apache.log4j.Logger;
 import com.epam.jmp.concurrency.model.Bank;
 import com.epam.jmp.concurrency.services.AccountService;
 import com.epam.jmp.concurrency.services.AccountServiceImpl;
-import com.epam.jmp.concurrency.utils.ScannerUtils;
+import com.epam.jmp.concurrency.utils.ScannerUtil;
 
 /**
  * @author Hanna_Aliakseichykava
@@ -30,7 +30,7 @@ public class MenuHandler {
 
 			printMenu();
 
-			int actionCode = ScannerUtils.scanInt();
+			int actionCode = ScannerUtil.scanInt();
 
 			exit = handleAction(actionCode);
 		}
@@ -51,11 +51,12 @@ public class MenuHandler {
 
 		boolean exit = false;
 
-		BankAction action = BankAction.findByCode(actionCode);
-		if(action == null) {
-			log.info("Option [" + actionCode + "] is not supported, please, select another one from menu.");
-		} else {
+		try {
+			BankAction action = BankAction.findByCode(actionCode);
 			exit = action.executeCommand(accountService);
+
+		} catch(Exception e) {
+			log.warn(e.getMessage());
 		}
 
 		return exit;

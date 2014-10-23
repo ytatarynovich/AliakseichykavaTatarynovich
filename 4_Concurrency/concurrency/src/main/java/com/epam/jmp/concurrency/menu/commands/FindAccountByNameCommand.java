@@ -6,7 +6,7 @@ import org.apache.log4j.Logger;
 
 import com.epam.jmp.concurrency.model.Account;
 import com.epam.jmp.concurrency.services.AccountService;
-import com.epam.jmp.concurrency.utils.ScannerUtils;
+import com.epam.jmp.concurrency.utils.ScannerUtil;
 
 /**
  * @author Hanna_Aliakseichykava
@@ -19,7 +19,7 @@ public class FindAccountByNameCommand extends AbstractBankCommand {
 	public boolean execute(AccountService accountService) {
 
 		log.info("Input first or last name:");
-		String name = ScannerUtils.scanStr();
+		String name = ScannerUtil.scanStr();
 
 		List<Account> foundAccounts = accountService.findAccountByFirstOrLastName(name);
 		if(foundAccounts.size() == 0) {
@@ -31,7 +31,7 @@ public class FindAccountByNameCommand extends AbstractBankCommand {
 			}
 		}
 
-		return false;
+		return exit;
 	}
 
 }

@@ -17,22 +17,14 @@ public class ChangeAcountCurrencyCommand extends AbstractBankCommand {
 	@Override
 	public boolean execute(AccountService accountService) {
 
-		boolean exit = false;
-
 		Account account = finAccount(accountService);
-		if(account == null) {
-			return exit;
-		}
 
 		Currency currency = findCurrency();
-		if(currency == null) {
-			return exit;
-		}
 
 		double amountInNewCurrency = CurrencyUtil.exchangeCurrency(account.getAmount(), account.getAccountCurrency(), currency);
 		account.setAmount(currency,  amountInNewCurrency);
 		log.info("Account is updated: " + account);
 
-		return false;
+		return exit;
 	}
 }
