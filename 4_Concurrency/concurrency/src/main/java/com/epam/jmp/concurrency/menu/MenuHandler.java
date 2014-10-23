@@ -57,6 +57,7 @@ public class MenuHandler {
 
 		} catch(Exception e) {
 			log.warn(e.getMessage());
+			e.printStackTrace();
 		}
 
 		return exit;
