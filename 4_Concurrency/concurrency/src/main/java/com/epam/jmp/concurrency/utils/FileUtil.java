@@ -1,5 +1,6 @@
 package com.epam.jmp.concurrency.utils;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -50,6 +51,11 @@ public class FileUtil {
 			e.printStackTrace();
 			throw new RuntimeException("File [" + path + "] can not be read: " + e.getMessage());
 		}
+	}
+
+	public boolean isFileExists(String path) {
+		File file = new File(path);
+		return file.exists();
 	}
 
 }
