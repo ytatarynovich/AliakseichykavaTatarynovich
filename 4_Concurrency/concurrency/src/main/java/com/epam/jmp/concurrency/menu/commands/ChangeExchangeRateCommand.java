@@ -22,10 +22,9 @@ public class ChangeExchangeRateCommand extends AbstractBankCommand {
 		double newRate = ScannerUtil.scanDouble();
 		if(newRate < 0) {
 			log.info("Exchange rate should be positive number. Transaction is interrupted.");
+		}else {
+			currency.setRate(newRate);
 		}
-
-		currency.setRate(newRate);
-		log.info("Exchange rate is updated: " + currency + " - " + currency.getRate());
 
 		return exit;
 	}

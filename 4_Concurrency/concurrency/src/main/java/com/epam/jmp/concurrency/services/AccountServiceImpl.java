@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.epam.jmp.concurrency.model.Account;
 import com.epam.jmp.concurrency.model.Bank;
-import com.epam.jmp.concurrency.model.Person;
 
 /**
  * @author Hanna_Aliakseichykava

@@ -1,7 +1,8 @@
 package com.epam.jmp.concurrency.utils;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.apache.log4j.Logger;
-
 import com.epam.jmp.concurrency.model.Currency;
 
 /**
@@ -29,5 +30,25 @@ public class CurrencyUtil {
 			log.info(String.format("%-4s | %-8s | %-2s", currency.getCode(), currency, currency.getRate()));
 		}
 		log.info("***************************************************");
+	}
+
+	/**
+	 * Format: code:rate
+	 */
+	public static List<String> generateRandomRates(int minRate, int maxRate) {
+		List<String> strCurrencies = new ArrayList<String>();
+		for(Currency currency : Currency.values()) {
+			if(currency != Currency.BY) {
+				strCurrencies.add(currency.getCode() + Currency.DELIMETER + 
+						RandomUtil.getRandomDouble(minRate, maxRate));
+			}
+		}
+		return strCurrencies;
+	}
+
+	public static void updateCurrencies(List<String> strCurrencies) {
+		for(String strCurrency : strCurrencies) {
+			Currency.updateFromString(strCurrency);
+		}
 	}
 }

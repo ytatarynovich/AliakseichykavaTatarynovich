@@ -5,4 +5,7 @@ package com.epam.jmp.concurrency.services;
  */
 public interface CurrencyService {
 
+	public void generateNewRates();
+
+	public void refreshRates();
 }

@@ -1,5 +1,6 @@
 package com.epam.jmp.concurrency.model;
 
+import org.apache.log4j.Logger;
 import com.epam.jmp.concurrency.exceptions.CurrencyNotFoundException;
 
 /**
@@ -8,11 +9,13 @@ import com.epam.jmp.concurrency.exceptions.CurrencyNotFoundException;
 public enum Currency {
 
 	BY	(1, 1),
-	USD	(2, 10000),
-	EU	(3, 13000);
+	USD	(2, 1),
+	EU	(3, 1);
 
 	private int code;
 	private double rate;
+	
+	private static final Logger log = Logger.getLogger(Currency.class);
 
 	Currency(int code, double rate) {
 		this.code = code;
@@ -29,9 +32,14 @@ public enum Currency {
 
 	public void setRate(double newRate) {
 		if(this == BY) {
-			throw new RuntimeException("Rate for BY can not be changed (base).");
+			log.warn("Rate for BY can not be changed (base).");
+			return;
+		} else if(newRate < 0) {
+			throw new RuntimeException("Exchange rate should be positive number instead of [" + newRate + "].");
+		} else {
+			this.rate = newRate;
+			log.info("Exchange rate is updated: " + code + " - " + rate + " (" + this + ")");
 		}
-		this.rate = newRate;
 	}
 
 	public double getExchangeCoeff(Currency anotherCurrency) {
@@ -45,6 +53,29 @@ public enum Currency {
 			}
 		}
 		throw new CurrencyNotFoundException(code);
+	}
+
+	public static final String DELIMETER = ":";
+
+	/**
+	 * Format: code:rate
+	 * see CurrencyUtil.generateRandomRates
+	 */
+	public static Currency updateFromString(String str) {
+		int delimPos = str.indexOf(DELIMETER);
+		if(delimPos <= 0) {
+			throw new RuntimeException("String [" + str + "] can not be parsed to Currency");
+		}
+
+		String _codeStr = str.substring(0, delimPos).trim();
+		int _code = Integer.valueOf(_codeStr);
+		String _rateStr = str.substring(delimPos + 1).trim();
+		double _rate = Double.valueOf(_rateStr);
+
+		Currency _currency =  findByCode(_code);
+		_currency.setRate(_rate);
+
+		return _currency;
 	}
 
 }
