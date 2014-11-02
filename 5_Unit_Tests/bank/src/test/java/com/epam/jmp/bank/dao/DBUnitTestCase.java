@@ -1,4 +1,4 @@
-package com.epam.jmp.bank;
+package com.epam.jmp.bank.dao;
 
 import java.util.Properties;
 
@@ -7,22 +7,28 @@ import org.dbunit.IDatabaseTester;
 import org.dbunit.JdbcDatabaseTester;
 import org.dbunit.PropertiesBasedJdbcDatabaseTester;
 import org.dbunit.dataset.IDataSet;
+import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.dbunit.operation.DatabaseOperation;
 import org.junit.Before;
 
-import com.epam.jmp.bank.dao.ConfigConst;
 import com.epam.jmp.utils.PropertyUtils;
 
-public class DBUnitTestCase extends DBTestCase implements ConfigConst {
+public abstract class DBUnitTestCase extends DBTestCase implements ConfigConst {
 
-	private Properties dbProps;
+	protected Properties dbProps;
 
 	protected IDataSet beforeData;
 
 	protected IDatabaseTester tester;
 
+	protected abstract String getDataPath();
+
+	protected abstract String getTableName();
+
+	public static final String CONFIG_PATH = "db/db.properties";
+
 	public DBUnitTestCase() {
-		dbProps = PropertyUtils.loadProperties(CONFIG_PATH);
+		dbProps = PropertyUtils.loadFromResources(CONFIG_PATH);
 
 		System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_DRIVER_CLASS, dbProps.getProperty(DRIVER_PROP_NAME));
 		System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_CONNECTION_URL, dbProps.getProperty(URL_PROP_NAME));
@@ -38,6 +44,11 @@ public class DBUnitTestCase extends DBTestCase implements ConfigConst {
 				dbProps.getProperty(URL_PROP_NAME),
 				dbProps.getProperty(USER_PROP_NAME),
 				dbProps.getProperty(PASSWORD_PROP_NAME));
+
+		beforeData = loadDataSet(getDataPath());
+ 
+		tester.setDataSet(beforeData);
+		tester.onSetup();
 	}
 
 	@Override
@@ -49,4 +60,15 @@ public class DBUnitTestCase extends DBTestCase implements ConfigConst {
 	protected DatabaseOperation getTearDownOperation() throws Exception {
 		return DatabaseOperation.DELETE_ALL;
 	}
+
+	protected IDataSet getActualData() throws Exception {
+		return tester.getConnection().createDataSet();
+	}
+
+	protected IDataSet loadDataSet(String path) throws Exception {
+		return new FlatXmlDataSetBuilder().build(
+			Thread.currentThread().getContextClassLoader()
+			.getResourceAsStream(path));
+	}
+
 }

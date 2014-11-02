@@ -3,6 +3,7 @@ package com.epam.jmp.bank.dao;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 import com.epam.jmp.bank.model.Bank;
 
@@ -12,6 +13,14 @@ import com.epam.jmp.bank.model.Bank;
 public class BankDao extends AbstractDao {
 
 	private static final String NAME = "name";
+
+	public BankDao() {
+		super();
+	}
+
+	public BankDao(Properties props) {
+		super(props);
+	}
 
 	@Override
 	protected String getTableName() {

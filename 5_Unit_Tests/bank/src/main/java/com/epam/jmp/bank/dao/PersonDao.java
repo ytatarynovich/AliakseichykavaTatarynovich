@@ -2,8 +2,10 @@ package com.epam.jmp.bank.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 import com.epam.jmp.bank.exceptions.PersonNotFoundException;
 import com.epam.jmp.bank.model.Person;
@@ -15,6 +17,14 @@ public class PersonDao extends AbstractDao {
 
 	private static final String FIRST_NAME = "firstname";
 	private static final String LAST_NAME = "lastname";
+
+	public PersonDao() {
+		super();
+	}
+
+	public PersonDao(Properties props) {
+		super(props);
+	}
 
 	@Override
 	protected String getTableName() {
@@ -32,6 +42,14 @@ public class PersonDao extends AbstractDao {
 		return id;
 	}
 
+	private Person formPerson(Map<String, String> row) throws SQLException {
+		return new Person(
+				new Long(row.get(ID)),
+				row.get(FIRST_NAME),
+				row.get(LAST_NAME)
+			);
+	}
+
 	public Person getPerson(Long id) throws SQLException {
 
 		PreparedStatement prStatement = prepareStatement("SELECT * FROM " + getTableName() +" WHERE id=?;");
@@ -42,12 +60,16 @@ public class PersonDao extends AbstractDao {
 			throw new PersonNotFoundException(id);
 		}
 		Map<String, String> row = rows.get(0);
+		return formPerson(row);
+	}
 
-		return new Person(
-					id,
-					row.get(FIRST_NAME),
-					row.get(LAST_NAME)
-				);
+	public List<Person> getAll() throws SQLException {
+		List<Map<String, String>> rows = getAllRows();
+		List<Person> persons = new ArrayList<Person>();
+		for (Map<String, String> row : rows) {
+			persons.add(formPerson(row));
+		}
+		return persons;
 	}
 
 }

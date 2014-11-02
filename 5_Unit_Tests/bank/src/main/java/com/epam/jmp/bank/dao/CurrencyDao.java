@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 import com.epam.jmp.bank.model.Currency;
 
@@ -11,6 +12,14 @@ public class CurrencyDao extends AbstractDao {
 
 	private static final String CURRENCY_NAME = "currency";
 	private static final String RATE = "rate";
+
+	public CurrencyDao() {
+		super();
+	}
+
+	public CurrencyDao(Properties props) {
+		super(props);
+	}
 
 	@Override
 	protected String getTableName() {

@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 import com.epam.jmp.bank.exceptions.AccountNotFoundException;
 import com.epam.jmp.bank.model.Account;
@@ -25,6 +26,11 @@ public class AccountDao extends AbstractDao {
 	private PersonDao personDao;
 
 	public AccountDao() {
+		this.personDao = new PersonDao();
+	}
+
+	public AccountDao(Properties props) {
+		super(props);
 		this.personDao = new PersonDao();
 	}
 

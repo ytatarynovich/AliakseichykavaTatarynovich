@@ -20,4 +20,17 @@ public class Person {
 	public String toString() {
 		return "PERSON " + id + ": " + lastName + ", " + firstName;
 	}
+
+	public long getId() {
+		return id;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
 }

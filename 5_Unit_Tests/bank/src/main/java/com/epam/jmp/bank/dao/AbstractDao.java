@@ -21,6 +21,8 @@ import com.epam.jmp.utils.PropertyUtils;
  */
 public abstract class AbstractDao implements ConfigConst {
 
+	public static final String CONFIG_PATH = "../db/db.properties";
+
 	protected static final String ID = "id";
 
 	protected static final Logger log = Logger.getLogger(AbstractDao.class);
@@ -28,7 +30,11 @@ public abstract class AbstractDao implements ConfigConst {
 	private Connection connection;
 
 	public AbstractDao() {
-		Properties props = PropertyUtils.loadProperties(CONFIG_PATH);
+		Properties props = PropertyUtils.loadFromFile(CONFIG_PATH);
+		connection = createConnection(props);
+	}
+
+	public AbstractDao(Properties props) {
 		connection = createConnection(props);
 	}
 
