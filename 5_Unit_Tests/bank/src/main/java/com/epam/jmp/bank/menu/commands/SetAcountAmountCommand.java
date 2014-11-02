@@ -28,6 +28,7 @@ public class SetAcountAmountCommand extends AbstractBankCommand {
 		}
 
 		account.setAmount(currency, amount);
+		accountService.updateAccount(account);
 		log.info("Account is updated: " + account);
 
 		return exit;

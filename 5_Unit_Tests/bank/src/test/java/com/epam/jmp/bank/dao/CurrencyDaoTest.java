@@ -79,7 +79,7 @@ public class CurrencyDaoTest extends DBUnitTestCase {
 
 		String[] ignore = {"id"};
 		Assertion.assertEqualsIgnoreCols(expectedData, actualData, getTableName(), ignore);
-	
+
 		Assert.assertNotEquals(newRate, currency.getRate());
 		dao.synchronizeCurrencies();
 		Assert.assertEquals(newRate, currency.getRate(), 0);

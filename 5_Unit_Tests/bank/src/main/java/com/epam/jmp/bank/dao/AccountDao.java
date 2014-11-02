@@ -113,4 +113,12 @@ public class AccountDao extends AbstractDao {
 		return formAccounts(prStatement);
 	}
 
+	public void update(Account account) throws SQLException {
+		PreparedStatement prStatement = prepareStatement("UPDATE Account SET currency=?, amount=? WHERE id=?;");
+		prStatement.setString(1, account.getAccountCurrency().name());
+		prStatement.setDouble(2, account.getAmount());
+		prStatement.setLong(3, account.getId());
+		execute(prStatement);
+	}
+
 }

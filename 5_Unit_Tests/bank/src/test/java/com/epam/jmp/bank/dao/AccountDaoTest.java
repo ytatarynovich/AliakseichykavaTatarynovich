@@ -12,6 +12,7 @@ import org.junit.runners.BlockJUnit4ClassRunner;
 
 import com.epam.jmp.bank.exceptions.AccountNotFoundException;
 import com.epam.jmp.bank.model.Account;
+import com.epam.jmp.bank.model.Currency;
 
 /**
  * @author Hanna_Aliakseichykava
@@ -101,7 +102,7 @@ public class AccountDaoTest extends DBUnitTestCase {
 		long bankId = new Long(actualData.getTable("bank").getValue(0, "id").toString());
 
 		IDataSet expectedData = loadDataSet(getDataPath());
-		
+
 		List<Account> accounts = dao.getAccountByFirstOrLastName(bankId, TEST_FIRST_NAME_FOR_SEARCH);
 
 		Assertion.assertEquals(expectedData.getTable(getTableName()), actualData.getTable(getTableName()));
@@ -116,4 +117,27 @@ public class AccountDaoTest extends DBUnitTestCase {
 		Assert.assertEquals(0, accounts.size());
 	}
 
+	private static final Currency NEW_CURRENCY = Currency.USD;
+	private static final double NEW_AMOUNT = 1000;
+
+	@Test
+	public void testUpdate() throws Exception {
+		int rowNumber = 0;
+		IDataSet actualData = getActualData();
+		long id = new Long(actualData.getTable(getTableName()).getValue(rowNumber, "id").toString());
+
+		Account account = dao.getAccountById(id);
+		account.setAmount(NEW_CURRENCY, NEW_AMOUNT);
+		dao.update(account);
+
+		IDataSet expectedData = loadDataSet("dao/account-data-update.xml");
+
+		actualData = getActualData();
+
+		Assertion.assertEquals(expectedData.getTable(getTableName()), actualData.getTable(getTableName()));
+
+		account = dao.getAccountById(id);
+		Assert.assertEquals(NEW_CURRENCY, account.getAccountCurrency());
+		Assert.assertEquals(NEW_AMOUNT, account.getAmount(), 0);
+	}
 }

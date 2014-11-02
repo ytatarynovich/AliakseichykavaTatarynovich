@@ -23,6 +23,7 @@ public class ChangeAcountCurrencyCommand extends AbstractBankCommand {
 
 		double amountInNewCurrency = CurrencyUtil.exchangeCurrency(account.getAmount(), account.getAccountCurrency(), currency);
 		account.setAmount(currency,  amountInNewCurrency);
+		accountService.updateAccount(account);
 		log.info("Account is updated: " + account);
 
 		return exit;

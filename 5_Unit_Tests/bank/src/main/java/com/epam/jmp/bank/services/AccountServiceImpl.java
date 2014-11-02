@@ -58,4 +58,14 @@ public class AccountServiceImpl implements AccountService {
 		}
 	}
 
+	@Override
+	public void updateAccount(Account account) {
+
+		try {
+			accountDao.update(account);
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
 }
