@@ -1,14 +1,22 @@
 package com.epam.jmp.bank.dao;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.dbunit.Assertion;
 import org.dbunit.dataset.IDataSet;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.BlockJUnit4ClassRunner;
 
 import com.epam.jmp.bank.model.Person;
+import com.epam.jmp.bank.exceptions.PersonNotFoundException;
 
+/**
+ * @author Hanna_Aliakseichykava
+ */
+@RunWith(value = BlockJUnit4ClassRunner.class)
 public class PersonDaoTest extends DBUnitTestCase {
 
 	private PersonDao dao;
@@ -69,6 +77,12 @@ public class PersonDaoTest extends DBUnitTestCase {
 		Assert.assertEquals(id, person.getId());
 		Assert.assertEquals(expectedFirstName, person.getFirstName());
 		Assert.assertEquals(expecedLastName, person.getLastName());
+	}
+
+	@Test(expected = PersonNotFoundException.class)
+	public void testGetPersonNotFound() throws SQLException {
+		long nonExistentId = 10;
+		dao.getPerson(nonExistentId);
 	}
 
 }

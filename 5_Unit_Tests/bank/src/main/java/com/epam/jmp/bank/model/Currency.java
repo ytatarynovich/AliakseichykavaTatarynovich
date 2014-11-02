@@ -3,6 +3,7 @@ package com.epam.jmp.bank.model;
 import org.apache.log4j.Logger;
 
 import com.epam.jmp.bank.exceptions.CurrencyNotFoundException;
+import com.epam.jmp.utils.RandomUtils;
 
 /**
  * @author Hanna_Aliakseichykava
@@ -64,6 +65,14 @@ public enum Currency {
 			}
 		}
 		throw new CurrencyNotFoundException(name);
+	}
+
+	public static void setDefaultValues() {
+		for(Currency currency : values()) {
+			if(currency != BY) {
+				currency.setRate(1);
+			}
+		}
 	}
 
 }

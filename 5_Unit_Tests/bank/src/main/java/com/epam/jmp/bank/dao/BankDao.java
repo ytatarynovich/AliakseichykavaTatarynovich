@@ -27,7 +27,7 @@ public class BankDao extends AbstractDao {
 		return "bank";
 	}
 
-	public List<Bank> getAllBanks() {
+	public List<Bank> getAll() {
 
 		List<Map<String, String>> rows = getAllRows();
 		List<Bank> banks = new ArrayList<Bank>();

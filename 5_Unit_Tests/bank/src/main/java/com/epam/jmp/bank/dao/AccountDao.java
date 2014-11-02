@@ -31,7 +31,7 @@ public class AccountDao extends AbstractDao {
 
 	public AccountDao(Properties props) {
 		super(props);
-		this.personDao = new PersonDao();
+		this.personDao = new PersonDao(props);
 	}
 
 	@Override
