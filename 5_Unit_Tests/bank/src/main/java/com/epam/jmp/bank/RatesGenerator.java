@@ -9,7 +9,7 @@ import com.epam.jmp.bank.services.CurrencyService;
  */
 public class RatesGenerator implements Runnable {
 
-	private static final int DELAY = 10000;
+	private static final int DELAY = 30000;
 	
 	private static final Logger log = Logger.getLogger(RatesGenerator.class);
 

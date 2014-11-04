@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.Map;
 
 import com.epam.jmp.bank.dao.CurrencyDao;
+import com.epam.jmp.bank.model.Currency;
 import com.epam.jmp.bank.utils.CurrencyUtil;
 
 /**
@@ -35,5 +36,14 @@ public class CurrencyServiceImpl implements CurrencyService {
 	@Override
 	public synchronized void refreshRates() {
 		currencyDao.synchronizeCurrencies();
+	}
+
+	@Override
+	public void updateCurrency(Currency currency) {
+		try {
+			currencyDao.updateCurrency(currency.name(), currency.getRate());
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
 	}
 }
