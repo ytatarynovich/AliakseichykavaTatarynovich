@@ -1,0 +1,11 @@
+-- Bank
+create table Bank (id bigint primary key, name text);
+
+-- Person
+create table Person (id bigint primary key, firstname text, lastname text);
+
+-- Account
+create table Account (id bigint primary key, bankid integer, personid integer, currency text, amount decimal);
+
+-- Currency
+create table Currency (id bigint primary key, currency text, rate decimal);
