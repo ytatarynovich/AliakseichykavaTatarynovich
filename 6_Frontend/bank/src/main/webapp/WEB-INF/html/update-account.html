@@ -1,0 +1,45 @@
+<html ng-app="AccountApp">
+<head>
+	<meta charset="utf-8">
+	<title>Angular - Update Account</title>
+	<script type="text/javascript" src="resources/lib/angular-1.2.1/angular.min.js"></script>
+	<script type="text/javascript" src="resources/js/angular/account-app.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="resources/css/app.css">
+</head>
+<body ng-controller="AccountCtrl">
+
+	#include("nav-panel.html")
+
+	<header>
+		<h1>Update Account</h1>
+	</header>
+
+	<section>
+
+		<form novalidate>
+
+			Bank: <select ng-model="selectedBankId" ng-options="item.id as item.name for item in banks">
+				<option value="">Select Bank</option>
+			</select>
+
+			Account: <select ng-model="selectedAccountId" ng-options="item.id as item.name for item in bankAccounts">
+				<option value="">Select Account</option>
+			</select>
+
+			E-mail: <input ng-model="email">
+			<input type="button" ng-click="updateEmail()" value="Update Email">
+
+			<span class="invalid" ng-show="errors && errors.emailInvalid">
+				E-mail length should be at least {{minEmailLength}} characters.
+			</span>
+
+		</form>
+
+	</section>
+
+	#include("footer.html")
+
+</body>
+</html>
+

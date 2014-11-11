@@ -5,26 +5,22 @@ import java.util.List;
 
 import com.epam.jmp.bank.dao.AccountDao;
 import com.epam.jmp.bank.model.Account;
-import com.epam.jmp.bank.model.Bank;
 
 /**
  * @author Hanna_Aliakseichykava
  */
 public class AccountServiceImpl implements AccountService {
 
-	private Bank bank;
-
 	private AccountDao accountDao;
 
-	public AccountServiceImpl(Bank bank) {
-		this.bank = bank;
+	public AccountServiceImpl() {
 		this.accountDao = new AccountDao();
 	}
 
 	@Override
-	public long createAccount(String firstName, String lastName) {
+	public long createAccount(Long bankId, String firstName, String lastName) {
 		try {
-			return accountDao.persist(bank.getId(), firstName, lastName);
+			return accountDao.persist(bankId, firstName, lastName);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
@@ -40,19 +36,19 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public List<Account> getAllAccounts() {
+	public List<Account> getAllAccounts(Long bankId) {
 		try {
-			return accountDao.getAllAccounts(bank.getId());
+			return accountDao.getAllAccounts(bankId);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
 	}
 
 	@Override
-	public List<Account> findAccountByFirstOrLastName(String name) {
+	public List<Account> findAccountByFirstOrLastName(Long bankId, String name) {
 
 		try {
-			return accountDao.getAccountByFirstOrLastName(bank.getId(), name);
+			return accountDao.getAccountByFirstOrLastName(bankId, name);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}

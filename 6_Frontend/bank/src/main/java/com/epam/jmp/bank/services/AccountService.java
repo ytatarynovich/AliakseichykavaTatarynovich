@@ -9,13 +9,13 @@ import com.epam.jmp.bank.model.Account;
  */
 public interface AccountService {
 
-	public long createAccount(String firstName, String lastName);
+	public long createAccount(Long bankId, String firstName, String lastName);
 
 	public Account findAccountById(long id);
 
-	public List<Account> findAccountByFirstOrLastName(String name);
+	public List<Account> findAccountByFirstOrLastName(Long bankId, String name);
 
-	public List<Account> getAllAccounts();
+	public List<Account> getAllAccounts(Long bankId);
 
 	public void updateAccount(Account account);
 

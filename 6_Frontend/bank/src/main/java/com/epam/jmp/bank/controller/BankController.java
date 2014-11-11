@@ -7,24 +7,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.epam.jmp.bank.services.CurrencyService;
+import com.epam.jmp.bank.services.BankService;
 import com.google.gson.Gson;
 
 /**
  * @author Hanna_Aliakseichykava
  */
 @Controller
-@RequestMapping("/currency")
-public class CurrencyController {
+@RequestMapping("/bank")
+public class BankController {
 
-	@Autowired
-	private CurrencyService service;
+	//@Autowired
+	//private BankService service;
 
-	@RequestMapping(value = "/getall", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/getall", method = RequestMethod.GET)
 	@ResponseBody
 	public String getAll(ModelMap model) {
-
-		return new Gson().toJson(service.getAllCurrencies());
-	}
+		//TODO:
+		return new Gson().toJson(service.getAllBanks());
+	}*/
 }
 
