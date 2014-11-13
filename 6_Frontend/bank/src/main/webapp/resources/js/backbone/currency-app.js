@@ -1,10 +1,12 @@
 
 var Currency = Backbone.Model.extend({
-	nameRate: '',
+	name: '',
+	rate: '',
 
 	initialize: function(arg){
 		console.log('Fetched: ' + arg);
-		this.nameRate = arg;
+		this.name = arg.name;
+		this.rate = arg.rate;
 	},
 });
 
@@ -24,7 +26,7 @@ var CurrencyView = Backbone.View.extend({
 	},
 
 	render : function() {
-		$(this.el).text(this.model.nameRate);
+		$(this.el).text(this.model.name + ': ' + this.model.rate);
 		return this;
 	}
 });

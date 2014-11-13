@@ -19,4 +19,8 @@ public interface AccountService {
 
 	public void updateAccount(Account account);
 
+	public String getBankAccountAsJson(Long accountId);
+
+	public String getBankAccountsAsJson(Long bankId);
+
 }

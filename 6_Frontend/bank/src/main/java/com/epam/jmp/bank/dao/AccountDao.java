@@ -5,12 +5,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 
 import com.epam.jmp.bank.exceptions.AccountNotFoundException;
 import com.epam.jmp.bank.model.Account;
 import com.epam.jmp.bank.model.Currency;
 import com.epam.jmp.bank.model.Person;
+import com.google.common.annotations.VisibleForTesting;
 
 /**
  * @author Hanna_Aliakseichykava
@@ -49,31 +49,42 @@ public class AccountDao extends AbstractDao {
 		return id;
 	}
 
-	private Account formAccount(Map<String, String> row) throws SQLException {
-		Person person = personDao.getPerson(new Long(row.get(PERSON_ID)));
+	private Account formAccount(Map<String, String> row) {
 
-		return new Account(
-				new Long(row.get(ID)),
-				person,
-				Currency.findByName(row.get(CURRENCY_NAME)),
-				new Double(row.get(AMOUNT))
-			);
+		try {
+			Person person = personDao.getPerson(new Long(row.get(PERSON_ID)));
+
+			return new Account(
+					new Long(row.get(ID)),
+					person,
+					Currency.findByName(row.get(CURRENCY_NAME)),
+					new Double(row.get(AMOUNT))
+				);
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
-	public Account getAccountById(long id) throws SQLException {
+	public Account getAccountById(long id) {
 
 		PreparedStatement prStatement = prepareStatement("SELECT * FROM " + getTableName() +" WHERE id=?;");
-		prStatement.setLong(1, id);
-		List<Map<String, String>> rows = readInfo(prStatement);
-		if(rows.size() == 0) {
-			throw new AccountNotFoundException(id);
-		}
-		Map<String, String> row = rows.get(0);
 
-		return formAccount(row);
+		try {
+			prStatement.setLong(1, id);
+			List<Map<String, String>> rows = readInfo(prStatement);
+			if(rows.size() == 0) {
+				throw new AccountNotFoundException(id);
+			}
+			Map<String, String> row = rows.get(0);
+
+			return formAccount(row);
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
-	public List<Account> formAccounts(PreparedStatement prStatement) throws SQLException {
+	public List<Account> formAccounts(PreparedStatement prStatement) {
 
 		List<Map<String, String>> rows = readInfo(prStatement);
 		List<Account> accounts = new ArrayList<Account>();
@@ -84,12 +95,17 @@ public class AccountDao extends AbstractDao {
 		return accounts;
 	}
 
-	public List<Account> getAllAccounts(Long bankId) throws SQLException {
+	public List<Account> getAllAccounts(Long bankId) {
 
 		PreparedStatement prStatement = prepareStatement("SELECT * FROM " + getTableName() +" WHERE bankid=?;");
-		prStatement.setLong(1, bankId);
 
-		return formAccounts(prStatement);
+		try {
+			prStatement.setLong(1, bankId);
+			return formAccounts(prStatement);
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	public List<Account> getAccountByFirstOrLastName(Long bankId, String name) throws SQLException {
@@ -114,6 +130,12 @@ public class AccountDao extends AbstractDao {
 		prStatement.setDouble(2, account.getAmount());
 		prStatement.setLong(3, account.getId());
 		execute(prStatement);
+		//TODO: update Person
+	}
+
+	@VisibleForTesting
+	public void setPersonDao(PersonDao personDao) {
+		this.personDao = personDao;
 	}
 
 }

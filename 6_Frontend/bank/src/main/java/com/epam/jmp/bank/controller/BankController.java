@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.epam.jmp.bank.services.BankService;
-import com.google.gson.Gson;
 
 /**
  * @author Hanna_Aliakseichykava
@@ -17,14 +16,13 @@ import com.google.gson.Gson;
 @RequestMapping("/bank")
 public class BankController {
 
-	//@Autowired
-	//private BankService service;
+	@Autowired
+	private BankService service;
 
-	/*@RequestMapping(value = "/getall", method = RequestMethod.GET)
+	@RequestMapping(value = "/getall", method = RequestMethod.GET)
 	@ResponseBody
 	public String getAll(ModelMap model) {
-		//TODO:
-		return new Gson().toJson(service.getAllBanks());
-	}*/
+		return service.getAllBanksAsJson();
+	}
 }
 

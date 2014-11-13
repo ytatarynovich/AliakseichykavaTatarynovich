@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import com.epam.jmp.bank.dao.CurrencyDao;
 import com.epam.jmp.bank.model.Currency;
+import com.google.gson.Gson;
 
 /**
  * @author Hanna_Aliakseichykava
@@ -38,11 +39,17 @@ public class CurrencyServiceImpl implements CurrencyService {
 		}
 	}
 
-	public List<String> getAllCurrencies() {
-		List<String> list = new ArrayList<String>();
+	private static final String NAME = "name";
+	private static final String RATE = "rate";
+
+	public String getAllCurrenciesAsJson() {
+		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		for(Currency currency : Currency.values()) {
-			list.add(currency.name() + " - " + currency.getRate());
+			Map<String, String> map = new HashMap<String, String>();
+			map.put(NAME, currency.getName());
+			map.put(RATE, String.valueOf(currency.getRate()));
+			list.add(map);
 		}
-		return list;
+		return new Gson().toJson(list);
 	}
 }

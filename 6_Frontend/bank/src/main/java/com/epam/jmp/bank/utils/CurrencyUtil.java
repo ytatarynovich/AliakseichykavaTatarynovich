@@ -1,15 +1,11 @@
 package com.epam.jmp.bank.utils;
 
-import org.apache.log4j.Logger;
-
 import com.epam.jmp.bank.model.Currency;
 
 /**
  * @author Hanna_Aliakseichykava
  */
 public class CurrencyUtil {
-
-	private static final Logger log = Logger.getLogger(CurrencyUtil.class);
 
 	public static Currency findCurrencyByCode(int code) {
 		return Currency.findByCode(code);
@@ -22,12 +18,7 @@ public class CurrencyUtil {
 		return amount * currencyFrom.getExchangeCoeff(currencyTo);
 	}
 
-	public static void printAllCurrencies() {
-		/*log.info("***************************************************");
-		log.info("Code | Currency | Exchange Rate against BY currency");
-		for(Currency currency : Currency.values()) {
-			log.info(String.format("%-4s | %-8s | %-2s", currency.getCode(), currency, currency.getRate()));
-		}
-		log.info("***************************************************");*/
+	public static double exchangeCurrency(double amount, String currencyFrom, String currencyTo) {
+		return exchangeCurrency(amount, Currency.findByName(currencyFrom), Currency.findByName(currencyTo));
 	}
 }

@@ -30,6 +30,10 @@ public enum Currency {
 		return rate;
 	}
 
+	public String getName() {
+		return name();
+	}
+
 	public void setRate(double newRate) {
 		if(newRate < 0) {
 			throw new RuntimeException("Exchange rate should be positive number instead of [" + newRate + "].");

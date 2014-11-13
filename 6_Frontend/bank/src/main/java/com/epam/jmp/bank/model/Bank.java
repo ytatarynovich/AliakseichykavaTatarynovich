@@ -23,4 +23,7 @@ public class Bank {
 		return id;
 	}
 
+	public String getName() {
+		return name;
+	}
 }

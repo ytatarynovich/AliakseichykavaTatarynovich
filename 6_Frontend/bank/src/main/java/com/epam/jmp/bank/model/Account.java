@@ -20,7 +20,7 @@ public class Account {
 
 	@Override
 	public String toString() {
-		return "ACCOUNT " + id + " for " + person + "; Amount: " + amount + "(" + accountCurrency +")";
+		return "ACCOUNT " + id + " for " + person;
 	}
 
 	public long getId() {
