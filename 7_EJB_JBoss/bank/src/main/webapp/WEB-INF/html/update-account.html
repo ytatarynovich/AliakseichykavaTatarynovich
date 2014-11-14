@@ -1,0 +1,49 @@
+<html ng-app="AccountApp">
+<head>
+	<meta charset="utf-8">
+	<title>Angular - Update Account</title>
+	<script type="text/javascript" src="resources/lib/angular-1.2.1/angular.min.js"></script>
+	<script src="//code.jquery.com/jquery-2.0.3.min.js"></script>
+	<script type="text/javascript" src="resources/js/angular/account-app.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="resources/css/app.css">
+</head>
+<body ng-controller="AccountCtrl">
+
+	#include("nav-panel.html")
+
+	<header>
+		<h1>Update Account</h1>
+	</header>
+
+	<section>
+
+		<form novalidate>
+
+			Bank: <select ng-model="selectedBankId" ng-options="item.id as item.name for item in banks">
+				<option value="">Select Bank</option>
+			</select>
+
+			<br>Account: <select ng-model="selectedAccountId" ng-options="item.id as item.asstring for item in bankAccounts">
+				<option value="">Select Account</option>
+			</select>
+
+			<br>Amount: <input ng-model="amount">
+			<span class="invalid" ng-show="errors && errors.amount">{{errors.amount.message}}</span>
+
+			<br>Currency: <select ng-model="currency" ng-options="item.name as item.name for item in currencies">
+				<option value="">Select Account</option>
+			</select>
+			<span class="invalid" ng-show="errors && errors.currency">{{errors.currency.message}}</span>
+
+			<br><input type="button" ng-click="updateAccount()" value="Update Account">
+
+		</form>
+
+	</section>
+
+	#include("footer.html")
+
+</body>
+</html>
+

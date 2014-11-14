@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<currency id="1" currency="BY" rate="1"/>
+	<currency id="2" currency="USD" rate="12000"/>
+	<currency id="3" currency="EU" rate="15000"/>
+</dataset>

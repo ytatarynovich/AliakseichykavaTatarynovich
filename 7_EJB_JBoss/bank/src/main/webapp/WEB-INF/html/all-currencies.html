@@ -1,0 +1,20 @@
+<html ng-app="CurrencyApp">
+<head>
+	<meta charset="utf-8">
+	<title>Angular - All Currencies</title>
+	<script type="text/javascript" src="resources/lib/angular-1.2.1/angular.min.js"></script>
+	<script type="text/javascript" src="resources/js/angular/currency-app.js"></script>
+</head>
+<body ng-controller="CurrencyCtrl">
+
+	#include("nav-panel.html")
+
+	All Currencies
+	<table>
+		<tr ng-repeat="currency in currencies">
+			<td>{{ currency.name }}</td>
+			<td>{{ currency.rate }}</td>
+		</tr>
+	</table>
+</body>
+</html>
