@@ -20,7 +20,7 @@ import com.epam.jmp.bank.services.AccountService;
 @RequestMapping("/account")
 public class AccountController {
 
-	@EJB
+	@EJB(mappedName="java:module/AccountServiceImpl")
 	private AccountService service;
 
 	@RequestMapping(value = "/get-all-for-bank/{bankId}", method = RequestMethod.GET)

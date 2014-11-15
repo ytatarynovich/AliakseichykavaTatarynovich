@@ -19,7 +19,7 @@ import com.epam.jmp.bank.utils.CurrencyUtil;
 @RequestMapping("/currency")
 public class CurrencyController {
 
-	@EJB
+	@EJB(mappedName="java:module/CurrencyServiceImpl")
 	private CurrencyService service;
 
 	@RequestMapping(value = "/getall", method = RequestMethod.GET)

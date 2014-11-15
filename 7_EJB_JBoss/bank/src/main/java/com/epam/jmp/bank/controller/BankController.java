@@ -17,7 +17,7 @@ import com.epam.jmp.bank.services.BankService;
 @RequestMapping("/bank")
 public class BankController {
 
-	@EJB
+	@EJB(mappedName="java:module/BankServiceImpl")
 	private BankService service;
 
 	@RequestMapping(value = "/getall", method = RequestMethod.GET)
