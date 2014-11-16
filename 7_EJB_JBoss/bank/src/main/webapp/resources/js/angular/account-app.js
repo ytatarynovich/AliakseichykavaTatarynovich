@@ -21,8 +21,8 @@ accountApp.controller('AccountCtrl', ['$scope', '$http', 'accountsService', func
 		if(account) {
 			console.log('Accounts is found: ' + account.asstring);
 			$scope.selectedAccount = account;
-			$scope.amount = $scope.selectedAccount.amount;
 			$scope.currency = $scope.selectedAccount.currency;
+			$scope.amount = $scope.selectedAccount.amount;
 		}
 	}
 
@@ -37,12 +37,8 @@ accountApp.controller('AccountCtrl', ['$scope', '$http', 'accountsService', func
 	}
 
 	function updateBankAccount(account) {
-	
-		$http.post('account/update', {
-			accountid: account.id,
-			amount: account.amount,
-			currency: account.currency
-		}).
+
+		$http.post('account/update/' + account.id + '/' + account.currency + '/' + account.amount).
 		success(function(data, status, headers) {
 			console.log('Account is updated in db');
 			populateAccounts($scope.selectedBankId);

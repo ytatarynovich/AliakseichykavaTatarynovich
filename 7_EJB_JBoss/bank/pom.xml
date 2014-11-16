@@ -159,6 +159,7 @@
 			<artifactId>jboss-as-ejb-client-bom</artifactId>
 			<version>${jboss.version}</version>
 			<type>pom</type>
+			<scope>provided</scope>
 		</dependency>
 
 	</dependencies>

@@ -3,15 +3,17 @@ package com.epam.jmp.bank.controller;
 import javax.ejb.EJB;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.epam.jmp.bank.model.Account;
 import com.epam.jmp.bank.model.Currency;
 import com.epam.jmp.bank.services.AccountService;
+
+import org.springframework.http.HttpStatus;
 
 /**
  * @author Hanna_Aliakseichykava
@@ -29,19 +31,23 @@ public class AccountController {
 		return service.getBankAccountsAsJson(bankId);
 	}
 
-	@RequestMapping(value = "/get/{accountId}", method = RequestMethod.GET)
+	private static final String ACCOUNT_ID = "accountid";
+	private static final String CURRENCY = "currency";
+	private static final String AMOUNT = "amount";
+	
+	@RequestMapping(value = "/get/{accountid}", method = RequestMethod.GET)
 	@ResponseBody
-	public String getAccount(@PathVariable("accountId") Long accountId) {
-		return service.getBankAccountAsJson(accountId);
+	public String getAccount(@PathVariable(ACCOUNT_ID) Long accountid) {
+		return service.getBankAccountAsJson(accountid);
 	}
 
-	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	@RequestMapping(value = "/update/{accountid}/{currency}/{amount}", method = RequestMethod.POST)
+	@ResponseStatus(value = HttpStatus.NO_CONTENT)
 	public void updateAccount(
-			@ModelAttribute("accountid") Long accountId, 
-			@ModelAttribute("amount") Double amount,
-			@ModelAttribute("currency") String currency) {
-
-		Account account = service.findAccountById(accountId);
+			@PathVariable(ACCOUNT_ID) Long accountid,
+			@PathVariable(CURRENCY) String currency,
+			@PathVariable(AMOUNT) Double amount) {
+		Account account = service.findAccountById(accountid);
 		account.setAmount(Currency.findByName(currency), amount);
 		service.updateAccount(account);
 	}
