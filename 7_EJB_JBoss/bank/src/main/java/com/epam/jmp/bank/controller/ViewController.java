@@ -11,11 +11,21 @@ public class ViewController {
 	
 	@RequestMapping
 	public String getIndexPage() {
-		return "index";
+		return "home";
 	}
 	
-	@RequestMapping(value = "/{view}", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/{view}", method = RequestMethod.GET)
 	public String getPage(@PathVariable("view") String view) {
 		return view;
+	}*/
+
+	@RequestMapping(value = "/all-currencies", method = RequestMethod.GET)
+	public String getAllCurrenciesPage() {
+		return "all-currencies";
+	}
+
+	@RequestMapping(value = "/update-account", method = RequestMethod.GET)
+	public String getUpdateAccountPage() {
+		return "update-account";
 	}
 }
