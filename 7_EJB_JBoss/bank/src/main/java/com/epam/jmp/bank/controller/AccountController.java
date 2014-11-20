@@ -25,6 +25,11 @@ public class AccountController {
 	@EJB(mappedName="java:module/AccountServiceImpl")
 	private AccountService service;
 
+	@RequestMapping(value = "/update-account", method = RequestMethod.GET)
+	public String getUpdateAccountPage() {
+		return "update-account";
+	}
+
 	@RequestMapping(value = "/get-all-for-bank/{bankId}", method = RequestMethod.GET)
 	@ResponseBody
 	public String getAllAccountsForBank(@PathVariable("bankId") Long bankId) {

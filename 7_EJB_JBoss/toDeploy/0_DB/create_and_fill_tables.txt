@@ -23,3 +23,9 @@ create table Currency (id bigint primary key, currency text, rate decimal);
 insert into Currency (id, currency, rate) values(1, 'BY', 1);
 insert into Currency (id, currency, rate) values(2, 'USD', 10000);
 insert into Currency (id, currency, rate) values(3, 'EU', 14000);
+
+-- Bank employees
+create table Employee (id bigint primary key, login text, firstname text, lastname text, role text);
+
+insert into Employee(id, login, firstname, lastname, role) values(1, 'AdmLogin', 'Joe', 'Smith', 'ADMIN');
+insert into Employee(id, login, firstname, lastname, role) values(1, 'AccLogin', 'Tom', 'Jones', 'ACCOUNTANT');

@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 
 import com.epam.jmp.bank.exceptions.PersonNotFoundException;
 import com.epam.jmp.bank.model.Person;

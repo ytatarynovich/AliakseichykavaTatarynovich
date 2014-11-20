@@ -1,4 +1,4 @@
-#include("header.html")
+#include("header.jsp")
 
 <header>
 	<h1>Update Account</h1>
@@ -49,7 +49,7 @@
 
 </div>
 
-#include("footer.html")
+#include("footer.jsp")
 
 
 

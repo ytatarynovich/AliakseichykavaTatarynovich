@@ -10,15 +10,10 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd http://www.
 
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 
-	<bean id="velocityConfig" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
-		<property name="resourceLoaderPath" value="/WEB-INF/html/"/>
-	</bean>
-
-	<bean id="viewResolver" class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
-		<property name="cache" value="true"/>
-		<property name="prefix" value=""/>
-		<property name="suffix" value=".html"/>
-		<property name="exposeSpringMacroHelpers" value="true"/>
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+		<property name="prefix" value="/WEB-INF/jsp/"/>
+		<property name="suffix" value=".jsp"/>
 	</bean>
 
 </beans>

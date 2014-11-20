@@ -27,7 +27,7 @@ public class SecureController {
         return "private/admin/index";
     }
  
-    @RequestMapping(value="/customer/index")
+    /*@RequestMapping(value="/customer/index")
     //public String getOrder(ModelMap model, java.security.Principal principal) {
     public String getCustomer(ModelMap model) {
  
@@ -39,5 +39,5 @@ public class SecureController {
  
         model.addAttribute("userPrincipal", userPrincipal);
         return "private/customer/index";
-    }
+    }*/
 }

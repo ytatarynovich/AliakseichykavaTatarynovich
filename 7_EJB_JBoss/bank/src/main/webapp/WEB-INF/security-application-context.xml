@@ -11,11 +11,11 @@
 			access="hasRole('ADMIN')" />
 		<sec:intercept-url pattern="/private/customer/**"
 			access="hasRole('CUSTOMER')" />
-		<sec:form-login login-page="/login.html"
-			default-target-url="/private/admin/index.html" 
+		<sec:form-login login-page="/login"
+			default-target-url="/private/admin/index" 
 			always-use-default-target="false"
-			authentication-failure-url="/login.html?error=1" />
-		<sec:logout logout-success-url="/home.html" logout-url="/j_spring_security_logout" />
+			authentication-failure-url="/login?error=1" />
+		<sec:logout logout-success-url="/" logout-url="/j_spring_security_logout" />
 	</sec:http>
 
 	<sec:authentication-manager>

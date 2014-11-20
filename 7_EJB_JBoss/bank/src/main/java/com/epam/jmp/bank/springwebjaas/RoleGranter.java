@@ -14,7 +14,6 @@ public class RoleGranter implements AuthorityGranter {
 	public Set<String> grant(Principal principal) {
 		 
         if (principal.getName().equals("admin")) {
-        	System.out.println("\n\n!!!ADMIN\n\n");
             return Collections.singleton("ADMIN"); }
         else
             return Collections.singleton("CUSTOMER");

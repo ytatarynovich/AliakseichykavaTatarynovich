@@ -1,4 +1,4 @@
-#include("header.html")
+#include("header.jsp")
 
 <header>
 	<h1>All Currencies</h1>
@@ -15,4 +15,4 @@
 
 </div>
 
-#include("footer.html")
+#include("footer.jsp")

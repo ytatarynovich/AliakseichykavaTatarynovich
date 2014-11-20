@@ -22,6 +22,11 @@ public class CurrencyController {
 	@EJB(mappedName="java:module/CurrencyServiceImpl")
 	private CurrencyService service;
 
+	@RequestMapping(value = "/all-currencies", method = RequestMethod.GET)
+	public String getAllCurrenciesPage() {
+		return "all-currencies";
+	}
+
 	@RequestMapping(value = "/getall", method = RequestMethod.GET)
 	@ResponseBody
 	public String getAll(ModelMap model) {

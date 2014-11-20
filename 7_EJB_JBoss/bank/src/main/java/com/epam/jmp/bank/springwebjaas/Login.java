@@ -56,28 +56,6 @@ public class Login implements LoginModule {
         return true;
     }
  
-    private boolean isDateRangeValid(String passwordDate) throws LoginException {
-        // Check the time validity
-        SimpleDateFormat dateFormat = new SimpleDateFormat(
-                "yyyy-MM-dd HH-mm-ss");
- 
-        try {
-            Date convertedDate = dateFormat.parse(passwordDate);
- 
-            long timePasswordDifference = (new java.util.Date().getTime() - convertedDate
-                    .getTime()) / (60 * 1000) % 60;
- 
-            if (timePasswordDifference < EncodeDecode.MINUTE_PASSWORD_EXPIRES)
-                return true;
-            else
-                return false;
- 
-        } catch (ParseException e) {
-            // TODO Auto-generated catch block
-            throw new LoginException("User not valid");
-        }
-    }
- 
     @Override
     public boolean abort() throws LoginException {return false;}
  
