@@ -28,4 +28,10 @@ public class ViewController {
 	public String getUpdateAccountPage() {
 		return "update-account";
 	}
+	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String getLoginPage() {
+		return "login";
+	}
+
 }
