@@ -16,7 +16,7 @@ import com.epam.jmp.bank.model.Employee;
  */
 @RunWith(value = BlockJUnit4ClassRunner.class)
 public class EmployeeDaoTest extends DBUnitTestCase {
-	
+
 	private EmployeeDao dao = new EmployeeDao();
 
 	@Override
@@ -43,6 +43,27 @@ public class EmployeeDaoTest extends DBUnitTestCase {
 	@Test(expected = EmployeeNotFoundException.class)
 	public void testGetEmployeeByLoginNotFound() throws SQLException {
 		String nonExistentLogin = "NonExistent";
+		dao.getEmployeeByLogin(nonExistentLogin);
+	}
+
+	@Test
+	public void testGetPasswordById() throws Exception {
+		Long id = 1L;
+		String expectedPass = "123";
+
+		String pass = dao.getPasswordById(id);
+		Assert.assertEquals(expectedPass, pass);
+	}
+
+	@Test(expected = EmployeeNotFoundException.class)
+	public void testGetPasswordByIdNotFoundEmployee() throws SQLException {
+		Long nonExistentId = 123L;
+		dao.getPasswordById(nonExistentId);
+	}
+
+	@Test(expected = EmployeeNotFoundException.class)
+	public void testGetEmployeeByNullLogin() throws SQLException {
+		String nonExistentLogin = null;
 		dao.getEmployeeByLogin(nonExistentLogin);
 	}
 

@@ -4,7 +4,7 @@ accountApp.controller('AccountCtrl', ['$scope', '$http', 'accountsService', func
 
 	function populateAccounts(bankId) {
 
-		$http.get('account/get-all-for-bank/' + bankId).
+		$http.get('/BankApp/account/get-all-for-bank/' + bankId).
 			success(function(data) {
 				$scope.bankAccounts = data;
 				console.log('Accounts are fetched');
@@ -28,7 +28,7 @@ accountApp.controller('AccountCtrl', ['$scope', '$http', 'accountsService', func
 
 	function exchangeCurrency(oldCurrency, newCurrency, amount) {
 
-		$http.get('currency/exchange/old/' + oldCurrency + '/new/' + newCurrency + '/amount/' + amount).
+		$http.get('/BankApp/currency/exchange/old/' + oldCurrency + '/new/' + newCurrency + '/amount/' + amount).
 			success(function(data) {
 				$scope.amount = data;
 				console.log('Currency is exchanged');
@@ -38,7 +38,7 @@ accountApp.controller('AccountCtrl', ['$scope', '$http', 'accountsService', func
 
 	function updateBankAccount(account) {
 
-		$http.post('account/update/' + account.id + '/' + account.currency + '/' + account.amount).
+		$http.post('/BankApp/account/update/' + account.id + '/' + account.currency + '/' + account.amount).
 		success(function(data, status, headers) {
 			console.log('Account is updated in db');
 			populateAccounts($scope.selectedBankId);
@@ -68,13 +68,13 @@ accountApp.controller('AccountCtrl', ['$scope', '$http', 'accountsService', func
 	};
 
 
-	$http.get('bank/getall').
+	$http.get('/BankApp/bank/getall').
 		success(function(data) {
 			$scope.banks = data;
 		}
 	);
 
-	$http.get('currency/getall').
+	$http.get('/BankApp/currency/getall').
 		success(function(data) {
 			$scope.currencies = data;
 		}

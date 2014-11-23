@@ -1,7 +1,7 @@
-#include("header.jsp")
+<jsp:include page="header.jsp"/>
 
 <header>
 	<h1>Hello App</h1>
 </header>
 
-#include("footer.jsp")
+<jsp:include page="footer.jsp"/>

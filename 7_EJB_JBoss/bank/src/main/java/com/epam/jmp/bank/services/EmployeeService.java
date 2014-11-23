@@ -11,4 +11,6 @@ public interface EmployeeService extends Serializable {
 
 	public Employee getEmployeeByLogin(String login);
 
+	public String getPasswordById(Long id);
+
 }

@@ -5,7 +5,7 @@ import com.epam.jmp.bank.exceptions.RoleNotFoundException;
 public enum Role {
 
 	ADMIN(),
-	ACCONT();
+	ACCOUNTANT();
 
 	public static Role findByName(String name) {
 		name = name != null ? name.toUpperCase() : name;

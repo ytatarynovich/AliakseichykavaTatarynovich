@@ -18,6 +18,7 @@ public class EmployeeDao extends AbstractDao {
 	private static final String LAST_NAME = "lastname";
 	private static final String LOGIN = "login";
 	private static final String ROLE = "role";
+	private static final String PASSWORD = "password";
 
 	@Override
 	protected String getTableName() {
@@ -45,6 +46,19 @@ public class EmployeeDao extends AbstractDao {
 				row.get(LAST_NAME),
 				Role.findByName(row.get(ROLE))
 			);
+	}
+
+	public String getPasswordById(Long id) throws SQLException {
+
+		PreparedStatement prStatement = prepareStatement("SELECT password FROM " + getTableName() +" WHERE id=?;");
+		prStatement.setLong(1, id);
+
+		List<Map<String, String>> rows = readInfo(prStatement);
+		if(rows.size() == 0) {
+			throw new EmployeeNotFoundException(id);
+		}
+		Map<String, String> row = rows.get(0);
+		return row.get(PASSWORD);
 	}
 
 }

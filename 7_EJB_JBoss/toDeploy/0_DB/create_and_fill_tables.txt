@@ -25,7 +25,7 @@ insert into Currency (id, currency, rate) values(2, 'USD', 10000);
 insert into Currency (id, currency, rate) values(3, 'EU', 14000);
 
 -- Bank employees
-create table Employee (id bigint primary key, login text, firstname text, lastname text, role text);
+create table Employee (id bigint primary key, login text, firstname text, lastname text, role text, password text);
 
-insert into Employee(id, login, firstname, lastname, role) values(1, 'AdmLogin', 'Joe', 'Smith', 'ADMIN');
-insert into Employee(id, login, firstname, lastname, role) values(1, 'AccLogin', 'Tom', 'Jones', 'ACCOUNTANT');
+insert into Employee(id, login, firstname, lastname, role, password) values(1, 'AdmLogin', 'Joe', 'Smith', 'ADMIN', '/H1iP5q/nKYDzs8oHyFFJg=='); -- AdmPass
+insert into Employee(id, login, firstname, lastname, role, password) values(2, 'AccLogin', 'Tom', 'Jones', 'ACCOUNTANT', 'q7vpC+0AEUgqC4CbOQF/ZQ=='); -- AccPass

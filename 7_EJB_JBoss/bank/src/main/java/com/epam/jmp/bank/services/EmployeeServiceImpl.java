@@ -3,6 +3,7 @@ package com.epam.jmp.bank.services;
 import java.sql.SQLException;
 
 import com.epam.jmp.bank.dao.EmployeeDao;
+import com.epam.jmp.bank.exceptions.EmployeeNotFoundException;
 import com.epam.jmp.bank.model.Employee;
 
 /**
@@ -23,6 +24,19 @@ public class EmployeeServiceImpl implements EmployeeService {
 			return employeeDao.getEmployeeByLogin(login);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
+		} catch(EmployeeNotFoundException e) {
+			return null;
+		}
+	}
+
+	@Override
+	public String getPasswordById(Long id) {
+		try {
+			return employeeDao.getPasswordById(id);
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} catch(EmployeeNotFoundException e) {
+			return null;
 		}
 	}
 

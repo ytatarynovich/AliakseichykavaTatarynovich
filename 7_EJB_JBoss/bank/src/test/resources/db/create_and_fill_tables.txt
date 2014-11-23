@@ -11,4 +11,4 @@ create table Account (id bigint primary key, bankid integer, personid integer, c
 create table Currency (id bigint primary key, currency text, rate decimal);
 
 -- Bank employees
-create table Employee (id bigint primary key, login text, firstname text, lastname text, role text);
+create table Employee (id bigint primary key, login text, firstname text, lastname text, role text, password text);

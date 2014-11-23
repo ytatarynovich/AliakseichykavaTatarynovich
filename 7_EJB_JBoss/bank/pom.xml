@@ -20,6 +20,7 @@
 		<spring.version>3.1.0.RELEASE</spring.version>
 		<velocity.version>1.7</velocity.version>
 		<gson.version>2.2.2</gson.version>
+		<catch.exception.version>1.2.0</catch.exception.version>
 		<guava.version>r05</guava.version>
 		<sqlite.jdbc.version>3.8.7</sqlite.jdbc.version>
 		<jboss.version>7.1.1.Final</jboss.version>
@@ -128,6 +129,12 @@
 			<artifactId>gson</artifactId>
 			<version>${gson.version}</version>
 			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.googlecode.catch-exception</groupId>
+			<artifactId>catch-exception</artifactId>
+			<version>${catch.exception.version}</version>
 		</dependency>
 
 		<dependency>

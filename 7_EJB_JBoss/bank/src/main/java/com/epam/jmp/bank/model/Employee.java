@@ -1,5 +1,6 @@
 package com.epam.jmp.bank.model;
 
+
 /**
  * @author Hanna_Aliakseichykava
  */
@@ -11,8 +12,7 @@ public class Employee {
 	private String lastName;
 	private Role role;
 
-	public Employee(long id, String login, String firstName, String lastName,
-			Role role) {
+	public Employee(long id, String login, String firstName, String lastName, Role role) {
 		super();
 		this.id = id;
 		this.login = login;
