@@ -2,7 +2,7 @@ package com.epam.jmp.bank.springwebjaas;
 
 import java.util.Map;
 
-import javax.ejb.EJB;
+import javax.naming.InitialContext;
 import javax.security.auth.Subject;
 import javax.security.auth.callback.Callback;
 import javax.security.auth.callback.CallbackHandler;
@@ -11,9 +11,10 @@ import javax.security.auth.callback.PasswordCallback;
 import javax.security.auth.login.LoginException;
 import javax.security.auth.spi.LoginModule;
 
+import org.apache.log4j.Logger;
+
 import com.epam.jmp.bank.model.Employee;
 import com.epam.jmp.bank.services.EmployeeService;
-import com.epam.jmp.bank.services.EmployeeServiceImpl;
 import com.google.common.annotations.VisibleForTesting;
 
 /**
@@ -26,6 +27,8 @@ public class Login implements LoginModule {
 	private Subject subject;
 
 	private EmployeeService service;
+
+	protected static final Logger log = Logger.getLogger(Login.class);
 
 	@Override
 	public boolean login() throws LoginException {
@@ -63,7 +66,11 @@ public class Login implements LoginModule {
 
 	@Override
 	public boolean logout() throws LoginException {
+		log.info("\n\n!! Jaas Logout\n\n");
+		System.out.println("\n\n!! Jaas Logout\n\n");
 		subject.getPrincipals().clear();
+		//subject.getPrincipals().remove(userPrincipal);
+		//subject.getPrincipals().remove(rolePrincipal);
 		return true;
 	}
 
@@ -82,11 +89,12 @@ public class Login implements LoginModule {
 			password = new String(passwordCallback.getPassword());
 			username = nameCallback.getName();
 
+			service = (EmployeeService) new InitialContext().lookup("java:module/EmployeeServiceImpl");
+
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
 
-		service = new EmployeeServiceImpl();
 	}
 
 	@VisibleForTesting

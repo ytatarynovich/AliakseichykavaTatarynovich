@@ -24,6 +24,7 @@
 		<guava.version>r05</guava.version>
 		<sqlite.jdbc.version>3.8.7</sqlite.jdbc.version>
 		<jboss.version>7.1.1.Final</jboss.version>
+		<javax.servlet.version>2.5</javax.servlet.version>
 	
 		<junit.version>4.11</junit.version>
 		<dbunit.version>2.5.0</dbunit.version>
@@ -142,6 +143,13 @@
 			<artifactId>jboss-as-ejb-client-bom</artifactId>
 			<version>${jboss.version}</version>
 			<type>pom</type>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>${javax.servlet.version}</version>
 			<scope>provided</scope>
 		</dependency>
 

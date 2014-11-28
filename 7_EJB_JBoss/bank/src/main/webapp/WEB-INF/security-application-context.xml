@@ -11,9 +11,8 @@
 			access="hasRole('ADMIN')" />
 		<sec:form-login login-page="/login"
 			default-target-url="/home" 
-			always-use-default-target="true"
 			authentication-failure-url="/login?error=1" />
-		<sec:logout logout-success-url="/home" logout-url="/BankApp/j_spring_security_logout" />
+		<sec:logout logout-success-url="/home" />
 	</sec:http>
 
 	<sec:authentication-manager>

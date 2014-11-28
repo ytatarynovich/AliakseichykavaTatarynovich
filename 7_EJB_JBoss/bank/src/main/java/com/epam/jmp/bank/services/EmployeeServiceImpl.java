@@ -2,6 +2,8 @@ package com.epam.jmp.bank.services;
 
 import java.sql.SQLException;
 
+import javax.ejb.Stateless;
+
 import com.epam.jmp.bank.dao.EmployeeDao;
 import com.epam.jmp.bank.exceptions.EmployeeNotFoundException;
 import com.epam.jmp.bank.model.Employee;
@@ -9,6 +11,7 @@ import com.epam.jmp.bank.model.Employee;
 /**
  * @author Hanna_Aliakseichykava
  */
+@Stateless
 public class EmployeeServiceImpl implements EmployeeService {
 
 	private static final long serialVersionUID = 2L;

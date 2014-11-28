@@ -1,10 +1,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <footer>
+	&nbsp;
 
-	<c:if test="${not empty user}">
-		<b>UserName</b>: ${user.login}<br>
-		<a href="/j_spring_security_logout" > Logout</a>
+	<c:if test="${not empty pageContext.request.userPrincipal}">
+
+		<b>UserName</b>: ${pageContext.request.userPrincipal.name}<br>
+
+		<form action="j_spring_security_logout" method="post" id="logoutForm">
+			<input name="submit" type="submit" value="Logout" />
+		</form>
+
 	</c:if>
 
 </footer>
