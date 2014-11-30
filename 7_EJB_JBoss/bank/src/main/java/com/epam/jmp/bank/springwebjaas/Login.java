@@ -68,9 +68,7 @@ public class Login implements LoginModule {
 	public boolean logout() throws LoginException {
 		log.info("\n\n!! Jaas Logout\n\n");
 		System.out.println("\n\n!! Jaas Logout\n\n");
-		subject.getPrincipals().clear();
-		//subject.getPrincipals().remove(userPrincipal);
-		//subject.getPrincipals().remove(rolePrincipal);
+		//subject.getPrincipals().clear();
 		return true;
 	}
 

@@ -7,7 +7,7 @@
 
 		<b>UserName</b>: ${pageContext.request.userPrincipal.name}<br>
 
-		<form action="j_spring_security_logout" method="post" id="logoutForm">
+		<form action="/BankApp/j_spring_security_logout" method="post" id="logoutForm">
 			<input name="submit" type="submit" value="Logout" />
 		</form>
 
