@@ -6,6 +6,10 @@
 
 <div ng-app="AccountApp" ng-controller="AccountCtrl">
 
+	<div class="message" ng-show="message">
+		{{message}}
+	</div>
+
 	<section>
 
 		<table>

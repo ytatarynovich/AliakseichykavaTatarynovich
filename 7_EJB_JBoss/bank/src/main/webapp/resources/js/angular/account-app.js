@@ -2,7 +2,11 @@ var accountApp = angular.module('AccountApp', []);
 
 accountApp.controller('AccountCtrl', ['$scope', '$http', 'accountsService', function ($scope, $http, accountsService) {
 
+	$scope.message = '';
+
 	function populateAccounts(bankId) {
+
+		$scope.message = '';
 
 		$http.get('/BankApp/account/get-all-for-bank/' + bankId).
 			success(function(data) {
@@ -38,10 +42,13 @@ accountApp.controller('AccountCtrl', ['$scope', '$http', 'accountsService', func
 
 	function updateBankAccount(account) {
 
+		$scope.message = '';
+
 		$http.post('/BankApp/account/update/' + account.id + '/' + account.currency + '/' + account.amount).
 		success(function(data, status, headers) {
 			console.log('Account is updated in db');
 			populateAccounts($scope.selectedBankId);
+			$scope.message = 'Account ' + account.id + ' has been updated';
 		});
 
 	}

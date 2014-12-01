@@ -22,3 +22,8 @@ footer {
 	padding: 8px;
 	margin: 16px;
 }
+
+.message {
+	background-color: FFFF66;
+	display: inline-block;
+}
