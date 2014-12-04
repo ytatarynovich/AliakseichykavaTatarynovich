@@ -30,6 +30,11 @@ public class AccountController {
 		return "update-account";
 	}
 
+	@RequestMapping(value = "/create-account", method = RequestMethod.GET)
+	public String getCreateAccountPage() {
+		return "create-account";
+	}
+
 	@RequestMapping(value = "/get-all-for-bank/{bankId}", method = RequestMethod.GET)
 	@ResponseBody
 	public String getAllAccountsForBank(@PathVariable("bankId") Long bankId) {
@@ -39,7 +44,7 @@ public class AccountController {
 	private static final String ACCOUNT_ID = "accountid";
 	private static final String CURRENCY = "currency";
 	private static final String AMOUNT = "amount";
-	
+
 	@RequestMapping(value = "/get/{accountid}", method = RequestMethod.GET)
 	@ResponseBody
 	public String getAccount(@PathVariable(ACCOUNT_ID) Long accountid) {
@@ -49,11 +54,26 @@ public class AccountController {
 	@RequestMapping(value = "/update/{accountid}/{currency}/{amount}", method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.NO_CONTENT)
 	public void updateAccount(
-			@PathVariable(ACCOUNT_ID) Long accountid,
+			@PathVariable(ACCOUNT_ID) Long accountId,
 			@PathVariable(CURRENCY) String currency,
 			@PathVariable(AMOUNT) Double amount) {
-		Account account = service.findAccountById(accountid);
+		Account account = service.findAccountById(accountId);
 		account.setAmount(Currency.findByName(currency), amount);
 		service.updateAccount(account);
+	}
+
+	private static final String BANK_ID = "bankid";
+	private static final String FIRST_NAME = "firstname";
+	private static final String LAST_NAME = "lastname";
+
+	@RequestMapping(value = "/create/{bankid}/{firstname}/{lastname}", method = RequestMethod.POST)
+	@ResponseStatus(value = HttpStatus.NO_CONTENT)
+	public void createAccount(
+			@PathVariable(BANK_ID) Long bankId,
+			@PathVariable(FIRST_NAME) String firstName,
+			@PathVariable(LAST_NAME) String lastName) {
+
+		Long id = service.createAccount(bankId, firstName, lastName);
+		//return id;
 	}
 }

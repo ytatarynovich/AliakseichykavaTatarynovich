@@ -6,6 +6,10 @@
 
 <div ng-app="AccountApp" ng-controller="AccountCtrl">
 
+	<div class="invalid" ng-show="errorMessage">
+		{{errorMessage}}
+	</div>
+
 	<div class="message" ng-show="message">
 		{{message}}
 	</div>
@@ -54,6 +58,3 @@
 </div>
 
 <jsp:include page="footer.jsp"/>
-
-
-

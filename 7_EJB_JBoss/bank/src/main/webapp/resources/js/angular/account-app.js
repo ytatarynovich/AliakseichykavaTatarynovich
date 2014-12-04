@@ -3,10 +3,9 @@ var accountApp = angular.module('AccountApp', []);
 accountApp.controller('AccountCtrl', ['$scope', '$http', 'accountsService', function ($scope, $http, accountsService) {
 
 	$scope.message = '';
+	$scope.errorMessage = '';
 
 	function populateAccounts(bankId) {
-
-		$scope.message = '';
 
 		$http.get('/BankApp/account/get-all-for-bank/' + bankId).
 			success(function(data) {
@@ -20,6 +19,9 @@ accountApp.controller('AccountCtrl', ['$scope', '$http', 'accountsService', func
 	}
 
 	function populateAccount(accountId) {
+
+		$scope.message = '';
+
 		var accounts = $scope.bankAccounts;
 		var account = accountsService.findAccount(accountId, accounts);
 		if(account) {
@@ -43,19 +45,40 @@ accountApp.controller('AccountCtrl', ['$scope', '$http', 'accountsService', func
 	function updateBankAccount(account) {
 
 		$scope.message = '';
+		$scope.errorMessage = '';
 
 		$http.post('/BankApp/account/update/' + account.id + '/' + account.currency + '/' + account.amount).
 		success(function(data, status, headers) {
 			console.log('Account is updated in db');
 			populateAccounts($scope.selectedBankId);
 			$scope.message = 'Account ' + account.id + ' has been updated';
+		}).error(function(data, status, headers, config) {
+			console.log(data);
+			$scope.errorMessage = 'Account has not been updated';
 		});
+	}
 
+	function createBankAccount(bankId, firstName, lastName) {
+
+		$scope.message = '';
+		$scope.errorMessage = '';
+
+		$http.post('/BankApp/account/create/' + bankId + '/' + firstName + '/' + lastName).
+		success(function(data, status, headers) {
+			console.log('Account with id [' + data + '] is created');
+			$scope.message = 'Account [' + data + '] has been created';
+		}).error(function(data, status, headers, config) {
+			console.log(data);
+			$scope.errorMessage = 'Account has not been created';
+		});
 	}
 
 	function isNumber(n) {
 		return !isNaN(parseFloat(n)) && isFinite(n);
 	};
+
+	var MIN_NAME_LENGTH = 2;
+	var MAX_NAME_LENGTH = 30;
 
 	$scope.validators = {
 
@@ -71,6 +94,13 @@ accountApp.controller('AccountCtrl', ['$scope', '$http', 'accountsService', func
 				return accountsService.findCurrency(value, $scope.currencies) != null;
 			},
 			message: 'Select available currency'
+		},
+
+		name: {
+			isValid: function(value) {
+				return value && value.length >= MIN_NAME_LENGTH && value.length <= MAX_NAME_LENGTH;
+			},
+			message: 'Name length should be from [' + MIN_NAME_LENGTH + '] to [' + MAX_NAME_LENGTH + '] letters'
 		}
 	};
 
@@ -117,6 +147,8 @@ accountApp.controller('AccountCtrl', ['$scope', '$http', 'accountsService', func
 
 		$scope.errors = {};
 
+		//TODO: verify $scope.selectedAccount
+
 		if(!$scope.validators.amount.isValid($scope.amount)) {
 			console.log('Amount error: ' + $scope.amount);
 			$scope.errors.amount = {message: $scope.validators.amount.message };
@@ -133,7 +165,29 @@ accountApp.controller('AccountCtrl', ['$scope', '$http', 'accountsService', func
 			console.log('Account is updated: ' + $scope.selectedAccount.amount + ' (' + $scope.selectedAccount.currency + ')');
 			updateBankAccount($scope.selectedAccount);
 		}
-	}
+	};
+
+	$scope.createAccount = function() {
+
+		$scope.errors = {};
+
+		//TODO: verify bankId
+
+		if(!$scope.validators.name.isValid($scope.firstName)) {
+			console.log('First Name error: ' + $scope.firstName);
+			$scope.errors.firstName = {message: $scope.validators.name.message };
+		}
+
+		if(!$scope.validators.name.isValid($scope.lastName)) {
+			console.log('Last Name error: ' + $scope.lastName);
+			$scope.errors.lastName = {message: $scope.validators.name.message };
+		}
+
+		if($.isEmptyObject($scope.errors)) {
+			console.log('Add account...');
+			createBankAccount($scope.selectedBankId, $scope.firstName, $scope.lastName);
+		}
+	};
 
 }]);
 

@@ -1,7 +1,5 @@
 package com.epam.jmp.bank.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -23,16 +21,6 @@ public class LoginController {
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String getLoginPage() {
 		return "login";
-	}
-
-	@RequestMapping(value = "/j_spring_security_logout", method = RequestMethod.GET)
-	public String logout(HttpServletRequest request) {
-		log.info("\n\n!! Logout\n\n");
-		// Invalidate current HTTP session.
-		// Will call JAAS LoginModule logout() method
-		//request.getSession().invalidate();
-
-		return "home";
 	}
 
 }
