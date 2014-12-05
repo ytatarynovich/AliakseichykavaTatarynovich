@@ -51,7 +51,8 @@ accountApp.controller('AccountCtrl', ['$scope', '$http', 'accountsService', func
 		success(function(data, status, headers) {
 			console.log('Account is updated in db');
 			populateAccounts($scope.selectedBankId);
-			$scope.message = 'Account ' + account.id + ' has been updated';
+
+			$timeout(function() { $scope.message = 'Account ' + account.id + ' has been updated'; }, 100);
 		}).error(function(data, status, headers, config) {
 			console.log(data);
 			$scope.errorMessage = 'Account has not been updated';
@@ -147,16 +148,18 @@ accountApp.controller('AccountCtrl', ['$scope', '$http', 'accountsService', func
 
 		$scope.errors = {};
 
-		//TODO: verify $scope.selectedAccount
+		if(!$scope.selectedAccount) {
+			$scope.errors.selectedAccount = {message: 'Select Account'};
+		}
 
 		if(!$scope.validators.amount.isValid($scope.amount)) {
 			console.log('Amount error: ' + $scope.amount);
-			$scope.errors.amount = {message: $scope.validators.amount.message };
+			$scope.errors.amount = {message: $scope.validators.amount.message};
 		}
 
 		if(!$scope.validators.currency.isValid($scope.currency)) {
 			console.log('Currency error: ' + $scope.currency);
-			$scope.errors.currency = {message: $scope.validators.currency.message };
+			$scope.errors.currency = {message: $scope.validators.currency.message};
 		} 
 
 		if($.isEmptyObject($scope.errors)) {
@@ -171,16 +174,18 @@ accountApp.controller('AccountCtrl', ['$scope', '$http', 'accountsService', func
 
 		$scope.errors = {};
 
-		//TODO: verify bankId
+		if(!$scope.selectedBankId) {
+			$scope.errors.selectedBankId = {message: 'Select Bank'};
+		}
 
 		if(!$scope.validators.name.isValid($scope.firstName)) {
 			console.log('First Name error: ' + $scope.firstName);
-			$scope.errors.firstName = {message: $scope.validators.name.message };
+			$scope.errors.firstName = {message: $scope.validators.name.message};
 		}
 
 		if(!$scope.validators.name.isValid($scope.lastName)) {
 			console.log('Last Name error: ' + $scope.lastName);
-			$scope.errors.lastName = {message: $scope.validators.name.message };
+			$scope.errors.lastName = {message: $scope.validators.name.message};
 		}
 
 		if($.isEmptyObject($scope.errors)) {

@@ -67,13 +67,14 @@ public class AccountController {
 	private static final String LAST_NAME = "lastname";
 
 	@RequestMapping(value = "/create/{bankid}/{firstname}/{lastname}", method = RequestMethod.POST)
-	@ResponseStatus(value = HttpStatus.NO_CONTENT)
-	public void createAccount(
+	//@ResponseStatus(value = HttpStatus.NO_CONTENT)
+	@ResponseBody
+	public Long createAccount(
 			@PathVariable(BANK_ID) Long bankId,
 			@PathVariable(FIRST_NAME) String firstName,
 			@PathVariable(LAST_NAME) String lastName) {
 
 		Long id = service.createAccount(bankId, firstName, lastName);
-		//return id;
+		return id;
 	}
 }

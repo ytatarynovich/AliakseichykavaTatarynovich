@@ -23,6 +23,7 @@
 				<td><select ng-model="selectedBankId" ng-options="item.id as item.name for item in banks">
 					<option value="">Select Bank</option>
 				</select></td>
+				<td><span class="invalid" ng-show="errors && errors.selectedBankId">{{errors.selectedBankId.message}}</span></td>
 			</tr>
 
 			<tr>

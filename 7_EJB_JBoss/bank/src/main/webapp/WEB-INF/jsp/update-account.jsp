@@ -30,6 +30,7 @@
 				<td><select ng-model="selectedAccountId" ng-options="item.id as item.asstring for item in bankAccounts">
 					<option value="">Select Account</option>
 				</select></td>
+				<td><span class="invalid" ng-show="errors && errors.selectedAccount">{{errors.selectedAccount.message}}</span></td>
 			</tr>
 
 			<tr>
