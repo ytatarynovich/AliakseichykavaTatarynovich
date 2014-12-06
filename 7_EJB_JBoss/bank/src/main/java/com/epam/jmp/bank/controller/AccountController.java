@@ -66,15 +66,14 @@ public class AccountController {
 	private static final String FIRST_NAME = "firstname";
 	private static final String LAST_NAME = "lastname";
 
-	@RequestMapping(value = "/create/{bankid}/{firstname}/{lastname}", method = RequestMethod.POST)
-	//@ResponseStatus(value = HttpStatus.NO_CONTENT)
+	@RequestMapping(value = "/create/{bankid}/{firstname}/{lastname}", method = RequestMethod.GET)
 	@ResponseBody
-	public Long createAccount(
+	public String createAccount(
 			@PathVariable(BANK_ID) Long bankId,
 			@PathVariable(FIRST_NAME) String firstName,
 			@PathVariable(LAST_NAME) String lastName) {
 
 		Long id = service.createAccount(bankId, firstName, lastName);
-		return id;
+		return String.valueOf(id);
 	}
 }
