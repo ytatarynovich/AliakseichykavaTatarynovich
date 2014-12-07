@@ -1,0 +1,33 @@
+.invalid {
+	color: red;
+}
+
+#nav-panel a {
+	background-color: #F3E2A9;
+}
+
+header {
+	background-color: #F2F5A9;
+}
+
+footer {
+	background-color: #A9F5BC;
+	margin-top: 10px;
+}
+
+.errorblock {
+	color: #ff0000;
+	background-color: #ffEEEE;
+	border: 3px solid #ff0000;
+	padding: 8px;
+	margin: 16px;
+}
+
+.message {
+	background-color: FFFF66;
+	display: inline-block;
+}
+
+#logoutForm {
+	display: inline;
+}
