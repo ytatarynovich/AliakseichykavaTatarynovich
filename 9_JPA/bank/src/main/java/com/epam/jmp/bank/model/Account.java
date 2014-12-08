@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 /**
  * @author Hanna_Aliakseichykava
@@ -14,7 +17,13 @@ public class Account {
 	@Id
 	private long id;
 
+	@OneToOne
+	@JoinColumn(name = "personid")
 	private Person person;
+
+	@ManyToOne
+	@JoinColumn(name = "bankid")
+	private Bank bank;
 
 	@Enumerated(EnumType.STRING)
 	private Currency accountCurrency;

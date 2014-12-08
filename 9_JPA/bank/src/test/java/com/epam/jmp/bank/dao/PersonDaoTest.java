@@ -43,24 +43,6 @@ public class PersonDaoTest extends DBUnitTestCase {
 		Assert.assertEquals(expectedData.getTable(getTableName()).getRowCount(), persons.size());
 	}
 
-	private static final String TEST_FIRST_NAME = "Ann";
-	private static final String TEST_LAST_NAME = "Aleks";
-
-	@Test
-	public void testPersist() throws Exception {
-		int initialPersonsCount = dao.getAllRows().size();
-
-		dao.persist(TEST_FIRST_NAME, TEST_LAST_NAME);
-
-		IDataSet expectedData = loadDataSet("dao/person-data-save.xml");
- 
-		IDataSet actualData = getActualData();
-
-		String[] ignore = {"id"};
-		Assertion.assertEqualsIgnoreCols(expectedData, actualData, getTableName(), ignore);
-		Assert.assertEquals(expectedData.getTable(getTableName()).getRowCount(), initialPersonsCount + 1);
- 	}
-
 	@Test
 	public void testGetPerson() throws Exception {
 		int rowNumber = 0;
@@ -80,5 +62,24 @@ public class PersonDaoTest extends DBUnitTestCase {
 		long nonExistentId = 10;
 		dao.getPerson(nonExistentId);
 	}
+
+	private static final String TEST_FIRST_NAME = "Ann";
+	private static final String TEST_LAST_NAME = "Aleks";
+
+	@Test
+	public void testPersist() throws Exception {
+		int initialPersonsCount = dao.getAllRows().size();
+
+		dao.persist(TEST_FIRST_NAME, TEST_LAST_NAME);
+
+		IDataSet expectedData = loadDataSet("dao/person-data-save.xml");
+ 
+		IDataSet actualData = getActualData();
+
+		String[] ignore = {"id"};
+		Assertion.assertEqualsIgnoreCols(expectedData, actualData, getTableName(), ignore);
+		Assert.assertEquals(expectedData.getTable(getTableName()).getRowCount(), initialPersonsCount + 1);
+ 	}
+
 
 }

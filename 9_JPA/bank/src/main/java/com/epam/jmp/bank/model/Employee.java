@@ -4,11 +4,21 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 
 /**
  * @author Hanna_Aliakseichykava
  */
+@NamedQueries({
+@NamedQuery(
+	name="Employee.findByLogin", 
+	query="select e from Employee e where e.login = :login"),
+@NamedQuery(
+	name = "Employee.getPasswordById",
+	query = "select e.password from Employee e where e.id = :id")
+})
 @Entity
 public class Employee {
 
@@ -17,6 +27,7 @@ public class Employee {
 	private String login;
 	private String firstName;
 	private String lastName;
+	private String password;
 
 	@Enumerated(EnumType.STRING)
 	private Role role;

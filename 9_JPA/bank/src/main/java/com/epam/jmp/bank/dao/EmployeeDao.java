@@ -9,8 +9,11 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 import com.epam.jmp.bank.exceptions.EmployeeNotFoundException;
+import com.epam.jmp.bank.model.CurrencyRate;
 import com.epam.jmp.bank.model.Employee;
 import com.epam.jmp.bank.model.Role;
 
@@ -36,7 +39,7 @@ public class EmployeeDao extends AbstractDao {
 
 	public Employee getEmployeeByLogin(String login) throws SQLException {
 
-		PreparedStatement prStatement = prepareStatement("SELECT * FROM " + getTableName() +" WHERE login=?;");
+		/*PreparedStatement prStatement = prepareStatement("SELECT * FROM " + getTableName() +" WHERE login=?;");
 		prStatement.setString(1, login);
 
 		List<Map<String, String>> rows = readInfo(prStatement);
@@ -44,7 +47,11 @@ public class EmployeeDao extends AbstractDao {
 			throw new EmployeeNotFoundException(login);
 		}
 		Map<String, String> row = rows.get(0);
-		return formEmployee(row);
+		return formEmployee(row);*/
+
+		return em.createNamedQuery("Employee.findByLogin", Employee.class)
+				.setParameter("login", login)
+				.getSingleResult();
 	}
 
 	/*private Employee formEmployee(Map<String, String> row) {
@@ -59,7 +66,7 @@ public class EmployeeDao extends AbstractDao {
 
 	public String getPasswordById(Long id) throws SQLException {
 
-		PreparedStatement prStatement = prepareStatement("SELECT password FROM " + getTableName() +" WHERE id=?;");
+		/*PreparedStatement prStatement = prepareStatement("SELECT password FROM " + getTableName() +" WHERE id=?;");
 		prStatement.setLong(1, id);
 
 		List<Map<String, String>> rows = readInfo(prStatement);
@@ -67,7 +74,11 @@ public class EmployeeDao extends AbstractDao {
 			throw new EmployeeNotFoundException(id);
 		}
 		Map<String, String> row = rows.get(0);
-		return row.get(PASSWORD);
+		return row.get(PASSWORD);*/
+
+		return em.createNamedQuery("Employee.getPasswordById", String.class)
+				.setParameter("id", id)
+				.getSingleResult();
 	}
 
 }
