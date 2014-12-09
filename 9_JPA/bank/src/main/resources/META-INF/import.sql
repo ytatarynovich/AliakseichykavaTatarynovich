@@ -17,12 +17,12 @@ insert into Account(id, bankid, personid, currency, amount) values(1, 1, 1, 'BY'
 insert into Account(id, bankid, personid, currency, amount) values(2, 1, 2, 'EU', 2000);
 insert into Account(id, bankid, personid, currency, amount) values(3, 1, 3, 'USD', 3000);
 
--- Currency
-create table Currency (id bigint primary key, currency text, rate decimal);
+-- CurrencyRate
+create table CurrencyRate (id bigint primary key, currency text, rate decimal);
 
-insert into Currency (id, currency, rate) values(1, 'BY', 1);
-insert into Currency (id, currency, rate) values(2, 'USD', 10000);
-insert into Currency (id, currency, rate) values(3, 'EU', 14000);
+insert into CurrencyRate (id, currency, rate) values(1, 'BY', 1);
+insert into CurrencyRate (id, currency, rate) values(2, 'USD', 10000);
+insert into CurrencyRate (id, currency, rate) values(3, 'EU', 14000);
 
 -- Bank employees
 create table Employee (id bigint primary key, login text, firstname text, lastname text, role text, password text);

@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.epam.jmp.bank.model.Currency;
 import com.epam.jmp.bank.model.CurrencyRate;
@@ -19,7 +20,8 @@ import com.epam.jmp.bank.model.CurrencyRate;
 @RunWith(value = BlockJUnit4ClassRunner.class)
 public class CurrencyDaoTest extends DBUnitTestCase {
 
-	private CurrencyDao dao = new CurrencyDao();
+	@Autowired
+	private CurrencyDao dao;
 
 	@Override
 	protected String getDataPath() {
@@ -63,7 +65,7 @@ public class CurrencyDaoTest extends DBUnitTestCase {
 
 		Assert.assertNotEquals(newRate, currency.getRate());
 
-		dao.updateCurrency(currency.getCurrency().name(), newRate);
+		dao.update(currency.getCurrency().name(), newRate);
 
 		IDataSet expectedData = loadDataSet("dao/currency-data-update.xml");
 

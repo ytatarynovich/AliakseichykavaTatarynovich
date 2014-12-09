@@ -1,68 +1,51 @@
-package com.epam.jmp.bank.services;
+package com.epam.jmp.bank.services.impl;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.ejb.Stateless;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.epam.jmp.bank.dao.AccountDao;
 import com.epam.jmp.bank.model.Account;
+import com.epam.jmp.bank.services.AccountService;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.gson.Gson;
 
 /**
  * @author Hanna_Aliakseichykava
  */
-@Stateless
+@Component
 public class AccountServiceImpl implements AccountService {
 
-	private static final long serialVersionUID = 2L;
+	@Autowired
 	private AccountDao accountDao;
-
-	public AccountServiceImpl() {
-		this.accountDao = new AccountDao();
-	}
 
 	@Override
 	public long createAccount(Long bankId, String firstName, String lastName) {
-		try {
-			return accountDao.persist(bankId, firstName, lastName);
-		} catch (SQLException e) {
-			throw new RuntimeException(e);
-		}
+		return accountDao.create(bankId, firstName, lastName);
 	}
 
 	@Override
 	public Account findAccountById(long id) {
-		return accountDao.getAccountById(id);
+		return accountDao.getById(id);
 	}
 
 	@Override
 	public List<Account> getAllAccounts(Long bankId) {
-		return accountDao.getAllAccounts(bankId);
+		return accountDao.getAllByBankId(bankId);
 	}
 
 	@Override
 	public List<Account> findAccountByFirstOrLastName(Long bankId, String name) {
-
-		try {
-			return accountDao.getAccountByFirstOrLastName(bankId, name);
-		} catch (SQLException e) {
-			throw new RuntimeException(e);
-		}
+		return accountDao.getAccountByFirstOrLastName(bankId, name);
 	}
 
 	@Override
 	public void updateAccount(Account account) {
-
-		try {
-			accountDao.update(account);
-		} catch (SQLException e) {
-			throw new RuntimeException(e);
-		}
+		accountDao.update(account);
 	}
 
 	private static final String ID = "id";
@@ -103,7 +86,7 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@VisibleForTesting
-	void setDao(AccountDao accountDao) {
+	public void setDao(AccountDao accountDao) {
 		this.accountDao = accountDao;
 	}
 

@@ -1,17 +1,13 @@
 package com.epam.jmp.bank.services;
 
-import java.io.Serializable;
 import java.util.List;
-
-import javax.ejb.Local;
 
 import com.epam.jmp.bank.model.Account;
 
 /**
  * @author Hanna_Aliakseichykava
  */
-@Local
-public interface AccountService extends Serializable {
+public interface AccountService {
 
 	public long createAccount(Long bankId, String firstName, String lastName);
 

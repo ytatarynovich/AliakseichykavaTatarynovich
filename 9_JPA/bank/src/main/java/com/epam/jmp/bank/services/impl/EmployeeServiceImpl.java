@@ -1,30 +1,26 @@
-package com.epam.jmp.bank.services;
+package com.epam.jmp.bank.services.impl;
 
-import java.sql.SQLException;
-
-import javax.ejb.Stateless;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.epam.jmp.bank.dao.EmployeeDao;
 import com.epam.jmp.bank.exceptions.EmployeeNotFoundException;
 import com.epam.jmp.bank.model.Employee;
+import com.epam.jmp.bank.services.EmployeeService;
 
 /**
  * @author Hanna_Aliakseichykava
  */
-@Stateless
+@Component
 public class EmployeeServiceImpl implements EmployeeService {
 
-	private static final long serialVersionUID = 2L;
+	@Autowired
 	private EmployeeDao employeeDao;
-
-	public EmployeeServiceImpl() {
-		this.employeeDao = new EmployeeDao();
-	}
 
 	@Override
 	public Employee getEmployeeByLogin(String login) {
 		try {
-			return employeeDao.getEmployeeByLogin(login);
+			return employeeDao.getByLogin(login);
 		} catch(EmployeeNotFoundException e) {
 			return null;
 		}
@@ -34,8 +30,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public String getPasswordById(Long id) {
 		try {
 			return employeeDao.getPasswordById(id);
-		} catch (SQLException e) {
-			throw new RuntimeException(e);
 		} catch(EmployeeNotFoundException e) {
 			return null;
 		}

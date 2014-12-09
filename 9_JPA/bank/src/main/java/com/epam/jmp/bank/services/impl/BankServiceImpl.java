@@ -1,28 +1,26 @@
-package com.epam.jmp.bank.services;
+package com.epam.jmp.bank.services.impl;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.ejb.Stateless;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.epam.jmp.bank.dao.BankDao;
 import com.epam.jmp.bank.model.Bank;
+import com.epam.jmp.bank.services.BankService;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.gson.Gson;
 /**
  * @author Hanna_Aliakseichykava
  */
-@Stateless
+@Component
 public class BankServiceImpl implements BankService{
 
-	private static final long serialVersionUID = 3L;
+	@Autowired
 	private BankDao bankDao;
-
-	public BankServiceImpl() {
-		this.bankDao = new BankDao();
-	}
 
 	private static final String ID = "id";
 	private static final String NAME = "name";
@@ -39,7 +37,7 @@ public class BankServiceImpl implements BankService{
 	}
 
 	@VisibleForTesting
-	void setDao(BankDao bankDao) {
+	public void setDao(BankDao bankDao) {
 		this.bankDao = bankDao;
 	}
 }

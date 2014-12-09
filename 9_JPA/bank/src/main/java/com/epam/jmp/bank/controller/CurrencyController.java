@@ -1,7 +1,6 @@
 package com.epam.jmp.bank.controller;
 
-import javax.ejb.EJB;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +17,7 @@ import com.epam.jmp.bank.services.CurrencyService;
 @RequestMapping("/currency")
 public class CurrencyController {
 
-	@EJB(mappedName="java:module/CurrencyServiceImpl")
+	@Autowired
 	private CurrencyService service;
 
 	@RequestMapping(value = "/all-currencies", method = RequestMethod.GET)

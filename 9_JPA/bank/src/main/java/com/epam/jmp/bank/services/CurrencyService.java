@@ -1,16 +1,11 @@
 package com.epam.jmp.bank.services;
 
-import java.io.Serializable;
-
-import javax.ejb.Local;
-
 import com.epam.jmp.bank.model.CurrencyRate;
 
 /**
  * @author Hanna_Aliakseichykava
  */
-@Local
-public interface CurrencyService extends Serializable {
+public interface CurrencyService {
 
 	public void updateCurrency(String name, Double newRate);
 

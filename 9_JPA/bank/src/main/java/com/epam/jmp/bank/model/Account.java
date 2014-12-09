@@ -20,10 +20,6 @@ import javax.persistence.OneToOne;
 @NamedQuery(
 	name="Account.findByByFirstOrLastName", 
 	query="select a from Account a where a.bank.id = :bankId AND (a.person.firstName = :name OR a.person.lastName = :name)")
-/*,
-@NamedQuery(
-	name = "Account.updateCurrencyAmount",
-	query = "UPDATE Account SET currency = :currency, amount = :amount WHERE id = :id")*/
 })
 @Entity
 public class Account {
@@ -46,9 +42,10 @@ public class Account {
 
 	public Account() {}
 
-	public Account(long id, Person person, Currency currency, double amount) {
+	public Account(long id, Person person, Bank bank, Currency currency, double amount) {
 		this.id = id;
 		this.person = person;
+		this.bank = bank;
 		this.currency = currency;
 		this.amount = amount;
 	}

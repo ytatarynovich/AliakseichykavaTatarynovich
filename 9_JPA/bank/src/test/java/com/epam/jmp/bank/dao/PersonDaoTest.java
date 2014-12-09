@@ -9,6 +9,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.epam.jmp.bank.model.Person;
 import com.epam.jmp.bank.exceptions.PersonNotFoundException;
@@ -19,7 +20,8 @@ import com.epam.jmp.bank.exceptions.PersonNotFoundException;
 @RunWith(value = BlockJUnit4ClassRunner.class)
 public class PersonDaoTest extends DBUnitTestCase {
 
-	private PersonDao dao = new PersonDao();
+	@Autowired
+	private PersonDao dao;
 
 	@Override
 	protected String getDataPath() {
@@ -33,7 +35,7 @@ public class PersonDaoTest extends DBUnitTestCase {
 
 	@Test
 	public void testGetAll() throws Exception {
-		List<Person> persons = dao.getAllRows();
+		List<Person> persons = dao.getAll();
 
 		IDataSet expectedData = loadDataSet(getDataPath());
 
@@ -51,7 +53,7 @@ public class PersonDaoTest extends DBUnitTestCase {
 		String expectedFirstName = actualData.getTable(getTableName()).getValue(rowNumber, "firstname").toString();
 		String expecedLastName = actualData.getTable(getTableName()).getValue(rowNumber, "lastname").toString();
 
-		Person person = dao.getPerson(id);
+		Person person = dao.getById(id);
 		Assert.assertEquals(id, person.getId());
 		Assert.assertEquals(expectedFirstName, person.getFirstName());
 		Assert.assertEquals(expecedLastName, person.getLastName());
@@ -60,7 +62,7 @@ public class PersonDaoTest extends DBUnitTestCase {
 	@Test(expected = PersonNotFoundException.class)
 	public void testGetPersonNotFound() throws SQLException {
 		long nonExistentId = 10;
-		dao.getPerson(nonExistentId);
+		dao.getById(nonExistentId);
 	}
 
 	private static final String TEST_FIRST_NAME = "Ann";
@@ -68,9 +70,9 @@ public class PersonDaoTest extends DBUnitTestCase {
 
 	@Test
 	public void testPersist() throws Exception {
-		int initialPersonsCount = dao.getAllRows().size();
+		int initialPersonsCount = dao.getAll().size();
 
-		dao.persist(TEST_FIRST_NAME, TEST_LAST_NAME);
+		dao.create(TEST_FIRST_NAME, TEST_LAST_NAME);
 
 		IDataSet expectedData = loadDataSet("dao/person-data-save.xml");
  

@@ -7,6 +7,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.epam.jmp.bank.exceptions.EmployeeNotFoundException;
 import com.epam.jmp.bank.model.Employee;
@@ -17,7 +18,8 @@ import com.epam.jmp.bank.model.Employee;
 @RunWith(value = BlockJUnit4ClassRunner.class)
 public class EmployeeDaoTest extends DBUnitTestCase {
 
-	private EmployeeDao dao = new EmployeeDao();
+	@Autowired
+	private EmployeeDao dao;
 
 	@Override
 	protected String getDataPath() {
@@ -36,14 +38,14 @@ public class EmployeeDaoTest extends DBUnitTestCase {
 		String login = actualData.getTable(getTableName()).getValue(rowNumber, "login").toString();
 		long expectedId = new Long(actualData.getTable(getTableName()).getValue(rowNumber, "id").toString());
 
-		Employee employee = dao.getEmployeeByLogin(login);
+		Employee employee = dao.getByLogin(login);
 		Assert.assertEquals(expectedId, employee.getId());
 	}
 
 	@Test(expected = EmployeeNotFoundException.class)
 	public void testGetEmployeeByLoginNotFound() throws SQLException {
 		String nonExistentLogin = "NonExistent";
-		dao.getEmployeeByLogin(nonExistentLogin);
+		dao.getByLogin(nonExistentLogin);
 	}
 
 	@Test
@@ -64,7 +66,7 @@ public class EmployeeDaoTest extends DBUnitTestCase {
 	@Test(expected = EmployeeNotFoundException.class)
 	public void testGetEmployeeByNullLogin() throws SQLException {
 		String nonExistentLogin = null;
-		dao.getEmployeeByLogin(nonExistentLogin);
+		dao.getByLogin(nonExistentLogin);
 	}
 
 }

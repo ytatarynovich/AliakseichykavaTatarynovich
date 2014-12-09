@@ -8,7 +8,9 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import com.epam.jmp.bank.exceptions.BankNotFoundException;
 import com.epam.jmp.bank.model.Bank;
 
 /**
@@ -17,7 +19,8 @@ import com.epam.jmp.bank.model.Bank;
 @RunWith(value = BlockJUnit4ClassRunner.class)
 public class BankDaoTest extends DBUnitTestCase {
 
-	private BankDao dao = new BankDao();
+	@Autowired
+	private BankDao dao;
 
 	@Override
 	protected String getDataPath() {
@@ -39,5 +42,19 @@ public class BankDaoTest extends DBUnitTestCase {
 
 		Assertion.assertEquals(expectedData.getTable(getTableName()), actualData.getTable(getTableName()));
 		Assert.assertEquals(expectedData.getTable(getTableName()).getRowCount(), banks.size());
+	}
+
+	@Test
+	public void testGetBankById() throws Exception {
+		long id = 1L;
+
+		Bank bank = dao.getById(id);
+		Assert.assertEquals(id, bank.getId());
+	}
+
+	@Test(expected = BankNotFoundException.class)
+	public void testGetBankByIdNotFound() {
+		long nonExistentId = 10;
+		dao.getById(nonExistentId);
 	}
 }

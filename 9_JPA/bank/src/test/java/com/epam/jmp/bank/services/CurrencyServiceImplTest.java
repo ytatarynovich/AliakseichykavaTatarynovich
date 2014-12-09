@@ -1,31 +1,39 @@
 package com.epam.jmp.bank.services;
 
 import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.number.IsCloseTo.closeTo;
+import static org.mockito.Mockito.when;
+
+import java.util.Arrays;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.junit4.PowerMockRunner;
+import org.mockito.Mockito;
 
+import com.epam.jmp.bank.dao.CurrencyDao;
 import com.epam.jmp.bank.model.Currency;
 import com.epam.jmp.bank.model.CurrencyRate;
+import com.epam.jmp.bank.services.impl.CurrencyServiceImpl;
 
 /**
  * @author Hanna_Aliakseichykava
  */
-@RunWith(PowerMockRunner.class)
-@PrepareForTest({ Currency.class })
 public class CurrencyServiceImplTest {
 
 	private static final String EXPECTED_JSON = "[{\"rate\":\"1.0\",\"name\":\"BY\"},{\"rate\":\"5.0\",\"name\":\"USD\"}]";
 
-	CurrencyService service = new CurrencyServiceImpl();
+	CurrencyServiceImpl service = new CurrencyServiceImpl();
 
 	@Before
 	public void setUp() {
+		CurrencyRate cr1 = new CurrencyRate(1, Currency.BY);
+		CurrencyRate cr2 = new CurrencyRate(5, Currency.USD);
+
+		CurrencyDao dao = Mockito.mock(CurrencyDao.class);
+		when(dao.getAll()).thenReturn(Arrays.asList(new CurrencyRate[] {cr1, cr2}));
+
+		service.setDao(dao);
 	}
 
 	@Test
@@ -45,6 +53,9 @@ public class CurrencyServiceImplTest {
 		double amount = 5000;
 
 		double exchangedAmount = service.exchangeCurrency(amount, currencyFrom, currencyTo);
-		Assert.assertThat(exchangedAmount, is(equalTo(amount * exchangeRate)));
+		Assert.assertThat(exchangedAmount, closeTo(amount / exchangeRate, 0.00000001));
+
+		exchangedAmount = service.exchangeCurrency(amount, currencyTo, currencyFrom);
+		Assert.assertThat(exchangedAmount, equalTo(amount * exchangeRate));
 	}
 }

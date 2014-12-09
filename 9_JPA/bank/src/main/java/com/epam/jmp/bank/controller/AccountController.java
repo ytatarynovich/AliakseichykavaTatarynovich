@@ -1,7 +1,5 @@
 package com.epam.jmp.bank.controller;
 
-import javax.ejb.EJB;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +11,7 @@ import com.epam.jmp.bank.model.Account;
 import com.epam.jmp.bank.model.Currency;
 import com.epam.jmp.bank.services.AccountService;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 
 /**
@@ -22,7 +21,7 @@ import org.springframework.http.HttpStatus;
 @RequestMapping("/account")
 public class AccountController {
 
-	@EJB(mappedName="java:module/AccountServiceImpl")
+	@Autowired
 	private AccountService service;
 
 	@RequestMapping(value = "/update-account", method = RequestMethod.GET)

@@ -12,6 +12,7 @@ import org.mockito.Mockito;
 
 import com.epam.jmp.bank.dao.BankDao;
 import com.epam.jmp.bank.model.Bank;
+import com.epam.jmp.bank.services.impl.BankServiceImpl;
 
 /**
  * @author Hanna_Aliakseichykava

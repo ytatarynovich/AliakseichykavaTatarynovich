@@ -1,6 +1,5 @@
 package com.epam.jmp.bank.dao;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import org.dbunit.Assertion;
@@ -8,19 +7,24 @@ import org.dbunit.dataset.IDataSet;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.BlockJUnit4ClassRunner;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.epam.jmp.bank.exceptions.AccountNotFoundException;
+import com.epam.jmp.bank.exceptions.BankNotFoundException;
 import com.epam.jmp.bank.model.Account;
 import com.epam.jmp.bank.model.Currency;
 
 /**
  * @author Hanna_Aliakseichykava
  */
-@RunWith(value = BlockJUnit4ClassRunner.class)
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"/test-app-context.xml"})
 public class AccountDaoTest extends DBUnitTestCase {
 
-	private AccountDao dao = new AccountDao();
+	@Autowired
+	private AccountDao dao;
 
 	@Override
 	protected String getDataPath() {
@@ -42,13 +46,13 @@ public class AccountDaoTest extends DBUnitTestCase {
 		long id = new Long(actualData.getTable(getTableName()).getValue(rowNumber, "id").toString());
 		long expecedPersonId = new Long(actualData.getTable(getTableName()).getValue(rowNumber, "personid").toString());
 
-		Account account = dao.getAccountById(id);
+		Account account = dao.getById(id);
 		Assert.assertEquals(id, account.getId());
 		Assert.assertEquals(expecedPersonId, account.getPerson().getId());
 	}
 
-	@Test(expected = AccountNotFoundException.class)
-	public void testGetAccountByIdNotFound() throws SQLException {
+	/*@Test(expected = AccountNotFoundException.class)
+	public void testGetAccountByIdNotFound() {
 		long nonExistentId = 10;
 		dao.getAccountById(nonExistentId);
 	}
@@ -58,7 +62,7 @@ public class AccountDaoTest extends DBUnitTestCase {
 	
 		IDataSet actualData = getActualData();
 		long bankId = new Long(actualData.getTable("bank").getValue(0, "id").toString());
-		
+
 		List<Account> accounts = dao.getAllAccounts(bankId);
 
 		IDataSet expectedData = loadDataSet(getDataPath());
@@ -67,24 +71,6 @@ public class AccountDaoTest extends DBUnitTestCase {
 
 		Assertion.assertEquals(expectedData.getTable(getTableName()), actualData.getTable(getTableName()));
 		Assert.assertEquals(expectedData.getTable(getTableName()).getRowCount(), accounts.size());
-	}
-
-	@Test
-	public void testPersist() throws Exception {
-
-		IDataSet actualData = getActualData();
-		long bankId = new Long(actualData.getTable("bank").getValue(0, "id").toString());
-
-		dao.persist(bankId, TEST_FIRST_NAME, TEST_LAST_NAME);
-
-		IDataSet expectedData = loadDataSet("dao/account-data-save.xml");
- 
-		actualData = getActualData();
-
-		String[] ignore = {"id", "personid"};
-		Assertion.assertEqualsIgnoreCols(expectedData, actualData, getTableName(), ignore);
-
-		Assertion.assertEqualsIgnoreCols(expectedData, actualData, "person", ignore);
 	}
 
 	private static final String TEST_FIRST_NAME_FOR_SEARCH = "Sidor";
@@ -136,4 +122,30 @@ public class AccountDaoTest extends DBUnitTestCase {
 		Assert.assertEquals(NEW_CURRENCY, account.getCurrency());
 		Assert.assertEquals(NEW_AMOUNT, account.getAmount(), 0);
 	}
+
+	@Test
+	public void testPersist() throws Exception {
+
+		IDataSet actualData = getActualData();
+		long bankId = new Long(actualData.getTable("bank").getValue(0, "id").toString());
+
+		dao.persist(bankId, TEST_FIRST_NAME, TEST_LAST_NAME);
+
+		IDataSet expectedData = loadDataSet("dao/account-data-save.xml");
+ 
+		actualData = getActualData();
+
+		String[] ignore = {"id", "personid"};
+		Assertion.assertEqualsIgnoreCols(expectedData, actualData, getTableName(), ignore);
+
+		Assertion.assertEqualsIgnoreCols(expectedData, actualData, "person", ignore);
+	}
+
+	@Test(expected = BankNotFoundException.class)
+	public void testPersistBankNotFound() {
+		long notExistentBankId = 100L;
+
+		dao.persist(notExistentBankId, TEST_FIRST_NAME, TEST_LAST_NAME);
+	}*/
+
 }

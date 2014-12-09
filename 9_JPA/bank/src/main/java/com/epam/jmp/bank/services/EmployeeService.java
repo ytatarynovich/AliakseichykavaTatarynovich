@@ -1,16 +1,11 @@
 package com.epam.jmp.bank.services;
 
-import java.io.Serializable;
-
-import javax.ejb.Local;
-
 import com.epam.jmp.bank.model.Employee;
 
 /**
  * @author Hanna_Aliakseichykava
  */
-@Local
-public interface EmployeeService extends Serializable {
+public interface EmployeeService {
 
 	public Employee getEmployeeByLogin(String login);
 

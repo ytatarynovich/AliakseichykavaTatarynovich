@@ -1,7 +1,6 @@
 package com.epam.jmp.bank.controller;
 
-import javax.ejb.EJB;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +16,7 @@ import com.epam.jmp.bank.services.BankService;
 @RequestMapping("/bank")
 public class BankController {
 
-	@EJB(mappedName="java:module/BankServiceImpl")
+	@Autowired
 	private BankService service;
 
 	@RequestMapping(value = "/getall", method = RequestMethod.GET)

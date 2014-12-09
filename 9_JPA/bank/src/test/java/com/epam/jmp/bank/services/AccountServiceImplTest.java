@@ -12,10 +12,14 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import com.epam.jmp.bank.dao.AccountDao;
+import com.epam.jmp.bank.dao.BankDao;
 import com.epam.jmp.bank.dao.PersonDao;
 import com.epam.jmp.bank.model.Account;
+import com.epam.jmp.bank.model.Bank;
 import com.epam.jmp.bank.model.Currency;
 import com.epam.jmp.bank.model.Person;
+import com.epam.jmp.bank.services.impl.AccountServiceImpl;
+import com.epam.jmp.bank.dao.impl.AccountDaoImpl;
 
 /**
  * @author Hanna_Aliakseichykava
@@ -34,17 +38,22 @@ public class AccountServiceImplTest {
 	@Before
 	public void setUp() throws SQLException {
 
+		Bank bank = new Bank(BANK_ID, "Some bank");
 		Person person = new Person(PERSON_ID, "Ivan", "Ivanov");
-		Account account = new Account(ACCOUNT_ID, person, Currency.BY, 400D);
+		Account account = new Account(ACCOUNT_ID, person, bank, Currency.BY, 400D);
 
 		PersonDao personDao = Mockito.mock(PersonDao.class);
-		when(personDao.getPerson(PERSON_ID)).thenReturn(person);
+		when(personDao.getById(PERSON_ID)).thenReturn(person);
+
+		BankDao bankDao = Mockito.mock(BankDao.class);
+		when(bankDao.getById(BANK_ID)).thenReturn(bank);
 
 		AccountDao accountDao = Mockito.mock(AccountDao.class);
-		when(accountDao.getAllAccounts(BANK_ID)).thenReturn(Arrays.asList(new Account[] {account}));
-		when(accountDao.getAccountById(ACCOUNT_ID)).thenReturn(account);
+		when(accountDao.getAllByBankId(BANK_ID)).thenReturn(Arrays.asList(new Account[] {account}));
+		when(accountDao.getById(ACCOUNT_ID)).thenReturn(account);
 
-		accountDao.setPersonDao(personDao);
+		((AccountDaoImpl)accountDao).setPersonDao(personDao);
+		((AccountDaoImpl)accountDao).setBankDao(bankDao);
 
 		service.setDao(accountDao);
 	}

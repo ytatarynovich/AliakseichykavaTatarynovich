@@ -7,15 +7,9 @@ import com.epam.jmp.bank.model.Bank;
 /**
  * @author Hanna_Aliakseichykava
  */
-public class BankDao extends AbstractDao {
+public interface BankDao {
 
-	@Override
-	protected String getTableName() {
-		return "Bank";
-	}
+	public List<Bank> getAll();
 
-	public List<Bank> getAll() {
-		return (List<Bank>) getAllRows();
-	}
-
+	public Bank getById(Long id);
 }
