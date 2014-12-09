@@ -51,10 +51,10 @@ public class AccountDaoTest extends DBUnitTestCase {
 		Assert.assertEquals(expecedPersonId, account.getPerson().getId());
 	}
 
-	/*@Test(expected = AccountNotFoundException.class)
+	@Test(expected = AccountNotFoundException.class)
 	public void testGetAccountByIdNotFound() {
 		long nonExistentId = 10;
-		dao.getAccountById(nonExistentId);
+		dao.getById(nonExistentId);
 	}
 
 	@Test
@@ -63,7 +63,7 @@ public class AccountDaoTest extends DBUnitTestCase {
 		IDataSet actualData = getActualData();
 		long bankId = new Long(actualData.getTable("bank").getValue(0, "id").toString());
 
-		List<Account> accounts = dao.getAllAccounts(bankId);
+		List<Account> accounts = dao.getAllByBankId(bankId);
 
 		IDataSet expectedData = loadDataSet(getDataPath());
 
@@ -108,7 +108,7 @@ public class AccountDaoTest extends DBUnitTestCase {
 		IDataSet actualData = getActualData();
 		long id = new Long(actualData.getTable(getTableName()).getValue(rowNumber, "id").toString());
 
-		Account account = dao.getAccountById(id);
+		Account account = dao.getById(id);
 		account.setAmount(NEW_CURRENCY, NEW_AMOUNT);
 		dao.update(account);
 
@@ -118,7 +118,7 @@ public class AccountDaoTest extends DBUnitTestCase {
 
 		Assertion.assertEquals(expectedData.getTable(getTableName()), actualData.getTable(getTableName()));
 
-		account = dao.getAccountById(id);
+		account = dao.getById(id);
 		Assert.assertEquals(NEW_CURRENCY, account.getCurrency());
 		Assert.assertEquals(NEW_AMOUNT, account.getAmount(), 0);
 	}
@@ -129,7 +129,7 @@ public class AccountDaoTest extends DBUnitTestCase {
 		IDataSet actualData = getActualData();
 		long bankId = new Long(actualData.getTable("bank").getValue(0, "id").toString());
 
-		dao.persist(bankId, TEST_FIRST_NAME, TEST_LAST_NAME);
+		dao.create(bankId, TEST_FIRST_NAME, TEST_LAST_NAME);
 
 		IDataSet expectedData = loadDataSet("dao/account-data-save.xml");
  
@@ -145,7 +145,7 @@ public class AccountDaoTest extends DBUnitTestCase {
 	public void testPersistBankNotFound() {
 		long notExistentBankId = 100L;
 
-		dao.persist(notExistentBankId, TEST_FIRST_NAME, TEST_LAST_NAME);
-	}*/
+		dao.create(notExistentBankId, TEST_FIRST_NAME, TEST_LAST_NAME);
+	}
 
 }

@@ -3,6 +3,8 @@ package com.epam.jmp.bank.dao.impl;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +23,9 @@ public abstract class AbstractDao implements Dao {
 	protected static final Logger log = Logger.getLogger(AbstractDao.class);
 
 	@Autowired
-	protected EntityManager em;
+	private EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.epam.jmp.bank");
+
+	protected EntityManager em = emf.createEntityManager();
 
 	synchronized protected Long generateId() {
 		return new Long(getAllRows().size() + 1);
