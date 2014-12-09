@@ -76,7 +76,7 @@ public class AccountServiceImpl implements AccountService {
 
 		Map<String, String> map = new HashMap<String, String>();
 		map.put(ID, String.valueOf(account.getId()));
-		map.put(CURRENCY, account.getAccountCurrency().name());
+		map.put(CURRENCY, account.getCurrency().name());
 		map.put(AMOUNT, String.valueOf(account.getAmount()));
 		map.put(FIRST_NAME, account.getPerson().getFirstName());
 		map.put(LAST_NAME, account.getPerson().getLastName());

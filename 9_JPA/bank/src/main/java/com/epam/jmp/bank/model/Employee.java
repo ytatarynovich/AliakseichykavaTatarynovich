@@ -14,10 +14,7 @@ import javax.persistence.NamedQuery;
 @NamedQueries({
 @NamedQuery(
 	name="Employee.findByLogin", 
-	query="select e from Employee e where e.login = :login"),
-@NamedQuery(
-	name = "Employee.getPasswordById",
-	query = "select e.password from Employee e where e.id = :id")
+	query="select e from Employee e where e.login = :login")
 })
 @Entity
 public class Employee {
@@ -76,4 +73,11 @@ public class Employee {
 		this.role = role;
 	}
 
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 }

@@ -10,7 +10,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;
 
-import com.epam.jmp.bank.model.Bank;
 import com.epam.jmp.bank.model.Currency;
 import com.epam.jmp.bank.model.CurrencyRate;
 

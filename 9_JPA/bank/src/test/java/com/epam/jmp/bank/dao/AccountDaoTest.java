@@ -36,24 +36,6 @@ public class AccountDaoTest extends DBUnitTestCase {
 	private static final String TEST_LAST_NAME = "Aleks";
 
 	@Test
-	public void testPersist() throws Exception {
-
-		IDataSet actualData = getActualData();
-		long bankId = new Long(actualData.getTable("bank").getValue(0, "id").toString());
-
-		dao.persist(bankId, TEST_FIRST_NAME, TEST_LAST_NAME);
-
-		IDataSet expectedData = loadDataSet("dao/account-data-save.xml");
- 
-		actualData = getActualData();
-
-		String[] ignore = {"id", "personid"};
-		Assertion.assertEqualsIgnoreCols(expectedData, actualData, getTableName(), ignore);
-
-		Assertion.assertEqualsIgnoreCols(expectedData, actualData, "person", ignore);
-	}
-
-	@Test
 	public void testGetAccountById() throws Exception {
 		int rowNumber = 0;
 		IDataSet actualData = getActualData();
@@ -85,6 +67,24 @@ public class AccountDaoTest extends DBUnitTestCase {
 
 		Assertion.assertEquals(expectedData.getTable(getTableName()), actualData.getTable(getTableName()));
 		Assert.assertEquals(expectedData.getTable(getTableName()).getRowCount(), accounts.size());
+	}
+
+	@Test
+	public void testPersist() throws Exception {
+
+		IDataSet actualData = getActualData();
+		long bankId = new Long(actualData.getTable("bank").getValue(0, "id").toString());
+
+		dao.persist(bankId, TEST_FIRST_NAME, TEST_LAST_NAME);
+
+		IDataSet expectedData = loadDataSet("dao/account-data-save.xml");
+ 
+		actualData = getActualData();
+
+		String[] ignore = {"id", "personid"};
+		Assertion.assertEqualsIgnoreCols(expectedData, actualData, getTableName(), ignore);
+
+		Assertion.assertEqualsIgnoreCols(expectedData, actualData, "person", ignore);
 	}
 
 	private static final String TEST_FIRST_NAME_FOR_SEARCH = "Sidor";
@@ -133,7 +133,7 @@ public class AccountDaoTest extends DBUnitTestCase {
 		Assertion.assertEquals(expectedData.getTable(getTableName()), actualData.getTable(getTableName()));
 
 		account = dao.getAccountById(id);
-		Assert.assertEquals(NEW_CURRENCY, account.getAccountCurrency());
+		Assert.assertEquals(NEW_CURRENCY, account.getCurrency());
 		Assert.assertEquals(NEW_AMOUNT, account.getAmount(), 0);
 	}
 }

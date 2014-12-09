@@ -4,12 +4,19 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Transient;
 
 import org.apache.log4j.Logger;
 
 import com.google.common.annotations.VisibleForTesting;
 
+@NamedQueries({
+@NamedQuery(
+	name="CurrencyRate.findByName", 
+	query="select e from CurrencyRate e where e.currency = :currency")
+})
 @Entity
 public class CurrencyRate {
 

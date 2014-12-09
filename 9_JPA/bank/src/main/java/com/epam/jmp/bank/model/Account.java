@@ -6,11 +6,25 @@ import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
 /**
  * @author Hanna_Aliakseichykava
  */
+@NamedQueries({
+@NamedQuery(
+	name="Account.findByBankId", 
+	query="select a from Account a where a.bank.id = :bankId"),
+@NamedQuery(
+	name="Account.findByByFirstOrLastName", 
+	query="select a from Account a where a.bank.id = :bankId AND (a.person.firstName = :name OR a.person.lastName = :name)")
+/*,
+@NamedQuery(
+	name = "Account.updateCurrencyAmount",
+	query = "UPDATE Account SET currency = :currency, amount = :amount WHERE id = :id")*/
+})
 @Entity
 public class Account {
 
@@ -26,16 +40,16 @@ public class Account {
 	private Bank bank;
 
 	@Enumerated(EnumType.STRING)
-	private Currency accountCurrency;
+	private Currency currency;
 
 	private double amount;
 
 	public Account() {}
 
-	public Account(long id, Person person, Currency accountCurrency, double amount) {
+	public Account(long id, Person person, Currency currency, double amount) {
 		this.id = id;
 		this.person = person;
-		this.accountCurrency = accountCurrency;
+		this.currency = currency;
 		this.amount = amount;
 	}
 
@@ -52,13 +66,13 @@ public class Account {
 		return person;
 	}
 
-	public void setAmount(Currency accountCurrency, double amount) {
-		this.accountCurrency = accountCurrency;
+	public void setAmount(Currency currency, double amount) {
+		this.currency = currency;
 		this.amount = amount;
 	}
 
-	public Currency getAccountCurrency() {
-		return accountCurrency;
+	public Currency getCurrency() {
+		return currency;
 	}
 
 	public double getAmount() {

@@ -19,17 +19,6 @@ import com.google.common.annotations.VisibleForTesting;
 /**
  * @author Hanna_Aliakseichykava
  */
-@NamedQueries({
-@NamedQuery(
-	name="Account.findByBankId", 
-	query="select a from Account where a.bank.id = :bankId"),
-@NamedQuery(
-	name="Account.findByByFirstOrLastName", 
-	query="select a from Account where a.bank.id = :bankId AND (a.person.firstName = :name OR a.person.lastName = :name)"),
-@NamedQuery(
-	name = "Account.updateCurrencyAmount",
-	query = "UPDATE Account SET currency = :currency, amount = :amount WHERE id = :id;")
-})
 public class AccountDao extends AbstractDao {
 
 	private static final Currency DEFAULT_CURRENCY = Currency.BY;
@@ -48,32 +37,6 @@ public class AccountDao extends AbstractDao {
 	@Override
 	protected String getTableName() {
 		return "Account";
-	}
-
-	public long persist(Long bankId, String firstName, String lastName) throws SQLException {
-
-		Long personId = personDao.persist(firstName, lastName);
-		Person person = personDao.getPerson(personId);
-
-		Long id = generateId();
-		
-		/*PreparedStatement prStatement = prepareStatement("INSERT INTO Account(id, bankid, personid, currency, amount) VALUES(?, ?, ?, ?, ?);");
-		prStatement.setLong(1, id);
-		prStatement.setLong(2, bankId);
-		prStatement.setLong(3, personId);
-		prStatement.setString(4, DEFAULT_CURRENCY.name());
-		prStatement.setDouble(5, 0);
-		execute(prStatement);
-		return id;*/
-		
-		Account account = new Account(id, person, DEFAULT_CURRENCY, DEFAULT_AMOUNT);
-
-		em.getTransaction().begin();
-		em.persist(account);
-		em.getTransaction().commit();
-		em.close();
-		
-		return account.getId();
 	}
 
 	/*private Account formAccount(Map<String, String> row) {
@@ -169,13 +132,45 @@ public class AccountDao extends AbstractDao {
 		prStatement.setLong(3, account.getId());
 		execute(prStatement);*/
 		
-		em.createNamedQuery("Account.updateCurrencyAmount", Account.class)
+		/*em.createNamedQuery("Account.updateCurrencyAmount", Account.class)
 		.setParameter("id", account.getId())
-		.setParameter("currency", account.getAccountCurrency().name())
+		.setParameter("currency", account.getAccountCurrency())
 		.setParameter("amount", account.getAmount())
-		.executeUpdate();
-		
+		.executeUpdate();*/
+
+		Account savedAccount = getAccountById(account.getId());
+
+		em.getTransaction().begin();
+		savedAccount.setAmount(account.getCurrency(), account.getAmount());
+		em.getTransaction().commit();
+
 		//TODO: update Person
+	}
+
+	public long persist(Long bankId, String firstName, String lastName) throws SQLException {
+
+		Long personId = personDao.persist(firstName, lastName);
+		Person person = personDao.getPerson(personId);
+
+		Long id = generateId();
+		
+		/*PreparedStatement prStatement = prepareStatement("INSERT INTO Account(id, bankid, personid, currency, amount) VALUES(?, ?, ?, ?, ?);");
+		prStatement.setLong(1, id);
+		prStatement.setLong(2, bankId);
+		prStatement.setLong(3, personId);
+		prStatement.setString(4, DEFAULT_CURRENCY.name());
+		prStatement.setDouble(5, 0);
+		execute(prStatement);
+		return id;*/
+		
+		Account account = new Account(id, person, DEFAULT_CURRENCY, DEFAULT_AMOUNT);
+
+		em.getTransaction().begin();
+		em.persist(account);
+		em.getTransaction().commit();
+		em.close();
+		
+		return account.getId();
 	}
 
 	@VisibleForTesting

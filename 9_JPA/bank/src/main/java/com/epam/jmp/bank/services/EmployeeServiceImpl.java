@@ -25,8 +25,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public Employee getEmployeeByLogin(String login) {
 		try {
 			return employeeDao.getEmployeeByLogin(login);
-		} catch (SQLException e) {
-			throw new RuntimeException(e);
 		} catch(EmployeeNotFoundException e) {
 			return null;
 		}

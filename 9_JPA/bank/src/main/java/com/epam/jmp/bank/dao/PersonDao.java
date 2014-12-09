@@ -14,9 +14,6 @@ import com.epam.jmp.bank.model.Person;
  */
 public class PersonDao extends AbstractDao {
 
-	//private static final String FIRST_NAME = "firstname";
-	//private static final String LAST_NAME = "lastname";
-
 	public PersonDao() {
 		super();
 	}
@@ -38,17 +35,9 @@ public class PersonDao extends AbstractDao {
 		return person.getId();
 	}
 
-	/*private Person formPerson(Map<String, String> row) throws SQLException {
-		return new Person(
-				new Long(row.get(ID)),
-				row.get(FIRST_NAME),
-				row.get(LAST_NAME)
-			);
-	}*/
-
 	public Person getPerson(Long id) throws SQLException {
 
-		Person person = em.find(Person.class,  id);
+		Person person = em.find(Person.class, id);
 
 		if(person == null) {
 			throw new PersonNotFoundException(id);
@@ -56,14 +45,5 @@ public class PersonDao extends AbstractDao {
 
 		return person;
 	}
-
-	/*public List<Person> getAll() throws SQLException {
-		List<Map<String, String>> rows = getAllRows();
-		List<Person> persons = new ArrayList<Person>();
-		for (Map<String, String> row : rows) {
-			persons.add(formPerson(row));
-		}
-		return persons;
-	}*/
 
 }
