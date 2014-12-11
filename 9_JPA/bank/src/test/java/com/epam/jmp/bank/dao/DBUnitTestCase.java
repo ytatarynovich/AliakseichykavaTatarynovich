@@ -24,7 +24,7 @@ import org.hibernate.internal.SessionImpl;
 @RunWith(value = BlockJUnit4ClassRunner.class)
 public abstract class DBUnitTestCase {
 
-	protected static ApplicationContext applicationContext = new ClassPathXmlApplicationContext("/test-app-context.xml");
+	protected static ApplicationContext applicationContext = new ClassPathXmlApplicationContext("/app-context.xml");
 
 	protected IDataSet beforeData;
 

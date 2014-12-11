@@ -12,6 +12,10 @@ import javax.security.auth.login.LoginException;
 import javax.security.auth.spi.LoginModule;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.epam.jmp.bank.model.Employee;
 import com.epam.jmp.bank.services.EmployeeService;
@@ -21,15 +25,26 @@ import com.google.common.annotations.VisibleForTesting;
 /**
  * @see http://techannotation.wordpress.com/2012/12/05/5-minutes-with-spring-authentication-and-authorization-service-jaa/
  */
-public class Login implements LoginModule {
+public class Login implements LoginModule, ApplicationContextAware {
 
 	private String password;
 	private String username;
 	private Subject subject;
 
-	private EmployeeService service;
+	private static EmployeeService service;
 
 	protected static final Logger log = Logger.getLogger(Login.class);
+
+	//private static ApplicationContext applicationContext;
+
+	@Override
+	public void setApplicationContext(ApplicationContext context) throws BeansException {
+		//applicationContext = context;
+		service = context.getBean(EmployeeService.class);
+		log.info("\n\n!!! Service is initialized\n\n");
+	} 
+
+	//protected static ApplicationContext applicationContext = new ClassPathXmlApplicationContext("/app-context.xml");
 
 	@Override
 	public boolean login() throws LoginException {
@@ -88,8 +103,10 @@ public class Login implements LoginModule {
 			password = new String(passwordCallback.getPassword());
 			username = nameCallback.getName();
 
+			//service = new EmployeeServiceImpl();
 			//service = (EmployeeService) new InitialContext().lookup("java:module/EmployeeServiceImpl");
-			service = new EmployeeServiceImpl();
+
+			//service = applicationContext.getBean(EmployeeService.class);
 
 		} catch (Exception e) {
 			throw new RuntimeException(e);

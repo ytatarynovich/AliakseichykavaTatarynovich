@@ -8,8 +8,10 @@ import org.junit.runners.Suite;
 	BankDaoTest.class,
 	CurrencyDaoTest.class,
 	EmployeeDaoTest.class,
-	PersonDaoTest.class
+	PersonDaoTest.class,
+
+	com.epam.jmp.bank.springwebjaas.LoginTest.class
 })
-public class DaoSuite {
+public class TestSuite {
 
 }
