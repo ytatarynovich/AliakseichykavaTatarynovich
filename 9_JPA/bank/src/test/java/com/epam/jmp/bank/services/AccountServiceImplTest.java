@@ -3,7 +3,6 @@ package com.epam.jmp.bank.services;
 import static org.hamcrest.Matchers.equalTo;
 import static org.mockito.Mockito.when;
 
-import java.sql.SQLException;
 import java.util.Arrays;
 
 import org.junit.Assert;
@@ -11,7 +10,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import com.epam.jmp.bank.dao.AccountDao;
 import com.epam.jmp.bank.dao.BankDao;
 import com.epam.jmp.bank.dao.PersonDao;
 import com.epam.jmp.bank.model.Account;
@@ -36,7 +34,7 @@ public class AccountServiceImplTest {
 	AccountServiceImpl service = new AccountServiceImpl();
 
 	@Before
-	public void setUp() throws SQLException {
+	public void setUp() {
 
 		Bank bank = new Bank(BANK_ID, "Some bank");
 		Person person = new Person(PERSON_ID, "Ivan", "Ivanov");
@@ -48,12 +46,12 @@ public class AccountServiceImplTest {
 		BankDao bankDao = Mockito.mock(BankDao.class);
 		when(bankDao.getById(BANK_ID)).thenReturn(bank);
 
-		AccountDao accountDao = Mockito.mock(AccountDao.class);
+		AccountDaoImpl accountDao = Mockito.mock(AccountDaoImpl.class);
 		when(accountDao.getAllByBankId(BANK_ID)).thenReturn(Arrays.asList(new Account[] {account}));
 		when(accountDao.getById(ACCOUNT_ID)).thenReturn(account);
 
-		((AccountDaoImpl)accountDao).setPersonDao(personDao);
-		((AccountDaoImpl)accountDao).setBankDao(bankDao);
+		accountDao.setPersonDao(personDao);
+		accountDao.setBankDao(bankDao);
 
 		service.setDao(accountDao);
 	}

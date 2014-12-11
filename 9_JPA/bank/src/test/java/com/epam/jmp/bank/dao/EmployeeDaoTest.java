@@ -4,10 +4,8 @@ import java.sql.SQLException;
 
 import org.dbunit.dataset.IDataSet;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.BlockJUnit4ClassRunner;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import com.epam.jmp.bank.exceptions.EmployeeNotFoundException;
 import com.epam.jmp.bank.model.Employee;
@@ -15,11 +13,14 @@ import com.epam.jmp.bank.model.Employee;
 /**
  * @author Hanna_Aliakseichykava
  */
-@RunWith(value = BlockJUnit4ClassRunner.class)
 public class EmployeeDaoTest extends DBUnitTestCase {
 
-	@Autowired
 	private EmployeeDao dao;
+
+	@Before
+	public void setUp() throws Exception {
+		dao = applicationContext.getBean(EmployeeDao.class);
+	}
 
 	@Override
 	protected String getDataPath() {

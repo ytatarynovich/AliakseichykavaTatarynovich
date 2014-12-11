@@ -1,5 +1,7 @@
 package com.epam.jmp.bank.dao;
 
+import static org.junit.Assert.*;
+
 import java.util.List;
 
 import org.dbunit.Assertion;
@@ -7,9 +9,6 @@ import org.dbunit.dataset.IDataSet;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.BlockJUnit4ClassRunner;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import com.epam.jmp.bank.model.Currency;
 import com.epam.jmp.bank.model.CurrencyRate;
@@ -17,11 +16,14 @@ import com.epam.jmp.bank.model.CurrencyRate;
 /**
  * @author Hanna_Aliakseichykava
  */
-@RunWith(value = BlockJUnit4ClassRunner.class)
 public class CurrencyDaoTest extends DBUnitTestCase {
 
-	@Autowired
 	private CurrencyDao dao;
+
+	@Before
+	public void setUp() throws Exception {
+		dao = applicationContext.getBean(CurrencyDao.class);
+	}
 
 	@Override
 	protected String getDataPath() {
@@ -31,11 +33,6 @@ public class CurrencyDaoTest extends DBUnitTestCase {
 	@Override
 	protected String getTableName() {
 		return "CurrencyRate";
-	}
-
-	@Before
-	public void setUp() throws Exception {
-		super.setUp();
 	}
 
 	@Test

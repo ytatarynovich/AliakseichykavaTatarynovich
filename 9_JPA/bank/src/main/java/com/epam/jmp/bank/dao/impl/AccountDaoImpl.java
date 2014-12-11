@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.epam.jmp.bank.dao.AccountDao;
 import com.epam.jmp.bank.dao.BankDao;
@@ -35,7 +36,7 @@ public class AccountDaoImpl extends AbstractDao implements AccountDao {
 	@Override
 	public Account getById(long id) {
 
-		Account account = em.find(Account.class,  id);
+		Account account = getEntityManager().find(Account.class,  id);
 
 		if(account == null) {
 			throw new AccountNotFoundException(id);
@@ -47,7 +48,7 @@ public class AccountDaoImpl extends AbstractDao implements AccountDao {
 	@Override
 	public List<Account>getAllByBankId(Long bankId) {
 
-		return em.createNamedQuery("Account.findByBankId", Account.class)
+		return getEntityManager().createNamedQuery("Account.findByBankId", Account.class)
 				.setParameter("bankId", bankId)
 				.getResultList();
 	}
@@ -55,25 +56,25 @@ public class AccountDaoImpl extends AbstractDao implements AccountDao {
 	@Override
 	public List<Account> getAccountByFirstOrLastName(Long bankId, String name) {
 
-		return em.createNamedQuery("Account.findByByFirstOrLastName", Account.class)
+		return getEntityManager().createNamedQuery("Account.findByByFirstOrLastName", Account.class)
 				.setParameter("bankId", bankId)
 				.setParameter("name", name)
 				.getResultList();
 	}
 
 	@Override
+	@Transactional
 	public void update(Account account) {
 
 		Account savedAccount = getById(account.getId());
 
-		em.getTransaction().begin();
 		savedAccount.setAmount(account.getCurrency(), account.getAmount());
-		em.getTransaction().commit();
 
 		//TODO: update Person
 	}
 
 	@Override
+	@Transactional
 	public long create(Long bankId, String firstName, String lastName) {
 
 		Bank bank = bankDao.getById(bankId);
@@ -85,9 +86,7 @@ public class AccountDaoImpl extends AbstractDao implements AccountDao {
 
 		Account account = new Account(id, person, bank, DEFAULT_CURRENCY, DEFAULT_AMOUNT);
 
-		em.getTransaction().begin();
-		em.persist(account);
-		em.getTransaction().commit();
+		getEntityManager().persist(account);
 
 		return account.getId();
 	}

@@ -6,10 +6,8 @@ import java.util.List;
 import org.dbunit.Assertion;
 import org.dbunit.dataset.IDataSet;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.BlockJUnit4ClassRunner;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import com.epam.jmp.bank.model.Person;
 import com.epam.jmp.bank.exceptions.PersonNotFoundException;
@@ -17,11 +15,14 @@ import com.epam.jmp.bank.exceptions.PersonNotFoundException;
 /**
  * @author Hanna_Aliakseichykava
  */
-@RunWith(value = BlockJUnit4ClassRunner.class)
 public class PersonDaoTest extends DBUnitTestCase {
 
-	@Autowired
 	private PersonDao dao;
+
+	@Before
+	public void setUp() throws Exception {
+		dao = applicationContext.getBean(PersonDao.class);
+	}
 
 	@Override
 	protected String getDataPath() {
@@ -42,21 +43,15 @@ public class PersonDaoTest extends DBUnitTestCase {
 		IDataSet actualData = getActualData();
 
 		Assertion.assertEquals(expectedData.getTable(getTableName()), actualData.getTable(getTableName()));
+		Assert.assertEquals(expectedData.getTable(getTableName()).getRowCount(), actualData.getTable(getTableName()).getRowCount());
 		Assert.assertEquals(expectedData.getTable(getTableName()).getRowCount(), persons.size());
 	}
 
 	@Test
 	public void testGetPerson() throws Exception {
-		int rowNumber = 0;
-		IDataSet actualData = getActualData();
-		long id = new Long(actualData.getTable(getTableName()).getValue(rowNumber, "id").toString());
-		String expectedFirstName = actualData.getTable(getTableName()).getValue(rowNumber, "firstname").toString();
-		String expecedLastName = actualData.getTable(getTableName()).getValue(rowNumber, "lastname").toString();
-
+		long id = 1;
 		Person person = dao.getById(id);
 		Assert.assertEquals(id, person.getId());
-		Assert.assertEquals(expectedFirstName, person.getFirstName());
-		Assert.assertEquals(expecedLastName, person.getLastName());
 	}
 
 	@Test(expected = PersonNotFoundException.class)
@@ -81,7 +76,6 @@ public class PersonDaoTest extends DBUnitTestCase {
 		String[] ignore = {"id"};
 		Assertion.assertEqualsIgnoreCols(expectedData, actualData, getTableName(), ignore);
 		Assert.assertEquals(expectedData.getTable(getTableName()).getRowCount(), initialPersonsCount + 1);
- 	}
-
+	}
 
 }

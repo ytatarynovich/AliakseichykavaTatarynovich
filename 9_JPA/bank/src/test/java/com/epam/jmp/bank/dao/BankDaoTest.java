@@ -5,10 +5,8 @@ import java.util.List;
 import org.dbunit.Assertion;
 import org.dbunit.dataset.IDataSet;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.BlockJUnit4ClassRunner;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import com.epam.jmp.bank.exceptions.BankNotFoundException;
 import com.epam.jmp.bank.model.Bank;
@@ -16,11 +14,14 @@ import com.epam.jmp.bank.model.Bank;
 /**
  * @author Hanna_Aliakseichykava
  */
-@RunWith(value = BlockJUnit4ClassRunner.class)
 public class BankDaoTest extends DBUnitTestCase {
 
-	@Autowired
 	private BankDao dao;
+
+	@Before
+	public void setUp() throws Exception {
+		dao = applicationContext.getBean(BankDao.class);
+	}
 
 	@Override
 	protected String getDataPath() {

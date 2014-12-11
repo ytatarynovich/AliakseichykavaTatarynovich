@@ -19,7 +19,7 @@ public class EmployeeDaoImpl extends AbstractDao implements EmployeeDao {
 	@Override
 	public Employee getById(Long id) {
 
-		Employee employee = em.find(Employee.class, id);
+		Employee employee = getEntityManager().find(Employee.class, id);
 
 		if(employee == null) {
 			throw new EmployeeNotFoundException(id);
@@ -31,7 +31,7 @@ public class EmployeeDaoImpl extends AbstractDao implements EmployeeDao {
 	@Override
 	public Employee getByLogin(String login) {
 
-		List<Employee> employees = em.createNamedQuery("Employee.findByLogin", Employee.class)
+		List<Employee> employees = getEntityManager().createNamedQuery("Employee.findByLogin", Employee.class)
 				.setParameter("login", login)
 				.getResultList();
 

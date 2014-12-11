@@ -1,74 +1,63 @@
 package com.epam.jmp.bank.dao;
 
-import java.util.Properties;
+import java.sql.SQLException;
 
-import org.dbunit.DBTestCase;
-import org.dbunit.IDatabaseTester;
-import org.dbunit.JdbcDatabaseTester;
-import org.dbunit.PropertiesBasedJdbcDatabaseTester;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+
+import org.dbunit.DatabaseUnitException;
+import org.dbunit.database.DatabaseConnection;
+import org.dbunit.database.IDatabaseConnection;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.dbunit.operation.DatabaseOperation;
+import org.hibernate.HibernateException;
+import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.runner.RunWith;
+import org.junit.runners.BlockJUnit4ClassRunner;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.hibernate.internal.SessionImpl;
 
-import com.epam.jmp.utils.PropertyUtils;
+@RunWith(value = BlockJUnit4ClassRunner.class)
+public abstract class DBUnitTestCase {
 
-public abstract class DBUnitTestCase extends DBTestCase {
-	
-	public static final String CONFIG_PATH = "db.properties";
-
-	public static final String DRIVER_PROP_NAME = "db.driver";
-	public static final String URL_PROP_NAME = "db.url";
-	public static final String USER_PROP_NAME = "db.username";
-	public static final String PASSWORD_PROP_NAME = "db.password";
-	public static final String SCHEMA_PROP_NAME = "db.schema";
-
-	protected Properties dbProps;
+	protected static ApplicationContext applicationContext = new ClassPathXmlApplicationContext("/test-app-context.xml");
 
 	protected IDataSet beforeData;
-
-	protected IDatabaseTester tester;
 
 	protected abstract String getDataPath();
 
 	protected abstract String getTableName();
 
-	public DBUnitTestCase() {
-		dbProps = PropertyUtils.loadFromResources(CONFIG_PATH);
+	protected static EntityManagerFactory emf;
+	protected static EntityManager em;
 
-		System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_DRIVER_CLASS, dbProps.getProperty(DRIVER_PROP_NAME));
-		System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_CONNECTION_URL, dbProps.getProperty(URL_PROP_NAME));
-		System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_USERNAME, dbProps.getProperty(USER_PROP_NAME));
-		System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_PASSWORD, dbProps.getProperty(PASSWORD_PROP_NAME));
-		System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_SCHEMA, dbProps.getProperty(SCHEMA_PROP_NAME));
+	private static IDatabaseConnection connection;
+
+	@BeforeClass
+	public static void initEntityManager() throws HibernateException, DatabaseUnitException, SQLException {
+		emf = (EntityManagerFactory)applicationContext.getBean(EntityManagerFactory.class);
+		em = emf.createEntityManager();
+		connection = new DatabaseConnection(((SessionImpl) (em.getDelegate())).connection());
+	}
+
+	@AfterClass
+	public static void closeEntityManager() {
+		//em.close();
+		//emf.close();
 	}
 
 	@Before
-	public void setUp() throws Exception {
-		tester = new JdbcDatabaseTester(
-				dbProps.getProperty(DRIVER_PROP_NAME),
-				dbProps.getProperty(URL_PROP_NAME),
-				dbProps.getProperty(USER_PROP_NAME),
-				dbProps.getProperty(PASSWORD_PROP_NAME));
-
-		beforeData = loadDataSet(getDataPath());
- 
-		tester.setDataSet(beforeData);
-		tester.onSetup();
-	}
-
-	@Override
-	protected IDataSet getDataSet() throws Exception {
-		return beforeData;
-	}
-
-	@Override
-	protected DatabaseOperation getTearDownOperation() throws Exception {
-		return DatabaseOperation.DELETE_ALL;
+	public void initDB() throws Exception {
+		IDataSet dataSet = loadDataSet(getDataPath());
+		DatabaseOperation.CLEAN_INSERT.execute(connection, dataSet);
 	}
 
 	protected IDataSet getActualData() throws Exception {
-		return tester.getConnection().createDataSet();
+		return connection.createDataSet();
 	}
 
 	protected IDataSet loadDataSet(String path) throws Exception {
@@ -76,5 +65,4 @@ public abstract class DBUnitTestCase extends DBTestCase {
 			Thread.currentThread().getContextClassLoader()
 			.getResourceAsStream(path));
 	}
-
 }

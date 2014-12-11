@@ -24,7 +24,7 @@ public class BankDaoImpl extends AbstractDao implements BankDao{
 	@Override
 	public Bank getById(Long id) {
 
-		Bank bank = em.find(Bank.class, id);
+		Bank bank = getEntityManager().find(Bank.class, id);
 
 		if(bank == null) {
 			throw new BankNotFoundException(id);

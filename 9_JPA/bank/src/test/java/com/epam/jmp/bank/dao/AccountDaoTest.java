@@ -5,11 +5,8 @@ import java.util.List;
 import org.dbunit.Assertion;
 import org.dbunit.dataset.IDataSet;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.epam.jmp.bank.exceptions.AccountNotFoundException;
 import com.epam.jmp.bank.exceptions.BankNotFoundException;
@@ -19,12 +16,14 @@ import com.epam.jmp.bank.model.Currency;
 /**
  * @author Hanna_Aliakseichykava
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"/test-app-context.xml"})
 public class AccountDaoTest extends DBUnitTestCase {
 
-	@Autowired
 	private AccountDao dao;
+
+	@Before
+	public void setUp() throws Exception {
+		dao = applicationContext.getBean(AccountDao.class);
+	}
 
 	@Override
 	protected String getDataPath() {
@@ -41,14 +40,9 @@ public class AccountDaoTest extends DBUnitTestCase {
 
 	@Test
 	public void testGetAccountById() throws Exception {
-		int rowNumber = 0;
-		IDataSet actualData = getActualData();
-		long id = new Long(actualData.getTable(getTableName()).getValue(rowNumber, "id").toString());
-		long expecedPersonId = new Long(actualData.getTable(getTableName()).getValue(rowNumber, "personid").toString());
-
+		long id = 1L;
 		Account account = dao.getById(id);
 		Assert.assertEquals(id, account.getId());
-		Assert.assertEquals(expecedPersonId, account.getPerson().getId());
 	}
 
 	@Test(expected = AccountNotFoundException.class)
@@ -59,7 +53,7 @@ public class AccountDaoTest extends DBUnitTestCase {
 
 	@Test
 	public void testGetAllAccounts() throws Exception {
-	
+
 		IDataSet actualData = getActualData();
 		long bankId = new Long(actualData.getTable("bank").getValue(0, "id").toString());
 
@@ -126,14 +120,15 @@ public class AccountDaoTest extends DBUnitTestCase {
 	@Test
 	public void testPersist() throws Exception {
 
-		IDataSet actualData = getActualData();
-		long bankId = new Long(actualData.getTable("bank").getValue(0, "id").toString());
+		//IDataSet actualData = getActualData();
+		//long bankId = new Long(actualData.getTable("bank").getValue(0, "id").toString());
+		long bankId = 1L;
 
 		dao.create(bankId, TEST_FIRST_NAME, TEST_LAST_NAME);
 
 		IDataSet expectedData = loadDataSet("dao/account-data-save.xml");
  
-		actualData = getActualData();
+		IDataSet actualData = getActualData();
 
 		String[] ignore = {"id", "personid"};
 		Assertion.assertEqualsIgnoreCols(expectedData, actualData, getTableName(), ignore);
