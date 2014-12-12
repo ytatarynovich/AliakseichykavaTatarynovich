@@ -37,8 +37,10 @@ public class AccountServiceImplTest {
 	public void setUp() {
 
 		Bank bank = new Bank(BANK_ID, "Some bank");
-		Person person = new Person(PERSON_ID, "Ivan", "Ivanov");
-		Account account = new Account(ACCOUNT_ID, person, bank, Currency.BY, 400D);
+		Person person = new Person("Ivan", "Ivanov");
+		person.setId(PERSON_ID);
+		Account account = new Account(person, bank, Currency.BY, 400D);
+		account.setId(ACCOUNT_ID);
 
 		PersonDao personDao = Mockito.mock(PersonDao.class);
 		when(personDao.getById(PERSON_ID)).thenReturn(person);

@@ -73,6 +73,15 @@ public class PersonDaoTest extends DBUnitTestCase {
  
 		IDataSet actualData = getActualData();
 
+		log.info("\n\n!!! " + expectedData.getTable(getTableName()).getRowCount() + " \n\n");
+		log.info("\n\n!!! " + actualData.getTable(getTableName()).getRowCount() + " \n\n");
+		log.info("\n\n!!! " + expectedData.getTable(getTableName()) + " \n\n");
+		log.info("\n\n!!! " + actualData.getTable(getTableName()) + " \n\n");
+		log.info("\n\n!!! " + expectedData.getTable(getTableName()).getValue(0, "id") + " \n\n");
+		log.info("\n\n!!! " + actualData.getTable(getTableName()).getValue(0, "id") + " \n\n");
+		log.info("\n\n!!! " + actualData.getTable(getTableName()).getValue(1, "id") + " \n\n");
+		log.info("\n\n!!! " + actualData.getTable(getTableName()).getValue(2, "id") + " \n\n");
+
 		String[] ignore = {"id"};
 		Assertion.assertEqualsIgnoreCols(expectedData, actualData, getTableName(), ignore);
 		Assert.assertEquals(expectedData.getTable(getTableName()).getRowCount(), initialPersonsCount + 1);

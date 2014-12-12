@@ -124,7 +124,8 @@ public class AccountDaoTest extends DBUnitTestCase {
 		//long bankId = new Long(actualData.getTable("bank").getValue(0, "id").toString());
 		long bankId = 1L;
 
-		dao.create(bankId, TEST_FIRST_NAME, TEST_LAST_NAME);
+		Long id = dao.create(bankId, TEST_FIRST_NAME, TEST_LAST_NAME);
+		log.info("\n\n!!! New Account: " + id + " \n\n");
 
 		IDataSet expectedData = loadDataSet("dao/account-data-save.xml");
  
@@ -133,6 +134,8 @@ public class AccountDaoTest extends DBUnitTestCase {
 		String[] ignore = {"id", "personid"};
 		Assertion.assertEqualsIgnoreCols(expectedData, actualData, getTableName(), ignore);
 
+		log.info("\n\n!!! " + expectedData + " \n\n");
+		log.info("\n\n!!! " + actualData + " \n\n");
 		Assertion.assertEqualsIgnoreCols(expectedData, actualData, "person", ignore);
 	}
 

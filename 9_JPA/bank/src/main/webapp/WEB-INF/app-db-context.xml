@@ -27,10 +27,10 @@
 	<!-- bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/spring_jpa" />
-		<property name="username" value="tutorialuser" />
-		<property name="password" value="tutorialmy5ql" />
+		<property name="username" value="sa" />
+		<property name="password" value="" />
 	</bean -->
-	
+
 	<jdbc:embedded-database id="dataSource" type="HSQL">
 		<jdbc:script location="classpath:/schema.sql"/>
 		<jdbc:script location="classpath:/data.sql"/>

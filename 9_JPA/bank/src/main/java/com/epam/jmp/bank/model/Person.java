@@ -1,7 +1,11 @@
 package com.epam.jmp.bank.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import com.google.common.annotations.VisibleForTesting;
 
 /**
  * @author Hanna_Aliakseichykava
@@ -10,15 +14,15 @@ import javax.persistence.Id;
 public class Person {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private String firstName;
 	private String lastName;
 
 	public Person() {}
 
-	public Person(Long id, String firstName, String lastName) {
+	public Person(String firstName, String lastName) {
 
-		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}
@@ -38,6 +42,11 @@ public class Person {
 
 	public String getLastName() {
 		return lastName;
+	}
+
+	@VisibleForTesting
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 }

@@ -30,8 +30,8 @@
 		<property name="username" value="sa" />
 		<property name="password" value="" />
 	</bean -->
-	
-	<jdbc:embedded-database id="dataSource" type="HSQL">
+
+	<jdbc:embedded-database id="dataSource" type="H2">
 		<jdbc:script location="schema.sql"/>
 		<!-- jdbc:script location="data.sql"/ -->
 	</jdbc:embedded-database>

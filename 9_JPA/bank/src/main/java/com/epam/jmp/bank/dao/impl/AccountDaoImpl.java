@@ -82,9 +82,7 @@ public class AccountDaoImpl extends AbstractDao implements AccountDao {
 		Long personId = personDao.create(firstName, lastName);
 		Person person = personDao.getById(personId);
 
-		Long id = generateId();
-
-		Account account = new Account(id, person, bank, DEFAULT_CURRENCY, DEFAULT_AMOUNT);
+		Account account = new Account(person, bank, DEFAULT_CURRENCY, DEFAULT_AMOUNT);
 
 		getEntityManager().persist(account);
 

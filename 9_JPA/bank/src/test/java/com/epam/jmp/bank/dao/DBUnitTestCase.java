@@ -1,10 +1,9 @@
 package com.epam.jmp.bank.dao;
 
-import java.sql.SQLException;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
+import org.apache.log4j.Logger;
 import org.dbunit.DatabaseUnitException;
 import org.dbunit.database.DatabaseConnection;
 import org.dbunit.database.IDatabaseConnection;
@@ -27,7 +26,9 @@ import org.hibernate.internal.SessionImpl;
 @RunWith(value = BlockJUnit4ClassRunner.class)
 public abstract class DBUnitTestCase {
 
-	protected static ApplicationContext applicationContext = new ClassPathXmlApplicationContext("/app-context.xml");
+	protected static final Logger log = Logger.getLogger(DBUnitTestCase.class);
+
+	protected static ApplicationContext applicationContext = new ClassPathXmlApplicationContext("/test-db-context.xml");
 
 	protected IDataSet beforeData;
 
@@ -41,7 +42,7 @@ public abstract class DBUnitTestCase {
 	private static IDatabaseConnection connection;
 
 	@BeforeClass
-	public static void initEntityManager() throws HibernateException, DatabaseUnitException, SQLException {
+	public static void initEntityManager() throws HibernateException, DatabaseUnitException {
 		emf = applicationContext.getBean(EntityManagerFactory.class);
 		em = emf.createEntityManager();
 		connection = new DatabaseConnection(((SessionImpl) (em.getDelegate())).connection());

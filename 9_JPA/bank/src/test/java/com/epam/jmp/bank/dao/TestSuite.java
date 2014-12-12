@@ -2,6 +2,10 @@ package com.epam.jmp.bank.dao;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
+
+import com.epam.jmp.bank.services.*;
+import com.epam.jmp.bank.springwebjaas.*;
+
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 	AccountDaoTest.class,
@@ -10,8 +14,12 @@ import org.junit.runners.Suite;
 	EmployeeDaoTest.class,
 	PersonDaoTest.class,
 
-	com.epam.jmp.bank.springwebjaas.LoginTest.class,
-	com.epam.jmp.bank.springwebjaas.LoginInitTest.class
+	LoginTest.class,
+	LoginInitTest.class,
+
+	AccountServiceImplTest.class,
+	BankServiceImplTest.class,
+	CurrencyServiceImplTest.class
 })
 public class TestSuite {
 

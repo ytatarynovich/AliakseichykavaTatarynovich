@@ -3,12 +3,16 @@ package com.epam.jmp.bank.model;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
+
+import com.google.common.annotations.VisibleForTesting;
 
 /**
  * @author Hanna_Aliakseichykava
@@ -25,6 +29,7 @@ import javax.persistence.OneToOne;
 public class Account {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
 	@OneToOne
@@ -42,8 +47,7 @@ public class Account {
 
 	public Account() {}
 
-	public Account(long id, Person person, Bank bank, Currency currency, double amount) {
-		this.id = id;
+	public Account(Person person, Bank bank, Currency currency, double amount) {
 		this.person = person;
 		this.bank = bank;
 		this.currency = currency;
@@ -74,6 +78,11 @@ public class Account {
 
 	public double getAmount() {
 		return amount;
+	}
+
+	@VisibleForTesting
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 }

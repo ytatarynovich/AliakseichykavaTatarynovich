@@ -24,10 +24,6 @@ public abstract class AbstractDao implements Dao {
 	@PersistenceContext
 	protected EntityManager em;
 
-	protected Long generateId() {
-		return new Long(getAllRows().size() + 1);
-	}
-
 	@Override
 	public List getAllRows() {
 		Query query = getEntityManager().createQuery("SELECT e FROM " + getTableName() + " e");
