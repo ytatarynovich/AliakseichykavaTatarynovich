@@ -11,7 +11,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
-
 import com.epam.jmp.bank.model.Employee;
 import com.epam.jmp.bank.model.Role;
 import com.epam.jmp.bank.services.EmployeeService;

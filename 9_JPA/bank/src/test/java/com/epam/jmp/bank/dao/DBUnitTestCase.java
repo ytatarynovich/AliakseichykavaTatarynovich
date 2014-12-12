@@ -21,6 +21,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.hibernate.internal.SessionImpl;
 
+/**
+ * @author Hanna_Aliakseichykava
+ */
 @RunWith(value = BlockJUnit4ClassRunner.class)
 public abstract class DBUnitTestCase {
 
@@ -39,7 +42,7 @@ public abstract class DBUnitTestCase {
 
 	@BeforeClass
 	public static void initEntityManager() throws HibernateException, DatabaseUnitException, SQLException {
-		emf = (EntityManagerFactory)applicationContext.getBean(EntityManagerFactory.class);
+		emf = applicationContext.getBean(EntityManagerFactory.class);
 		em = emf.createEntityManager();
 		connection = new DatabaseConnection(((SessionImpl) (em.getDelegate())).connection());
 	}

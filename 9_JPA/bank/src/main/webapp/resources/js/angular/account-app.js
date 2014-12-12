@@ -1,6 +1,6 @@
 var accountApp = angular.module('AccountApp', []);
 
-accountApp.controller('AccountCtrl', ['$scope', '$http', 'accountsService', function ($scope, $http, accountsService) {
+accountApp.controller('AccountCtrl', ['$scope', '$http', '$timeout', 'accountsService', function ($scope, $http, $timeout, accountsService) {
 
 	$scope.message = '';
 	$scope.errorMessage = '';
