@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<bank id="1" name="Bank1"/>
+
+	<CurrencyRate id="1" currency="BY" rate="1"/>
+	<CurrencyRate id="2" currency="USD" rate="11000"/>
+	<CurrencyRate id="3" currency="EU" rate="15000"/>
+
+	<person id="1" firstname="Sidor" lastname="Sidorov"/>
+	<person id="2" firstname="Ann" lastname="Aleks"/>
+
+	<account id="1" bankid="1" personid="1" currency="BY" amount="0"/>
+	<account id="2" bankid="1" personid="2" currency="BY" amount="0"/>
+</dataset>
