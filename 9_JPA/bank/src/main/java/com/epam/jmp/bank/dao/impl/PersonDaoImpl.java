@@ -27,8 +27,8 @@ public class PersonDaoImpl extends AbstractDao implements PersonDao {
 	public Long create(String firstName, String lastName) {
 
 		Person person = new Person(firstName, lastName);
-
 		getEntityManager().persist(person);
+		getEntityManager().flush();
 		return person.getId();
 	}
 

@@ -69,6 +69,7 @@ public class AccountDaoImpl extends AbstractDao implements AccountDao {
 		Account savedAccount = getById(account.getId());
 
 		savedAccount.setAmount(account.getCurrency(), account.getAmount());
+		getEntityManager().flush();
 
 		//TODO: update Person
 	}
@@ -85,6 +86,7 @@ public class AccountDaoImpl extends AbstractDao implements AccountDao {
 		Account account = new Account(person, bank, DEFAULT_CURRENCY, DEFAULT_AMOUNT);
 
 		getEntityManager().persist(account);
+		getEntityManager().flush();
 
 		return account.getId();
 	}

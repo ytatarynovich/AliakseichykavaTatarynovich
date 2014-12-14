@@ -14,5 +14,4 @@ public interface PersonDao {
 	public Person getById(Long id);
 	
 	public List<Person> getAll();
-
 }

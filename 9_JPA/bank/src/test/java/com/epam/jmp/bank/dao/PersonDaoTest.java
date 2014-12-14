@@ -67,7 +67,9 @@ public class PersonDaoTest extends DBUnitTestCase {
 	public void testPersist() throws Exception {
 		int initialPersonsCount = dao.getAll().size();
 
-		dao.create(TEST_FIRST_NAME, TEST_LAST_NAME);
+		long id = dao.create(TEST_FIRST_NAME, TEST_LAST_NAME);
+		log.info("\n\n!!! Created " + id + " \n\n");
+		Assert.assertNotEquals(id, 0);
 
 		IDataSet expectedData = loadDataSet("dao/person-data-save.xml");
  

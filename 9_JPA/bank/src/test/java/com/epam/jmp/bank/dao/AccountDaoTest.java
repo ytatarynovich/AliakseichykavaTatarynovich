@@ -124,8 +124,9 @@ public class AccountDaoTest extends DBUnitTestCase {
 		//long bankId = new Long(actualData.getTable("bank").getValue(0, "id").toString());
 		long bankId = 1L;
 
-		Long id = dao.create(bankId, TEST_FIRST_NAME, TEST_LAST_NAME);
+		long id = dao.create(bankId, TEST_FIRST_NAME, TEST_LAST_NAME);
 		log.info("\n\n!!! New Account: " + id + " \n\n");
+		Assert.assertNotEquals(id, 0);
 
 		IDataSet expectedData = loadDataSet("dao/account-data-save.xml");
  

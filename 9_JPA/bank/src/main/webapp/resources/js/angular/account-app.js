@@ -26,13 +26,12 @@ accountApp.controller('AccountCtrl', ['$scope', '$http', '$timeout', 'accountsSe
 		var account = accountsService.findAccount(accountId, accounts);
 		if(account) {
 			console.log('Accounts is found: ' + account.asstring);
-			$scope.selectedAccount = account;
-			$scope.currency = $scope.selectedAccount.currency;
-			$scope.amount = $scope.selectedAccount.amount;
+			$scope.currency = account.currency;
+			$scope.amount = account.amount;
 		}
 	}
 
-	function exchangeCurrency(oldCurrency, newCurrency, amount) {
+	/*function exchangeCurrency(oldCurrency, newCurrency, amount) {
 
 		$http.get('/BankApp/currency/exchange/old/' + oldCurrency + '/new/' + newCurrency + '/amount/' + amount).
 			success(function(data) {
@@ -40,14 +39,14 @@ accountApp.controller('AccountCtrl', ['$scope', '$http', '$timeout', 'accountsSe
 				console.log('Currency is exchanged');
 			}
 		);
-	}
+	}*/
 
-	function updateBankAccount(account) {
+	function updateBankAccount(accountId, amount, currency) {
 
 		$scope.message = '';
 		$scope.errorMessage = '';
 
-		$http.post('/BankApp/account/update/' + account.id + '/' + account.currency + '/' + account.amount).
+		$http.post('/BankApp/account/update/' + accountId + '/' + currency + '/' + amount).
 		success(function(data, status, headers) {
 			console.log('Account is updated in db');
 			populateAccounts($scope.selectedBankId);
@@ -130,7 +129,7 @@ accountApp.controller('AccountCtrl', ['$scope', '$http', '$timeout', 'accountsSe
 		}
 	});
 
-	$scope.$watch('currency', function(newValue, oldValue) {
+	/*$scope.$watch('currency', function(newValue, oldValue) {
 		if(newValue && oldValue) {
 
 			if(!$scope.validators.amount.isValid($scope.amount)) {
@@ -141,14 +140,14 @@ accountApp.controller('AccountCtrl', ['$scope', '$http', '$timeout', 'accountsSe
 				exchangeCurrency(oldValue, newValue, $scope.amount);
 			}
 		}
-	});
+	});*/
 
 
 	$scope.updateAccount = function() {
 
 		$scope.errors = {};
 
-		if(!$scope.selectedAccount) {
+		if(!$scope.selectedAccountId) {
 			$scope.errors.selectedAccount = {message: 'Select Account'};
 		}
 
@@ -163,10 +162,8 @@ accountApp.controller('AccountCtrl', ['$scope', '$http', '$timeout', 'accountsSe
 		} 
 
 		if($.isEmptyObject($scope.errors)) {
-			$scope.selectedAccount.amount = $scope.amount;
-			$scope.selectedAccount.currency = $scope.currency;
-			console.log('Account is updated: ' + $scope.selectedAccount.amount + ' (' + $scope.selectedAccount.currency + ')');
-			updateBankAccount($scope.selectedAccount);
+			console.log('Account is updated: ' + $scope.amount + ' (' + $scope.currency + ')');
+			updateBankAccount($scope.selectedAccountId, $scope.amount, $scope.currency);
 		}
 	};
 

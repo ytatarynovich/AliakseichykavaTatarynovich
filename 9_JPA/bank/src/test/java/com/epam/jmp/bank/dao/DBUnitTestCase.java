@@ -36,15 +36,12 @@ public abstract class DBUnitTestCase {
 
 	protected abstract String getTableName();
 
-	protected static EntityManagerFactory emf;
-	protected static EntityManager em;
-
 	private static IDatabaseConnection connection;
 
 	@BeforeClass
 	public static void initEntityManager() throws HibernateException, DatabaseUnitException {
-		emf = applicationContext.getBean(EntityManagerFactory.class);
-		em = emf.createEntityManager();
+		EntityManagerFactory emf = applicationContext.getBean(EntityManagerFactory.class);
+		EntityManager em = emf.createEntityManager();
 		connection = new DatabaseConnection(((SessionImpl) (em.getDelegate())).connection());
 	}
 

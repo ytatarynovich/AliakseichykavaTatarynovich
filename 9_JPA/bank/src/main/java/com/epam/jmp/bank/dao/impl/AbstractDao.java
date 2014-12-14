@@ -8,7 +8,6 @@ import javax.persistence.PersistenceContext;
 import org.apache.log4j.Logger;
 
 import com.epam.jmp.bank.dao.Dao;
-import com.google.common.annotations.VisibleForTesting;
 
 import javax.persistence.Query;
 
@@ -22,7 +21,7 @@ public abstract class AbstractDao implements Dao {
 	protected static final Logger log = Logger.getLogger(AbstractDao.class);
 
 	@PersistenceContext
-	protected EntityManager em;
+	private EntityManager em;
 
 	@Override
 	public List getAllRows() {
@@ -30,11 +29,6 @@ public abstract class AbstractDao implements Dao {
 		return query.getResultList();
 	}
 
-	@VisibleForTesting
-	public void setEntityManager(EntityManager em) {
-		this.em = em;
-	}
-	
 	protected EntityManager getEntityManager() {
 		return em;
 	}
