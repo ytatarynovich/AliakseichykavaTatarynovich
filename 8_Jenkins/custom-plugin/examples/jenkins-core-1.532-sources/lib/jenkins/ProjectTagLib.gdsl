@@ -1,0 +1,10 @@
+package lib.jenkins;
+contributor(context(ctype:'lib.jenkins.ProjectTagLib')) {
+  method name:'config_publishers', type:void, params:[args:[
+  ], dummy:void, c:Closure]
+  method name:'matrix', type:void, params:[args:[
+    parameter(name:'autoRefresh',type:'java.lang.Object', doc:"""
+If specified, the content of the matrix will be automatically updated via AJAX. (This happens by requesting URL "./ajaxMatrix", so the caller needs "ajaxMatrix.jelly" to serve this request.)
+"""),
+  ], dummy:void, c:Closure]
+}

@@ -30,7 +30,7 @@ public class FrozenViewsTabBar extends ViewsTabBar {
 	}
 
 	public int getFailureCount(View v){
-		return ViewUtil.getFailureCount(v);
+		return ViewUtil.getRedBallCount(v);
 	}
 
 	@Extension

@@ -6,7 +6,7 @@ import hudson.model.View;
 
 public class ViewUtil {
 
-	public static int getFailureCount(View v) {
+	public static int getRedBallCount(View v) {
 
 		int failed = 0;
 
