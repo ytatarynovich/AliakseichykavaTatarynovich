@@ -1,5 +1,6 @@
 package com.epam.jmp.bank.controller;
 
+
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -8,18 +9,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import com.epam.jmp.bank.dao.impl.AbstractDao;
 import com.epam.jmp.bank.model.Account;
 import com.epam.jmp.bank.model.Currency;
-import com.epam.jmp.bank.model.dto.AccountDto;
 import com.epam.jmp.bank.services.AccountService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-
-import javax.validation.Valid;
-
-import org.springframework.validation.BindingResult;
 
 /**
  * @author Hanna_Aliakseichykava
@@ -84,16 +79,4 @@ public class AccountController {
 		Long id = service.createAccount(bankId, firstName, lastName);
 		return String.valueOf(id);
 	}
-
-	@RequestMapping(value = "/createAccount.do")
-	public String createAccount(@Valid AccountDto account, BindingResult result) {
-		if (result.hasErrors()) {
-			log.info("\nERROR\n");
-		} else {
-			log.info("\nSUCCESS\n");
-			Long id = service.createAccount(account);
-			return String.valueOf(id);
-		}
-	}
-	
 }

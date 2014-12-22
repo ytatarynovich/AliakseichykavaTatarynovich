@@ -23,6 +23,10 @@ footer {
 	margin: 16px;
 }
 
+.error {
+	color: #ff0000;
+}
+
 .message {
 	background-color: FFFF66;
 	display: inline-block;

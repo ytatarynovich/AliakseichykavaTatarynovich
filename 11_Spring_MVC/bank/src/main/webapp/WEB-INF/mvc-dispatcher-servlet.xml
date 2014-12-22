@@ -9,12 +9,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 
 	<import resource="/app-db-context.xml"/>
 
-	<mvc:annotation-driven />
-
 	<context:component-scan base-package="com.epam.jmp.bank" />
-
-	<!-- support JSR303 annotation if JSR 303 validation present on classpath -->
-	<mvc:annotation-driven />
 
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 
@@ -23,5 +18,9 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 		<property name="prefix" value="/WEB-INF/jsp/"/>
 		<property name="suffix" value=".jsp"/>
 	</bean>
+
+	<!-- bind your messages.properties -->
+	
+	<mvc:annotation-driven />
 
 </beans>

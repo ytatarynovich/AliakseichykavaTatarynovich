@@ -36,6 +36,15 @@ public class BankServiceImpl implements BankService{
 		return new Gson().toJson(list);
 	}
 
+	@Override
+	public Map<String, String> getAllBanksMap() {
+		Map<String, String> map = new HashMap<String, String>();
+		for(Bank bank : bankDao.getAll()) {
+			map.put(String.valueOf(bank.getId()), bank.getName());
+		}
+		return map;
+	}
+
 	@VisibleForTesting
 	public void setDao(BankDao bankDao) {
 		this.bankDao = bankDao;

@@ -1,16 +1,20 @@
 package com.epam.jmp.bank.model.dto;
 
-import org.hibernate.validator.constraints.Range;
-import org.hibernate.validator.constraints.NotEmpty;;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 public class AccountDto {
 
-	@NotEmpty
+	@NotNull
 	private Long bankId;
-	@Range(min = 3, max = 20)
+	@NotEmpty
 	private String firstName;
-	@Range(min = 3, max = 20)
+	@NotEmpty
 	private String lastName;
+
+	public AccountDto() {
+	}
 
 	public AccountDto(Long bankId, String firstName, String lastName) {
 		super();
@@ -42,4 +46,12 @@ public class AccountDto {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
+	@Override
+	public String toString() {
+		return bankId + " " +
+		firstName + " " +
+		lastName;
+	}
+
 }
