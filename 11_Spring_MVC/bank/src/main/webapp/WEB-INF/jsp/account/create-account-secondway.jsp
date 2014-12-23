@@ -1,7 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<jsp:include page="header.jsp"/>
-
 <header>
 	<h1>Create Account (Spring MVC)</h1>
 </header>
@@ -34,5 +32,3 @@
 		</tr>
 	</table>
 </form:form>
-
-<jsp:include page="footer.jsp"/>

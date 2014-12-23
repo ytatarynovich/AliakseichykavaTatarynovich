@@ -26,6 +26,7 @@
 		<gson.version>2.2.2</gson.version>
 		<catch.exception.version>1.2.0</catch.exception.version>
 		<guava.version>r05</guava.version>
+		<tiles.version>2.2.2</tiles.version>
 
 		<hibernate.version>4.0.0.Final</hibernate.version>
 		<h2.version>1.3.160</h2.version>
@@ -112,7 +113,6 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
 			<version>${javax.servlet.version}</version>
-			<!-- scope>provided</scope -->
 			<scope>compile</scope>
 		</dependency>
 
@@ -120,7 +120,6 @@
 			<groupId>javax.servlet.jsp.jstl</groupId>
 			<artifactId>jstl-api</artifactId>
 			<version>${jstl.version}</version>
-			<!-- scope>provided</scope -->
 			<scope>compile</scope>
 		</dependency>
 
@@ -128,7 +127,6 @@
 			<groupId>jstl</groupId>
 			<artifactId>jstl</artifactId>
 			<version>${jstl.version}</version>
-			<!-- scope>provided</scope -->
 			<scope>compile</scope>
 		</dependency>
 
@@ -175,6 +173,19 @@
 			<version>${spring.security.version}</version>
 		</dependency>
 
+
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-servlet</artifactId>
+			<version>${tiles.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-jsp</artifactId>
+			<version>${tiles.version}</version>
+		</dependency>
+
 		<!-- Start testing libraries -->
 
 		<dependency>
@@ -217,12 +228,6 @@
 			<artifactId>hamcrest-all</artifactId>
 			<version>${hamcrest.version}</version>
 			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
-			<version>${spring.version}</version>
 		</dependency>
 
 		<!-- End testing libraries -->

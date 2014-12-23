@@ -1,5 +1,3 @@
-<jsp:include page="header.jsp"/>
-
 <header>
 	<h1>All Currencies</h1>
 </header>
@@ -14,5 +12,3 @@
 	</table>
 
 </div>
-
-<jsp:include page="footer.jsp"/>

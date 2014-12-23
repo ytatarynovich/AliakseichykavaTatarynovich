@@ -63,7 +63,7 @@ accountApp.controller('AccountCtrl', ['$scope', '$http', '$timeout', 'accountsSe
 		$scope.message = '';
 		$scope.errorMessage = '';
 
-		$http.get('/BankApp/account/create/' + bankId + '/' + firstName + '/' + lastName).
+		$http.post('/BankApp/account/create/' + bankId + '/' + firstName + '/' + lastName).
 		success(function(data, status, headers) {
 			console.log('Account with id [' + data + '] is created');
 			$scope.message = 'Account [' + data + '] has been created';

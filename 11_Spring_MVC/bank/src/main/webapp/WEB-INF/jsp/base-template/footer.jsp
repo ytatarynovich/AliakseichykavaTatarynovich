@@ -16,6 +16,3 @@
 	</c:if>
 
 </footer>
-
-</body>
-</html>

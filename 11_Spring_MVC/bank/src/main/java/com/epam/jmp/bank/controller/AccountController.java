@@ -69,7 +69,7 @@ public class AccountController {
 	private static final String FIRST_NAME = "firstname";
 	private static final String LAST_NAME = "lastname";
 
-	@RequestMapping(value = "/create/{bankid}/{firstname}/{lastname}", method = RequestMethod.GET)
+	@RequestMapping(value = "/create/{bankid}/{firstname}/{lastname}", method = RequestMethod.POST, produces = "application/json")
 	@ResponseBody
 	public String createAccount(
 			@PathVariable(BANK_ID) Long bankId,

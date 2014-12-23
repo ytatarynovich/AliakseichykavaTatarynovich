@@ -21,6 +21,8 @@
 		http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
 
+	<context:property-placeholder location="classpath:db.properties" />
+
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="org.h2.Driver" />
@@ -46,10 +48,10 @@
 		<property name="dataSource" ref="dataSource"/>
 
 		<property name="jpaVendorAdapter">
-			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-				<property name="showSql" value="true"/>
-				<property name="generateDdl" value="false"/>
-				<property name="databasePlatform" value="org.hibernate.dialect.H2Dialect"/>
+			<bean class="${db.jpa.vendor.adapter}">
+				<property name="showSql" value="${db.showSql}"/>
+				<property name="generateDdl" value="${db.generateDdl}"/>
+				<property name="databasePlatform" value="${db.databasePlatform}"/>
 			</bean>
 		</property>
 

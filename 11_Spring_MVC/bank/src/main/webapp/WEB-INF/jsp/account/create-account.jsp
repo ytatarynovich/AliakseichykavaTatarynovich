@@ -1,5 +1,3 @@
-<jsp:include page="header.jsp"/>
-
 <header>
 	<h1>Add Account</h1>
 </header>
@@ -21,7 +19,7 @@
 			<tr>
 				<td>Bank:</td>
 				<td><select ng-model="selectedBankId" ng-options="item.id as item.name for item in banks">
-					<option value="">Select Bank</option>
+					<option value="">--- Select Bank ---</option>
 				</select></td>
 				<td><span class="invalid" ng-show="errors && errors.selectedBankId">{{errors.selectedBankId.message}}</span></td>
 			</tr>
@@ -48,5 +46,3 @@
 	</section>
 
 </div>
-
-<jsp:include page="footer.jsp"/>
