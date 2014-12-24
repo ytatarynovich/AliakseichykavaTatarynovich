@@ -1,6 +1,10 @@
-Copyright: https://github.com/jenkinsci/chucknorris-plugin/ (was taken as example)
+Copyright: 
+https://github.com/jenkinsci/chucknorris-plugin/
+(was taken as example)
 
 Tutorials:
+
+https://blog.codecentric.de/en/2013/02/tutorial-jenkins-plugin-development/
 
 https://jenkinsapi.readthedocs.org/
 
@@ -46,13 +50,14 @@ settings.xml:
 
 mvn hpi:create -Pjenkins
 
+
 mvn clean install -Pjenkins
 
 mvn hpi:run -Djetty.port=8090 -Pjenkins
 
 http://localhost:8090/jenkins/
 
-
+http://localhost:8090/
 
 
 //Temp;

@@ -1,0 +1,14 @@
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form" xmlns:i="jelly:fmt" xmlns:local="local">
+    <img src="${rootURL}/plugin/frozen/images/icon.jpg" width="16" height="16" alt="${from.displayName} Icon"/><st:nbsp/><span style="font-size: 18px;"><j:out value="${from.text}"/></span>
+    <script>
+        Element.setStyle($('main-table'), {
+            backgroundImage: 'none'
+        });
+        Element.setStyle($('main-panel'), {
+            backgroundImage: 'url(${rootURL}/plugin/frozen/images/<j:out value="${from.imageName}"/>)',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'bottom right',
+            paddingBottom: '270px'
+        });
+    </script>
+</j:jelly>

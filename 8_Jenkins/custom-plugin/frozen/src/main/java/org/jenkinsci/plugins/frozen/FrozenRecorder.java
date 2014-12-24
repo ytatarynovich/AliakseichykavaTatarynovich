@@ -8,7 +8,6 @@ import hudson.model.AbstractProject;
 import hudson.tasks.BuildStepMonitor;
 import hudson.tasks.Recorder;
 import hudson.model.Result;
-
 import hudson.Launcher;
 import hudson.model.AbstractBuild;
 import hudson.model.BuildListener;
@@ -69,9 +68,7 @@ public class FrozenRecorder extends Recorder {
         return true;
     }
 	
-	//@Override
 		public BuildStepMonitor getRequiredMonitorService() {
 			return BuildStepMonitor.NONE;
 		}
-
 }

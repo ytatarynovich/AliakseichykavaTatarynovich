@@ -2,8 +2,12 @@ package org.jenkinsci.plugins.frozen;
 
 import org.apache.log4j.Logger;
 
+import hudson.Extension;
+import hudson.model.AbstractProject;
 import hudson.model.Action;
 import hudson.model.Result;
+import hudson.tasks.BuildStepDescriptor;
+import hudson.tasks.Publisher;
 
 /**
  * Copyright: https://github.com/jenkinsci/chucknorris-plugin/ (was taken as example)
@@ -31,7 +35,7 @@ public class FrozenAction implements Action {
 	}
 
 	/**
-	* Gets the URL name for this action.
+	* Gets the URL name for this action (used in jelly files)
 	* @return the URL name
 	*/
 	//@Override
@@ -40,15 +44,21 @@ public class FrozenAction implements Action {
 	}
 
 	//--------------------
-	private Result result;
+	private Style style;
 
 	public FrozenAction(Result result) {
-		this.result = result;
+		this.style = Style.getByBuildResult(result);
 		log.info("FrozenAction is created");
 	}
-	
-	public Result getResult() {
-		return result;
+
+	public String getText() {
+		return style.getText();
 	}
+
+	public String getImageName() {
+		return style.getImageName();
+	}
+
+	
 
 }

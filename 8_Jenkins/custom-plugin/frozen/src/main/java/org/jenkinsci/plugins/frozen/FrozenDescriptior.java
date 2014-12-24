@@ -9,6 +9,7 @@ import hudson.tasks.Publisher;
  * Copyright: https://github.com/jenkinsci/chucknorris-plugin/ (was taken as example)
  * This class provides build step description.
  */
+@Extension
 public class FrozenDescriptior extends BuildStepDescriptor<Publisher> {
 
 	public FrozenDescriptior() {
@@ -31,10 +32,8 @@ public class FrozenDescriptior extends BuildStepDescriptor<Publisher> {
      *            the class
      * @return true - of course the beard is applicable
      */
-	public boolean isApplicable(Class<? extends AbstractProject> jobType) {
+	@Override
+	public final boolean isApplicable(final Class<? extends AbstractProject> jobType) {
 		return true;
 	}
-
-	
-
 }
