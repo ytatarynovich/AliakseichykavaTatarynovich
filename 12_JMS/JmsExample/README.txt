@@ -1,0 +1,1 @@
+http://www.springbyexample.org/examples/simple-spring-jms.html
