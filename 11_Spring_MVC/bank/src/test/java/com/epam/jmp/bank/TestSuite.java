@@ -1,5 +1,6 @@
 package com.epam.jmp.bank;
 
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
@@ -11,6 +12,7 @@ import com.epam.jmp.bank.dao.PersonDaoTest;
 import com.epam.jmp.bank.services.*;
 import com.epam.jmp.bank.springwebjaas.*;
 
+@Ignore
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 	AccountDaoTest.class,
