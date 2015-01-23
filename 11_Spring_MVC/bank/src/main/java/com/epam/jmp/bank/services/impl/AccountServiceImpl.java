@@ -77,23 +77,25 @@ public class AccountServiceImpl implements AccountService {
 		return new Gson().toJson(list);
 	}
 
+	@Override
 	public String getBankAccountAsJson(Long accountId) {
 		Map<String, String> map = getAccountAsMap(findAccountById(accountId));
 		return new Gson().toJson(map);
 	}
 
+	@Override
 	public String getBankAccountsAsJson(Long bankId) {
 		return getAccountsAsJson(getAllAccounts(bankId));
-	}
-
-	@VisibleForTesting
-	public void setDao(AccountDao accountDao) {
-		this.accountDao = accountDao;
 	}
 
 	@Override
 	public long createAccount(AccountDto account) {
 		return createAccount(account.getBankId(), account.getFirstName(), account.getLastName());
+	}
+
+	@VisibleForTesting
+	public void setDao(AccountDao accountDao) {
+		this.accountDao = accountDao;
 	}
 
 }

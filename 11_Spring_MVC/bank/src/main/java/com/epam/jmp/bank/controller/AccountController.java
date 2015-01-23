@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import com.epam.jmp.bank.dao.AccountDao;
 import com.epam.jmp.bank.model.Account;
 import com.epam.jmp.bank.model.Currency;
 import com.epam.jmp.bank.services.AccountService;
+import com.google.common.annotations.VisibleForTesting;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -78,5 +80,10 @@ public class AccountController {
 
 		Long id = service.createAccount(bankId, firstName, lastName);
 		return String.valueOf(id);
+	}
+
+	@VisibleForTesting
+	public void setService(AccountService service) {
+		this.service = service;
 	}
 }
