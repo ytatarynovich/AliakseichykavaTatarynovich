@@ -16,10 +16,10 @@ public class PersonDaoImpl extends AbstractDao implements PersonDao {
 	public String getTableName() {
 		return "Person";
 	}
-	
+
 	@Override
-	public List<Person> getAll() {
-		return (List<Person>) getAllRows();
+	public List getAll() {
+		return getAllRows();
 	}
 
 	@Override

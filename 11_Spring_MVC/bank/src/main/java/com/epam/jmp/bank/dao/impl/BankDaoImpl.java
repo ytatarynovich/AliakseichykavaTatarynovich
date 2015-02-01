@@ -17,8 +17,8 @@ public class BankDaoImpl extends AbstractDao implements BankDao{
 	}
 
 	@Override
-	public List<Bank> getAll() {
-		return (List<Bank>) getAllRows();
+	public List getAll() {
+		return getAllRows();
 	}
 
 	@Override

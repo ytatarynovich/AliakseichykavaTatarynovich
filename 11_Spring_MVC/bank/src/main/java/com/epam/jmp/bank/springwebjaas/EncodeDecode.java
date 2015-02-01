@@ -5,6 +5,9 @@ import java.security.spec.AlgorithmParameterSpec;
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
+
+import org.apache.log4j.Logger;
+
 import sun.misc.BASE64Encoder;
 import sun.misc.BASE64Decoder;
 
@@ -15,6 +18,7 @@ import sun.misc.BASE64Decoder;
 @SuppressWarnings("restriction")
 public class EncodeDecode {
 
+	protected static final Logger log = Logger.getLogger(EncodeDecode.class);
 	// password for encryption
 	final static String keyPassword = "password12345678";
 	// put this as key in AES
@@ -40,6 +44,7 @@ public class EncodeDecode {
 			String output = new BASE64Encoder().encode(ecrypted);
 			return output;
 		} catch (Exception e) {
+			log.info("EncodeDecode: " + e.getMessage());
 			return null;
 		}
 

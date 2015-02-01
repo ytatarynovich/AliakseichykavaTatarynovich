@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import com.epam.jmp.bank.dao.AccountDao;
 import com.epam.jmp.bank.model.Account;
 import com.epam.jmp.bank.model.Currency;
 import com.epam.jmp.bank.services.AccountService;

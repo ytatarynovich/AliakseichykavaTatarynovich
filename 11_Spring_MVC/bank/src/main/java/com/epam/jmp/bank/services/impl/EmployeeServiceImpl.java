@@ -1,5 +1,6 @@
 package com.epam.jmp.bank.services.impl;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,8 @@ import com.epam.jmp.bank.services.EmployeeService;
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
+	protected static final Logger log = Logger.getLogger(EmployeeServiceImpl.class);
+
 	@Autowired
 	private EmployeeDao employeeDao;
 
@@ -22,6 +25,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		try {
 			return employeeDao.getByLogin(login);
 		} catch(EmployeeNotFoundException e) {
+			log.info(e.getMessage());
 			return null;
 		}
 	}
@@ -31,6 +35,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		try {
 			return employeeDao.getPasswordById(id);
 		} catch(EmployeeNotFoundException e) {
+			log.info(e.getMessage());
 			return null;
 		}
 	}

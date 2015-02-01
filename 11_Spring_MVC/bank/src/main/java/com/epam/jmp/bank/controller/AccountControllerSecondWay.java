@@ -1,6 +1,5 @@
 package com.epam.jmp.bank.controller;
 
-import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -49,7 +48,7 @@ public class AccountControllerSecondWay {
 			return "create-account-secondway";
 		} else {
 			log.info("\nSUCCESS\n");
-			Long id = accountService.createAccount(account);
+			accountService.createAccount(account);
 			return "update-account";
 		}
 	}

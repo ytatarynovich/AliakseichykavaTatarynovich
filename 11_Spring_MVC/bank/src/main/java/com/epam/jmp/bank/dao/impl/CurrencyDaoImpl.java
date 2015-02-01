@@ -18,8 +18,8 @@ public class CurrencyDaoImpl extends AbstractDao implements  CurrencyDao {
 	}
 
 	@Override
-	public List<CurrencyRate> getAll() {
-		return (List<CurrencyRate>) getAllRows();
+	public List getAll() {
+		return getAllRows();
 	}
 
 	@Override

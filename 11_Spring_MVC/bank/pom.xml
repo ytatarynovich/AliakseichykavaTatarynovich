@@ -44,6 +44,7 @@
 		<maven.cobertura.plugin>2.5.1</maven.cobertura.plugin>
 		<maven.findbugs.plugin>3.0.0</maven.findbugs.plugin>
 		<maven.doxia.module.markdown.version>1.3</maven.doxia.module.markdown.version>
+		<maven.pmd.version>2.5</maven.pmd.version>
 	</properties>
 
 	<build>
@@ -110,6 +111,16 @@
 							<groupId>org.codehaus.mojo</groupId>
 							<artifactId>findbugs-maven-plugin</artifactId>
 							<version>${maven.findbugs.plugin}</version>
+						</plugin>
+
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-pmd-plugin</artifactId>
+							<version>${maven.pmd.version}</version>
+							<configuration>
+								<targetJdk>${jdk.version}</targetJdk>
+								<verbose>true</verbose>
+							</configuration>
 						</plugin>
 
 					</reportPlugins>

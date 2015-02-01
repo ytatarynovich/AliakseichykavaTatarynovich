@@ -1,0 +1,1111 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="CodePro Server">
+<title>Dependency analysis of bank at 01.02.15 17:53</title>
+<style type=text/css>
+	body {font: 70% verdana,arial,helvetica; color: #000000}
+	p  {margin-top:  3px; line-height: 1.5em}
+	h1 {margin-top:  0px; margin-bottom: 6px; font: bold 175% verdana,arial,helvetica}
+	h2 {margin-top: 12px; margin-bottom: 6px; font: bold 150% verdana,arial,helvetica}
+	h3 {margin-top: 12px; margin-bottom: 6px; font: bold 125% verdana,arial,helvetica}
+	h4 {margin-top: 12px; margin-bottom: 6px; font: bold 125% verdana,arial,helvetica}
+	table tr th {font-size: 75%}
+	table tr td {font-size: 75%}
+	tr.navigation {font-size: 60%}
+	table.metrics tr th {font-size: 70%}
+	table.metrics tr td {font-size: 60%}
+	table.details tr th {background: #a6d0e0; font-size: 70%; font-weight: bold; text-align: left}
+	table.details tr td {background: #eeeeee; font-size: 60%; text-align: top; vertical-align: top}
+</style>
+</head>
+
+<body alink="black" link="black" vlink="black">
+
+<h1 align="center">CodePro Dependency Analysis</h1>
+<h2 align="center">of bank
+<br>at 01.02.15 17:53</h2>
+<p align=right>Powered by
+	CodePro Server and
+	<a href="http://www.eclipse.org">Eclipse</a>
+</p>
+
+<hr size="2">
+<table width="100%" border="0"><tr>
+<td><a name="projectSection"><h2>Project Analysis</a></h2></td>
+<td class=navigation align="right">[<a href="#projectSection">projects</a>] [<a href="#packageSection">packages</a>] [<a href="#explanationSection">explanations</a>]
+</td></tr></table>
+<h3>Project Dependency Graph</h3>
+<blockquote>
+<img src="Dependencies_files\Dependencies-project.gif" usemap="#project-map" border="0">
+<map name="project-map">
+<area shape="default" nohref>
+<area href="#project-bank" alt="bank" shape="rect" coords="12,12,66,34">
+</map>
+</blockquote>
+<h3>Project Summary</h3>
+<blockquote>
+<table class=details width="100%" border="0"><colgroup span="1" width="20%"><colgroup span="8" width="10%"></colgroup><thead><tr>
+<th>Project</th>
+<th>Total Classes</th>
+<th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Afferent Coupling</th>
+<th>Efferent Coupling</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr></thead><tbody>
+<tr><td>
+<a href="#project-bank">bank</a>
+</td><td align="right">
+57
+</td><td align="right">
+12
+</td><td align="right">
+45
+</td><td align="right">
+0
+</td><td align="right">
+55
+</td><td align="right">
+0.21
+</td><td align="right">
+1.0
+</td><td align="right">
+0.21
+</td></tr>
+</tbody></table>
+</blockquote>
+<h3>Project Details</h3>
+<blockquote>
+<a name="project-bank"><h4>bank</h4></a>
+<table class=metrics width="100%" border="0"><colgroup span="5" width="20%"></colgroup><tbody><tr>
+<td>Afferent Couplings: 0</td>
+<td>Efferent Couplings: 55</td>
+<td>Abstractness: 0.21</td>
+<td>Instability: 1.0</td>
+<td>Distance: 0.21</td>
+</tr></tbody></table>
+<table class=details width="100%" border="0"><colgroup span="4" width="25%"></colgroup><thead><tr>
+<th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Referencing Projects</th>
+<th>Referenced Projects</th>
+</tr></thead><tbody><tr>
+<td>
+<a href="#type-com.epam.jmp.bank.dao.AccountDao">com.epam.jmp.bank.dao.AccountDao</a>
+<br><a href="#type-com.epam.jmp.bank.dao.BankDao">com.epam.jmp.bank.dao.BankDao</a>
+<br><a href="#type-com.epam.jmp.bank.dao.CurrencyDao">com.epam.jmp.bank.dao.CurrencyDao</a>
+<br><a href="#type-com.epam.jmp.bank.dao.DBUnitTestCase">com.epam.jmp.bank.dao.DBUnitTestCase</a>
+<br><a href="#type-com.epam.jmp.bank.dao.Dao">com.epam.jmp.bank.dao.Dao</a>
+<br><a href="#type-com.epam.jmp.bank.dao.EmployeeDao">com.epam.jmp.bank.dao.EmployeeDao</a>
+<br><a href="#type-com.epam.jmp.bank.dao.PersonDao">com.epam.jmp.bank.dao.PersonDao</a>
+<br><a href="#type-com.epam.jmp.bank.dao.impl.AbstractDao">com.epam.jmp.bank.dao.impl.AbstractDao</a>
+<br><a href="#type-com.epam.jmp.bank.services.AccountService">com.epam.jmp.bank.services.AccountService</a>
+<br><a href="#type-com.epam.jmp.bank.services.BankService">com.epam.jmp.bank.services.BankService</a>
+<br><a href="#type-com.epam.jmp.bank.services.CurrencyService">com.epam.jmp.bank.services.CurrencyService</a>
+<br><a href="#type-com.epam.jmp.bank.services.EmployeeService">com.epam.jmp.bank.services.EmployeeService</a>
+</td><td>
+<a href="#type-com.epam.jmp.bank.TestSuite">com.epam.jmp.bank.TestSuite</a>
+<br><a href="#type-com.epam.jmp.bank.controller.AccountController">com.epam.jmp.bank.controller.AccountController</a>
+<br><a href="#type-com.epam.jmp.bank.controller.AccountControllerSecondWay">com.epam.jmp.bank.controller.AccountControllerSecondWay</a>
+<br><a href="#type-com.epam.jmp.bank.controller.AccountControllerTest">com.epam.jmp.bank.controller.AccountControllerTest</a>
+<br><a href="#type-com.epam.jmp.bank.controller.BankController">com.epam.jmp.bank.controller.BankController</a>
+<br><a href="#type-com.epam.jmp.bank.controller.CurrencyController">com.epam.jmp.bank.controller.CurrencyController</a>
+<br><a href="#type-com.epam.jmp.bank.controller.ErrorController">com.epam.jmp.bank.controller.ErrorController</a>
+<br><a href="#type-com.epam.jmp.bank.controller.LoginController">com.epam.jmp.bank.controller.LoginController</a>
+<br><a href="#type-com.epam.jmp.bank.dao.AccountDaoTest">com.epam.jmp.bank.dao.AccountDaoTest</a>
+<br><a href="#type-com.epam.jmp.bank.dao.BankDaoTest">com.epam.jmp.bank.dao.BankDaoTest</a>
+<br><a href="#type-com.epam.jmp.bank.dao.CurrencyDaoTest">com.epam.jmp.bank.dao.CurrencyDaoTest</a>
+<br><a href="#type-com.epam.jmp.bank.dao.EmployeeDaoTest">com.epam.jmp.bank.dao.EmployeeDaoTest</a>
+<br><a href="#type-com.epam.jmp.bank.dao.PersonDaoTest">com.epam.jmp.bank.dao.PersonDaoTest</a>
+<br><a href="#type-com.epam.jmp.bank.dao.impl.AccountDaoImpl">com.epam.jmp.bank.dao.impl.AccountDaoImpl</a>
+<br><a href="#type-com.epam.jmp.bank.dao.impl.BankDaoImpl">com.epam.jmp.bank.dao.impl.BankDaoImpl</a>
+<br><a href="#type-com.epam.jmp.bank.dao.impl.CurrencyDaoImpl">com.epam.jmp.bank.dao.impl.CurrencyDaoImpl</a>
+<br><a href="#type-com.epam.jmp.bank.dao.impl.EmployeeDaoImpl">com.epam.jmp.bank.dao.impl.EmployeeDaoImpl</a>
+<br><a href="#type-com.epam.jmp.bank.dao.impl.PersonDaoImpl">com.epam.jmp.bank.dao.impl.PersonDaoImpl</a>
+<br><a href="#type-com.epam.jmp.bank.exceptions.AccountNotFoundException">com.epam.jmp.bank.exceptions.AccountNotFoundException</a>
+<br><a href="#type-com.epam.jmp.bank.exceptions.BankNotFoundException">com.epam.jmp.bank.exceptions.BankNotFoundException</a>
+<br><a href="#type-com.epam.jmp.bank.exceptions.CurrencyNotFoundException">com.epam.jmp.bank.exceptions.CurrencyNotFoundException</a>
+<br><a href="#type-com.epam.jmp.bank.exceptions.EmployeeNotFoundException">com.epam.jmp.bank.exceptions.EmployeeNotFoundException</a>
+<br><a href="#type-com.epam.jmp.bank.exceptions.PersonNotFoundException">com.epam.jmp.bank.exceptions.PersonNotFoundException</a>
+<br><a href="#type-com.epam.jmp.bank.exceptions.RoleNotFoundException">com.epam.jmp.bank.exceptions.RoleNotFoundException</a>
+<br><a href="#type-com.epam.jmp.bank.model.Account">com.epam.jmp.bank.model.Account</a>
+<br><a href="#type-com.epam.jmp.bank.model.Bank">com.epam.jmp.bank.model.Bank</a>
+<br><a href="#type-com.epam.jmp.bank.model.Currency">com.epam.jmp.bank.model.Currency</a>
+<br><a href="#type-com.epam.jmp.bank.model.CurrencyRate">com.epam.jmp.bank.model.CurrencyRate</a>
+<br><a href="#type-com.epam.jmp.bank.model.Employee">com.epam.jmp.bank.model.Employee</a>
+<br><a href="#type-com.epam.jmp.bank.model.Person">com.epam.jmp.bank.model.Person</a>
+<br><a href="#type-com.epam.jmp.bank.model.Role">com.epam.jmp.bank.model.Role</a>
+<br><a href="#type-com.epam.jmp.bank.model.dto.AccountDto">com.epam.jmp.bank.model.dto.AccountDto</a>
+<br><a href="#type-com.epam.jmp.bank.services.AccountServiceImplTest">com.epam.jmp.bank.services.AccountServiceImplTest</a>
+<br><a href="#type-com.epam.jmp.bank.services.BankServiceImplTest">com.epam.jmp.bank.services.BankServiceImplTest</a>
+<br><a href="#type-com.epam.jmp.bank.services.CurrencyServiceImplTest">com.epam.jmp.bank.services.CurrencyServiceImplTest</a>
+<br><a href="#type-com.epam.jmp.bank.services.impl.AccountServiceImpl">com.epam.jmp.bank.services.impl.AccountServiceImpl</a>
+<br><a href="#type-com.epam.jmp.bank.services.impl.BankServiceImpl">com.epam.jmp.bank.services.impl.BankServiceImpl</a>
+<br><a href="#type-com.epam.jmp.bank.services.impl.CurrencyServiceImpl">com.epam.jmp.bank.services.impl.CurrencyServiceImpl</a>
+<br><a href="#type-com.epam.jmp.bank.services.impl.EmployeeServiceImpl">com.epam.jmp.bank.services.impl.EmployeeServiceImpl</a>
+<br><a href="#type-com.epam.jmp.bank.springwebjaas.EncodeDecode">com.epam.jmp.bank.springwebjaas.EncodeDecode</a>
+<br><a href="#type-com.epam.jmp.bank.springwebjaas.Login">com.epam.jmp.bank.springwebjaas.Login</a>
+<br><a href="#type-com.epam.jmp.bank.springwebjaas.LoginInitTest">com.epam.jmp.bank.springwebjaas.LoginInitTest</a>
+<br><a href="#type-com.epam.jmp.bank.springwebjaas.LoginTest">com.epam.jmp.bank.springwebjaas.LoginTest</a>
+<br><a href="#type-com.epam.jmp.bank.springwebjaas.RoleGranter">com.epam.jmp.bank.springwebjaas.RoleGranter</a>
+<br><a href="#type-com.epam.jmp.bank.springwebjaas.UserPrincipal">com.epam.jmp.bank.springwebjaas.UserPrincipal</a>
+</td><td>
+<i>None</i>
+</td><td>
+dbunit-2.5.0.jar
+<br>
+gson-2.2.2.jar
+<br>
+guava-r05.jar
+<br>
+hibernate-core-4.0.0.Final.jar
+<br>
+hibernate-jpa-2.0-api-1.0.1.Final.jar
+<br>
+hibernate-validator-4.2.0.Final.jar
+<br>
+jce.jar
+<br>
+junit-4.11.jar
+<br>
+log4j-1.2.17.jar
+<br>
+mockito-core-1.9.5.jar
+<br>
+rt.jar
+<br>
+spring-beans-3.2.2.RELEASE.jar
+<br>
+spring-context-3.2.2.RELEASE.jar
+<br>
+spring-security-core-3.2.2.RELEASE.jar
+<br>
+spring-tx-3.2.2.RELEASE.jar
+<br>
+spring-web-3.2.2.RELEASE.jar
+<br>
+validation-api-1.0.0.GA.jar
+
+</td></tr></tbody></table>
+</blockquote>
+<table width="100%" border="0"><tr>
+<td><a name="packageSection"><h2>Package Analysis</a></h2></td>
+<td class=navigation align="right">[<a href="#projectSection">projects</a>] [<a href="#packageSection">packages</a>] [<a href="#explanationSection">explanations</a>]
+</td></tr></table>
+<h3>Package Dependency Graph</h3>
+<blockquote>
+<img src="Dependencies_files\Dependencies-package.gif" usemap="#package-map" border="0">
+<map name="package-map">
+<area shape="default" nohref>
+<area href="#package-com.epam.jmp.bank" alt="com.epam.jmp.bank" shape="rect" coords="850,236,988,258">
+<area href="#package-com.epam.jmp.bank.controller" alt="com.epam.jmp.bank.controller" shape="rect" coords="775,130,967,152">
+<area href="#package-com.epam.jmp.bank.dao" alt="com.epam.jmp.bank.dao" shape="rect" coords="473,236,634,258">
+<area href="#package-com.epam.jmp.bank.dao.impl" alt="com.epam.jmp.bank.dao.impl" shape="rect" coords="901,12,1089,34">
+<area href="#package-com.epam.jmp.bank.exceptions" alt="com.epam.jmp.bank.exceptions" shape="rect" coords="361,461,558,483">
+<area href="#package-com.epam.jmp.bank.model" alt="com.epam.jmp.bank.model" shape="rect" coords="497,130,672,152">
+<area href="#package-com.epam.jmp.bank.model.dto" alt="com.epam.jmp.bank.model.dto" shape="rect" coords="571,65,767,87">
+<area href="#package-com.epam.jmp.bank.services" alt="com.epam.jmp.bank.services" shape="rect" coords="693,407,875,429">
+<area href="#package-com.epam.jmp.bank.services.impl" alt="com.epam.jmp.bank.services.impl" shape="rect" coords="12,511,221,533">
+<area href="#package-com.epam.jmp.bank.springwebjaas" alt="com.epam.jmp.bank.springwebjaas" shape="rect" coords="757,341,973,363">
+</map>
+</blockquote>
+<h3>Package Summary</h3>
+<blockquote>
+<table class=details width="100%" border="0"><colgroup span="1" width="20%"><colgroup span="8" width="10%"></colgroup><thead><tr>
+<th>Package</th>
+<th>Total Classes</th>
+<th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Afferent Coupling</th>
+<th>Efferent Coupling</th>
+<th>Abstractness</th>
+<th>Instability</th>
+<th>Distance</th>
+</tr></thead><tbody>
+<tr><td>
+<a href="#package-com.epam.jmp.bank">com.epam.jmp.bank</a>
+</td><td align="right">
+1
+</td><td align="right">
+0
+</td><td align="right">
+1
+</td><td align="right">
+0
+</td><td align="right">
+1
+</td><td align="right">
+0.0
+</td><td align="right">
+1.0
+</td><td align="right">
+0.0
+</td></tr>
+<tr><td>
+<a href="#package-com.epam.jmp.bank.controller">com.epam.jmp.bank.controller</a>
+</td><td align="right">
+7
+</td><td align="right">
+0
+</td><td align="right">
+7
+</td><td align="right">
+0
+</td><td align="right">
+7
+</td><td align="right">
+0.0
+</td><td align="right">
+1.0
+</td><td align="right">
+0.0
+</td></tr>
+<tr><td>
+<a href="#package-com.epam.jmp.bank.dao">com.epam.jmp.bank.dao</a>
+</td><td align="right">
+12
+</td><td align="right">
+7
+</td><td align="right">
+5
+</td><td align="right">
+4
+</td><td align="right">
+12
+</td><td align="right">
+0.58
+</td><td align="right">
+0.75
+</td><td align="right">
+0.33
+</td></tr>
+<tr><td>
+<a href="#package-com.epam.jmp.bank.dao.impl">com.epam.jmp.bank.dao.impl</a>
+</td><td align="right">
+6
+</td><td align="right">
+1
+</td><td align="right">
+5
+</td><td align="right">
+1
+</td><td align="right">
+6
+</td><td align="right">
+0.17
+</td><td align="right">
+0.86
+</td><td align="right">
+0.02
+</td></tr>
+<tr><td>
+<a href="#package-com.epam.jmp.bank.exceptions">com.epam.jmp.bank.exceptions</a>
+</td><td align="right">
+6
+</td><td align="right">
+0
+</td><td align="right">
+6
+</td><td align="right">
+3
+</td><td align="right">
+6
+</td><td align="right">
+0.0
+</td><td align="right">
+0.67
+</td><td align="right">
+-0.33
+</td></tr>
+<tr><td>
+<a href="#package-com.epam.jmp.bank.model">com.epam.jmp.bank.model</a>
+</td><td align="right">
+7
+</td><td align="right">
+0
+</td><td align="right">
+7
+</td><td align="right">
+6
+</td><td align="right">
+5
+</td><td align="right">
+0.0
+</td><td align="right">
+0.45
+</td><td align="right">
+-0.55
+</td></tr>
+<tr><td>
+<a href="#package-com.epam.jmp.bank.model.dto">com.epam.jmp.bank.model.dto</a>
+</td><td align="right">
+1
+</td><td align="right">
+0
+</td><td align="right">
+1
+</td><td align="right">
+3
+</td><td align="right">
+1
+</td><td align="right">
+0.0
+</td><td align="right">
+0.25
+</td><td align="right">
+-0.75
+</td></tr>
+<tr><td>
+<a href="#package-com.epam.jmp.bank.services">com.epam.jmp.bank.services</a>
+</td><td align="right">
+7
+</td><td align="right">
+4
+</td><td align="right">
+3
+</td><td align="right">
+4
+</td><td align="right">
+7
+</td><td align="right">
+0.57
+</td><td align="right">
+0.64
+</td><td align="right">
+0.21
+</td></tr>
+<tr><td>
+<a href="#package-com.epam.jmp.bank.services.impl">com.epam.jmp.bank.services.impl</a>
+</td><td align="right">
+4
+</td><td align="right">
+0
+</td><td align="right">
+4
+</td><td align="right">
+2
+</td><td align="right">
+4
+</td><td align="right">
+0.0
+</td><td align="right">
+0.67
+</td><td align="right">
+-0.33
+</td></tr>
+<tr><td>
+<a href="#package-com.epam.jmp.bank.springwebjaas">com.epam.jmp.bank.springwebjaas</a>
+</td><td align="right">
+6
+</td><td align="right">
+0
+</td><td align="right">
+6
+</td><td align="right">
+1
+</td><td align="right">
+6
+</td><td align="right">
+0.0
+</td><td align="right">
+0.86
+</td><td align="right">
+-0.14
+</td></tr>
+</tbody></table>
+</blockquote>
+<h3>Package Cycles</h3>
+<blockquote>
+<img src="Dependencies_files\Dependencies-cycle1.gif" usemap="#cycle1-map" border="0">
+<map name="cycle1-map">
+<area shape="default" nohref>
+<area href="#package-com.epam.jmp.bank.services" alt="com.epam.jmp.bank.services" shape="rect" coords="12,12,194,34">
+<area href="#package-com.epam.jmp.bank.services.impl" alt="com.epam.jmp.bank.services.impl" shape="rect" coords="272,12,481,34">
+</map>
+<a name="package-com.epam.jmp.bank.services"><h4>com.epam.jmp.bank.services</h4></a>
+<table class=details width="100%" border="0"><colgroup span="4" width="25%"></colgroup><thead><tr>
+<th>Type</th>
+<th>Referencing Types</th>
+<th>Referenced Types</th>
+</tr></thead><tbody>
+<tr><td>
+<a href="#type-com.epam.jmp.bank.services.AccountService">com.epam.jmp.bank.services.AccountService</a>
+</td><td>
+<a href="#type-com.epam.jmp.bank.services.impl.AccountServiceImpl">com.epam.jmp.bank.services.impl.AccountServiceImpl</a>
+
+</td><td>
+<i>None</i>
+</td></tr>
+<tr><td>
+<a href="#type-com.epam.jmp.bank.services.AccountServiceImplTest">com.epam.jmp.bank.services.AccountServiceImplTest</a>
+</td><td>
+<i>None</i>
+</td><td>
+<a href="#type-com.epam.jmp.bank.services.impl.AccountServiceImpl">com.epam.jmp.bank.services.impl.AccountServiceImpl</a>
+
+</td></tr>
+<tr><td>
+<a href="#type-com.epam.jmp.bank.services.BankService">com.epam.jmp.bank.services.BankService</a>
+</td><td>
+<a href="#type-com.epam.jmp.bank.services.impl.BankServiceImpl">com.epam.jmp.bank.services.impl.BankServiceImpl</a>
+
+</td><td>
+<i>None</i>
+</td></tr>
+<tr><td>
+<a href="#type-com.epam.jmp.bank.services.BankServiceImplTest">com.epam.jmp.bank.services.BankServiceImplTest</a>
+</td><td>
+<i>None</i>
+</td><td>
+<a href="#type-com.epam.jmp.bank.services.impl.BankServiceImpl">com.epam.jmp.bank.services.impl.BankServiceImpl</a>
+
+</td></tr>
+<tr><td>
+<a href="#type-com.epam.jmp.bank.services.CurrencyService">com.epam.jmp.bank.services.CurrencyService</a>
+</td><td>
+<a href="#type-com.epam.jmp.bank.services.impl.CurrencyServiceImpl">com.epam.jmp.bank.services.impl.CurrencyServiceImpl</a>
+
+</td><td>
+<i>None</i>
+</td></tr>
+<tr><td>
+<a href="#type-com.epam.jmp.bank.services.CurrencyServiceImplTest">com.epam.jmp.bank.services.CurrencyServiceImplTest</a>
+</td><td>
+<i>None</i>
+</td><td>
+<a href="#type-com.epam.jmp.bank.services.impl.CurrencyServiceImpl">com.epam.jmp.bank.services.impl.CurrencyServiceImpl</a>
+
+</td></tr>
+<tr><td>
+<a href="#type-com.epam.jmp.bank.services.EmployeeService">com.epam.jmp.bank.services.EmployeeService</a>
+</td><td>
+<a href="#type-com.epam.jmp.bank.services.impl.EmployeeServiceImpl">com.epam.jmp.bank.services.impl.EmployeeServiceImpl</a>
+
+</td><td>
+<i>None</i>
+</td></tr>
+</tbody></table>
+<a name="package-com.epam.jmp.bank.services.impl"><h4>com.epam.jmp.bank.services.impl</h4></a>
+<table class=details width="100%" border="0"><colgroup span="4" width="25%"></colgroup><thead><tr>
+<th>Type</th>
+<th>Referencing Types</th>
+<th>Referenced Types</th>
+</tr></thead><tbody>
+<tr><td>
+<a href="#type-com.epam.jmp.bank.services.impl.AccountServiceImpl">com.epam.jmp.bank.services.impl.AccountServiceImpl</a>
+</td><td>
+<a href="#type-com.epam.jmp.bank.services.AccountServiceImplTest">com.epam.jmp.bank.services.AccountServiceImplTest</a>
+
+</td><td>
+<a href="#type-com.epam.jmp.bank.services.AccountService">com.epam.jmp.bank.services.AccountService</a>
+
+</td></tr>
+<tr><td>
+<a href="#type-com.epam.jmp.bank.services.impl.BankServiceImpl">com.epam.jmp.bank.services.impl.BankServiceImpl</a>
+</td><td>
+<a href="#type-com.epam.jmp.bank.services.BankServiceImplTest">com.epam.jmp.bank.services.BankServiceImplTest</a>
+
+</td><td>
+<a href="#type-com.epam.jmp.bank.services.BankService">com.epam.jmp.bank.services.BankService</a>
+
+</td></tr>
+<tr><td>
+<a href="#type-com.epam.jmp.bank.services.impl.CurrencyServiceImpl">com.epam.jmp.bank.services.impl.CurrencyServiceImpl</a>
+</td><td>
+<a href="#type-com.epam.jmp.bank.services.CurrencyServiceImplTest">com.epam.jmp.bank.services.CurrencyServiceImplTest</a>
+
+</td><td>
+<a href="#type-com.epam.jmp.bank.services.CurrencyService">com.epam.jmp.bank.services.CurrencyService</a>
+
+</td></tr>
+<tr><td>
+<a href="#type-com.epam.jmp.bank.services.impl.EmployeeServiceImpl">com.epam.jmp.bank.services.impl.EmployeeServiceImpl</a>
+</td><td>
+<i>None</i>
+</td><td>
+<a href="#type-com.epam.jmp.bank.services.EmployeeService">com.epam.jmp.bank.services.EmployeeService</a>
+
+</td></tr>
+</tbody></table>
+</blockquote>
+<h3>Package Details</h3>
+<blockquote>
+<a name="package-com.epam.jmp.bank"><h4>com.epam.jmp.bank</h4></a>
+<table class=metrics width="100%" border="0"><colgroup span="5" width="20%"></colgroup><tbody><tr>
+<td>Afferent Couplings: 0</td>
+<td>Efferent Couplings: 1</td>
+<td>Abstractness: 0.0</td>
+<td>Instability: 1.0</td>
+<td>Distance: 0.0</td>
+</tr></tbody></table>
+<table class=details width="100%" border="0"><colgroup span="4" width="25%"></colgroup><thead><tr>
+<th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Referencing Packages</th>
+<th>Referenced Packages</th>
+</tr></thead><tbody><tr>
+<td>
+</td><td>
+<a href="#type-com.epam.jmp.bank.TestSuite">com.epam.jmp.bank.TestSuite</a>
+</td><td>
+<i>None</i>
+</td><td>
+<a href="#package-com.epam.jmp.bank.dao">com.epam.jmp.bank.dao</a>
+<br>
+<a href="#package-com.epam.jmp.bank.services">com.epam.jmp.bank.services</a>
+<br>
+<a href="#package-com.epam.jmp.bank.springwebjaas">com.epam.jmp.bank.springwebjaas</a>
+<br>
+org.junit
+<br>
+org.junit.runner
+<br>
+org.junit.runners
+
+</td></tr></tbody></table>
+<a name="package-com.epam.jmp.bank.controller"><h4>com.epam.jmp.bank.controller</h4></a>
+<table class=metrics width="100%" border="0"><colgroup span="5" width="20%"></colgroup><tbody><tr>
+<td>Afferent Couplings: 0</td>
+<td>Efferent Couplings: 7</td>
+<td>Abstractness: 0.0</td>
+<td>Instability: 1.0</td>
+<td>Distance: 0.0</td>
+</tr></tbody></table>
+<table class=details width="100%" border="0"><colgroup span="4" width="25%"></colgroup><thead><tr>
+<th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Referencing Packages</th>
+<th>Referenced Packages</th>
+</tr></thead><tbody><tr>
+<td>
+</td><td>
+<a href="#type-com.epam.jmp.bank.controller.AccountController">com.epam.jmp.bank.controller.AccountController</a>
+<br><a href="#type-com.epam.jmp.bank.controller.AccountControllerSecondWay">com.epam.jmp.bank.controller.AccountControllerSecondWay</a>
+<br><a href="#type-com.epam.jmp.bank.controller.AccountControllerTest">com.epam.jmp.bank.controller.AccountControllerTest</a>
+<br><a href="#type-com.epam.jmp.bank.controller.BankController">com.epam.jmp.bank.controller.BankController</a>
+<br><a href="#type-com.epam.jmp.bank.controller.CurrencyController">com.epam.jmp.bank.controller.CurrencyController</a>
+<br><a href="#type-com.epam.jmp.bank.controller.ErrorController">com.epam.jmp.bank.controller.ErrorController</a>
+<br><a href="#type-com.epam.jmp.bank.controller.LoginController">com.epam.jmp.bank.controller.LoginController</a>
+</td><td>
+<i>None</i>
+</td><td>
+<a href="#package-com.epam.jmp.bank.model">com.epam.jmp.bank.model</a>
+<br>
+<a href="#package-com.epam.jmp.bank.model.dto">com.epam.jmp.bank.model.dto</a>
+<br>
+<a href="#package-com.epam.jmp.bank.services">com.epam.jmp.bank.services</a>
+<br>
+<a href="#package-com.epam.jmp.bank.services.impl">com.epam.jmp.bank.services.impl</a>
+<br>
+com.google.common.annotations
+<br>
+java.lang
+<br>
+java.security
+<br>
+javax.validation
+<br>
+org.apache.log4j
+<br>
+org.junit
+<br>
+org.mockito
+<br>
+org.springframework.beans.factory.annotation
+<br>
+org.springframework.http
+<br>
+org.springframework.stereotype
+<br>
+org.springframework.ui
+<br>
+org.springframework.validation
+<br>
+org.springframework.web.bind.annotation
+
+</td></tr></tbody></table>
+<a name="package-com.epam.jmp.bank.dao"><h4>com.epam.jmp.bank.dao</h4></a>
+<table class=metrics width="100%" border="0"><colgroup span="5" width="20%"></colgroup><tbody><tr>
+<td>Afferent Couplings: 4</td>
+<td>Efferent Couplings: 12</td>
+<td>Abstractness: 0.58</td>
+<td>Instability: 0.75</td>
+<td>Distance: 0.33</td>
+</tr></tbody></table>
+<table class=details width="100%" border="0"><colgroup span="4" width="25%"></colgroup><thead><tr>
+<th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Referencing Packages</th>
+<th>Referenced Packages</th>
+</tr></thead><tbody><tr>
+<td>
+<a href="#type-com.epam.jmp.bank.dao.AccountDao">com.epam.jmp.bank.dao.AccountDao</a>
+<br><a href="#type-com.epam.jmp.bank.dao.BankDao">com.epam.jmp.bank.dao.BankDao</a>
+<br><a href="#type-com.epam.jmp.bank.dao.CurrencyDao">com.epam.jmp.bank.dao.CurrencyDao</a>
+<br><a href="#type-com.epam.jmp.bank.dao.DBUnitTestCase">com.epam.jmp.bank.dao.DBUnitTestCase</a>
+<br><a href="#type-com.epam.jmp.bank.dao.Dao">com.epam.jmp.bank.dao.Dao</a>
+<br><a href="#type-com.epam.jmp.bank.dao.EmployeeDao">com.epam.jmp.bank.dao.EmployeeDao</a>
+<br><a href="#type-com.epam.jmp.bank.dao.PersonDao">com.epam.jmp.bank.dao.PersonDao</a>
+</td><td>
+<a href="#type-com.epam.jmp.bank.dao.AccountDaoTest">com.epam.jmp.bank.dao.AccountDaoTest</a>
+<br><a href="#type-com.epam.jmp.bank.dao.BankDaoTest">com.epam.jmp.bank.dao.BankDaoTest</a>
+<br><a href="#type-com.epam.jmp.bank.dao.CurrencyDaoTest">com.epam.jmp.bank.dao.CurrencyDaoTest</a>
+<br><a href="#type-com.epam.jmp.bank.dao.EmployeeDaoTest">com.epam.jmp.bank.dao.EmployeeDaoTest</a>
+<br><a href="#type-com.epam.jmp.bank.dao.PersonDaoTest">com.epam.jmp.bank.dao.PersonDaoTest</a>
+</td><td>
+<a href="#package-com.epam.jmp.bank">com.epam.jmp.bank</a>
+<br>
+<a href="#package-com.epam.jmp.bank.dao.impl">com.epam.jmp.bank.dao.impl</a>
+<br>
+<a href="#package-com.epam.jmp.bank.services">com.epam.jmp.bank.services</a>
+<br>
+<a href="#package-com.epam.jmp.bank.services.impl">com.epam.jmp.bank.services.impl</a>
+
+</td><td>
+<a href="#package-com.epam.jmp.bank.exceptions">com.epam.jmp.bank.exceptions</a>
+<br>
+<a href="#package-com.epam.jmp.bank.model">com.epam.jmp.bank.model</a>
+<br>
+java.lang
+<br>
+java.sql
+<br>
+java.util
+<br>
+javax.persistence
+<br>
+org.apache.log4j
+<br>
+org.dbunit
+<br>
+org.dbunit.database
+<br>
+org.dbunit.dataset
+<br>
+org.dbunit.dataset.xml
+<br>
+org.dbunit.operation
+<br>
+org.hibernate
+<br>
+org.hibernate.internal
+<br>
+org.junit
+<br>
+org.junit.runner
+<br>
+org.junit.runners
+<br>
+org.springframework.context
+<br>
+org.springframework.context.support
+
+</td></tr></tbody></table>
+<a name="package-com.epam.jmp.bank.dao.impl"><h4>com.epam.jmp.bank.dao.impl</h4></a>
+<table class=metrics width="100%" border="0"><colgroup span="5" width="20%"></colgroup><tbody><tr>
+<td>Afferent Couplings: 1</td>
+<td>Efferent Couplings: 6</td>
+<td>Abstractness: 0.17</td>
+<td>Instability: 0.86</td>
+<td>Distance: 0.02</td>
+</tr></tbody></table>
+<table class=details width="100%" border="0"><colgroup span="4" width="25%"></colgroup><thead><tr>
+<th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Referencing Packages</th>
+<th>Referenced Packages</th>
+</tr></thead><tbody><tr>
+<td>
+<a href="#type-com.epam.jmp.bank.dao.impl.AbstractDao">com.epam.jmp.bank.dao.impl.AbstractDao</a>
+</td><td>
+<a href="#type-com.epam.jmp.bank.dao.impl.AccountDaoImpl">com.epam.jmp.bank.dao.impl.AccountDaoImpl</a>
+<br><a href="#type-com.epam.jmp.bank.dao.impl.BankDaoImpl">com.epam.jmp.bank.dao.impl.BankDaoImpl</a>
+<br><a href="#type-com.epam.jmp.bank.dao.impl.CurrencyDaoImpl">com.epam.jmp.bank.dao.impl.CurrencyDaoImpl</a>
+<br><a href="#type-com.epam.jmp.bank.dao.impl.EmployeeDaoImpl">com.epam.jmp.bank.dao.impl.EmployeeDaoImpl</a>
+<br><a href="#type-com.epam.jmp.bank.dao.impl.PersonDaoImpl">com.epam.jmp.bank.dao.impl.PersonDaoImpl</a>
+</td><td>
+<a href="#package-com.epam.jmp.bank.services">com.epam.jmp.bank.services</a>
+
+</td><td>
+<a href="#package-com.epam.jmp.bank.dao">com.epam.jmp.bank.dao</a>
+<br>
+<a href="#package-com.epam.jmp.bank.exceptions">com.epam.jmp.bank.exceptions</a>
+<br>
+<a href="#package-com.epam.jmp.bank.model">com.epam.jmp.bank.model</a>
+<br>
+com.google.common.annotations
+<br>
+java.lang
+<br>
+java.util
+<br>
+javax.persistence
+<br>
+org.apache.log4j
+<br>
+org.springframework.beans.factory.annotation
+<br>
+org.springframework.stereotype
+<br>
+org.springframework.transaction.annotation
+
+</td></tr></tbody></table>
+<a name="package-com.epam.jmp.bank.exceptions"><h4>com.epam.jmp.bank.exceptions</h4></a>
+<table class=metrics width="100%" border="0"><colgroup span="5" width="20%"></colgroup><tbody><tr>
+<td>Afferent Couplings: 3</td>
+<td>Efferent Couplings: 6</td>
+<td>Abstractness: 0.0</td>
+<td>Instability: 0.67</td>
+<td>Distance: -0.33</td>
+</tr></tbody></table>
+<table class=details width="100%" border="0"><colgroup span="4" width="25%"></colgroup><thead><tr>
+<th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Referencing Packages</th>
+<th>Referenced Packages</th>
+</tr></thead><tbody><tr>
+<td>
+</td><td>
+<a href="#type-com.epam.jmp.bank.exceptions.AccountNotFoundException">com.epam.jmp.bank.exceptions.AccountNotFoundException</a>
+<br><a href="#type-com.epam.jmp.bank.exceptions.BankNotFoundException">com.epam.jmp.bank.exceptions.BankNotFoundException</a>
+<br><a href="#type-com.epam.jmp.bank.exceptions.CurrencyNotFoundException">com.epam.jmp.bank.exceptions.CurrencyNotFoundException</a>
+<br><a href="#type-com.epam.jmp.bank.exceptions.EmployeeNotFoundException">com.epam.jmp.bank.exceptions.EmployeeNotFoundException</a>
+<br><a href="#type-com.epam.jmp.bank.exceptions.PersonNotFoundException">com.epam.jmp.bank.exceptions.PersonNotFoundException</a>
+<br><a href="#type-com.epam.jmp.bank.exceptions.RoleNotFoundException">com.epam.jmp.bank.exceptions.RoleNotFoundException</a>
+</td><td>
+<a href="#package-com.epam.jmp.bank.dao">com.epam.jmp.bank.dao</a>
+<br>
+<a href="#package-com.epam.jmp.bank.dao.impl">com.epam.jmp.bank.dao.impl</a>
+<br>
+<a href="#package-com.epam.jmp.bank.services.impl">com.epam.jmp.bank.services.impl</a>
+
+</td><td>
+java.lang
+
+</td></tr></tbody></table>
+<a name="package-com.epam.jmp.bank.model"><h4>com.epam.jmp.bank.model</h4></a>
+<table class=metrics width="100%" border="0"><colgroup span="5" width="20%"></colgroup><tbody><tr>
+<td>Afferent Couplings: 6</td>
+<td>Efferent Couplings: 5</td>
+<td>Abstractness: 0.0</td>
+<td>Instability: 0.45</td>
+<td>Distance: -0.55</td>
+</tr></tbody></table>
+<table class=details width="100%" border="0"><colgroup span="4" width="25%"></colgroup><thead><tr>
+<th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Referencing Packages</th>
+<th>Referenced Packages</th>
+</tr></thead><tbody><tr>
+<td>
+</td><td>
+<a href="#type-com.epam.jmp.bank.model.Account">com.epam.jmp.bank.model.Account</a>
+<br><a href="#type-com.epam.jmp.bank.model.Bank">com.epam.jmp.bank.model.Bank</a>
+<br><a href="#type-com.epam.jmp.bank.model.Currency">com.epam.jmp.bank.model.Currency</a>
+<br><a href="#type-com.epam.jmp.bank.model.CurrencyRate">com.epam.jmp.bank.model.CurrencyRate</a>
+<br><a href="#type-com.epam.jmp.bank.model.Employee">com.epam.jmp.bank.model.Employee</a>
+<br><a href="#type-com.epam.jmp.bank.model.Person">com.epam.jmp.bank.model.Person</a>
+<br><a href="#type-com.epam.jmp.bank.model.Role">com.epam.jmp.bank.model.Role</a>
+</td><td>
+<a href="#package-com.epam.jmp.bank.controller">com.epam.jmp.bank.controller</a>
+<br>
+<a href="#package-com.epam.jmp.bank.dao">com.epam.jmp.bank.dao</a>
+<br>
+<a href="#package-com.epam.jmp.bank.dao.impl">com.epam.jmp.bank.dao.impl</a>
+<br>
+<a href="#package-com.epam.jmp.bank.services">com.epam.jmp.bank.services</a>
+<br>
+<a href="#package-com.epam.jmp.bank.services.impl">com.epam.jmp.bank.services.impl</a>
+<br>
+<a href="#package-com.epam.jmp.bank.springwebjaas">com.epam.jmp.bank.springwebjaas</a>
+
+</td><td>
+com.google.common.annotations
+<br>
+java.lang
+<br>
+javax.persistence
+<br>
+org.apache.log4j
+
+</td></tr></tbody></table>
+<a name="package-com.epam.jmp.bank.model.dto"><h4>com.epam.jmp.bank.model.dto</h4></a>
+<table class=metrics width="100%" border="0"><colgroup span="5" width="20%"></colgroup><tbody><tr>
+<td>Afferent Couplings: 3</td>
+<td>Efferent Couplings: 1</td>
+<td>Abstractness: 0.0</td>
+<td>Instability: 0.25</td>
+<td>Distance: -0.75</td>
+</tr></tbody></table>
+<table class=details width="100%" border="0"><colgroup span="4" width="25%"></colgroup><thead><tr>
+<th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Referencing Packages</th>
+<th>Referenced Packages</th>
+</tr></thead><tbody><tr>
+<td>
+</td><td>
+<a href="#type-com.epam.jmp.bank.model.dto.AccountDto">com.epam.jmp.bank.model.dto.AccountDto</a>
+</td><td>
+<a href="#package-com.epam.jmp.bank.controller">com.epam.jmp.bank.controller</a>
+<br>
+<a href="#package-com.epam.jmp.bank.services">com.epam.jmp.bank.services</a>
+<br>
+<a href="#package-com.epam.jmp.bank.services.impl">com.epam.jmp.bank.services.impl</a>
+
+</td><td>
+java.lang
+<br>
+javax.validation.constraints
+<br>
+org.hibernate.validator.constraints
+
+</td></tr></tbody></table>
+<a name="package-com.epam.jmp.bank.services"><h4>com.epam.jmp.bank.services</h4></a>
+<table class=metrics width="100%" border="0"><colgroup span="5" width="20%"></colgroup><tbody><tr>
+<td>Afferent Couplings: 4</td>
+<td>Efferent Couplings: 7</td>
+<td>Abstractness: 0.57</td>
+<td>Instability: 0.64</td>
+<td>Distance: 0.21</td>
+</tr></tbody></table>
+<table class=details width="100%" border="0"><colgroup span="4" width="25%"></colgroup><thead><tr>
+<th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Referencing Packages</th>
+<th>Referenced Packages</th>
+</tr></thead><tbody><tr>
+<td>
+<a href="#type-com.epam.jmp.bank.services.AccountService">com.epam.jmp.bank.services.AccountService</a>
+<br><a href="#type-com.epam.jmp.bank.services.BankService">com.epam.jmp.bank.services.BankService</a>
+<br><a href="#type-com.epam.jmp.bank.services.CurrencyService">com.epam.jmp.bank.services.CurrencyService</a>
+<br><a href="#type-com.epam.jmp.bank.services.EmployeeService">com.epam.jmp.bank.services.EmployeeService</a>
+</td><td>
+<a href="#type-com.epam.jmp.bank.services.AccountServiceImplTest">com.epam.jmp.bank.services.AccountServiceImplTest</a>
+<br><a href="#type-com.epam.jmp.bank.services.BankServiceImplTest">com.epam.jmp.bank.services.BankServiceImplTest</a>
+<br><a href="#type-com.epam.jmp.bank.services.CurrencyServiceImplTest">com.epam.jmp.bank.services.CurrencyServiceImplTest</a>
+</td><td>
+<a href="#package-com.epam.jmp.bank">com.epam.jmp.bank</a>
+<br>
+<a href="#package-com.epam.jmp.bank.controller">com.epam.jmp.bank.controller</a>
+<br>
+<a href="#package-com.epam.jmp.bank.services.impl"><font color="#ff0000">com.epam.jmp.bank.services.impl</font></a>
+<br>
+<a href="#package-com.epam.jmp.bank.springwebjaas">com.epam.jmp.bank.springwebjaas</a>
+
+</td><td>
+<a href="#package-com.epam.jmp.bank.dao">com.epam.jmp.bank.dao</a>
+<br>
+<a href="#package-com.epam.jmp.bank.dao.impl">com.epam.jmp.bank.dao.impl</a>
+<br>
+<a href="#package-com.epam.jmp.bank.model">com.epam.jmp.bank.model</a>
+<br>
+<a href="#package-com.epam.jmp.bank.model.dto">com.epam.jmp.bank.model.dto</a>
+<br>
+<a href="#package-com.epam.jmp.bank.services.impl"><font color="#ff0000">com.epam.jmp.bank.services.impl</font></a>
+<br>
+java.lang
+<br>
+java.util
+<br>
+org.junit
+<br>
+org.mockito
+
+</td></tr></tbody></table>
+<a name="package-com.epam.jmp.bank.services.impl"><h4>com.epam.jmp.bank.services.impl</h4></a>
+<table class=metrics width="100%" border="0"><colgroup span="5" width="20%"></colgroup><tbody><tr>
+<td>Afferent Couplings: 2</td>
+<td>Efferent Couplings: 4</td>
+<td>Abstractness: 0.0</td>
+<td>Instability: 0.67</td>
+<td>Distance: -0.33</td>
+</tr></tbody></table>
+<table class=details width="100%" border="0"><colgroup span="4" width="25%"></colgroup><thead><tr>
+<th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Referencing Packages</th>
+<th>Referenced Packages</th>
+</tr></thead><tbody><tr>
+<td>
+</td><td>
+<a href="#type-com.epam.jmp.bank.services.impl.AccountServiceImpl">com.epam.jmp.bank.services.impl.AccountServiceImpl</a>
+<br><a href="#type-com.epam.jmp.bank.services.impl.BankServiceImpl">com.epam.jmp.bank.services.impl.BankServiceImpl</a>
+<br><a href="#type-com.epam.jmp.bank.services.impl.CurrencyServiceImpl">com.epam.jmp.bank.services.impl.CurrencyServiceImpl</a>
+<br><a href="#type-com.epam.jmp.bank.services.impl.EmployeeServiceImpl">com.epam.jmp.bank.services.impl.EmployeeServiceImpl</a>
+</td><td>
+<a href="#package-com.epam.jmp.bank.controller">com.epam.jmp.bank.controller</a>
+<br>
+<a href="#package-com.epam.jmp.bank.services"><font color="#ff0000">com.epam.jmp.bank.services</font></a>
+
+</td><td>
+<a href="#package-com.epam.jmp.bank.dao">com.epam.jmp.bank.dao</a>
+<br>
+<a href="#package-com.epam.jmp.bank.exceptions">com.epam.jmp.bank.exceptions</a>
+<br>
+<a href="#package-com.epam.jmp.bank.model">com.epam.jmp.bank.model</a>
+<br>
+<a href="#package-com.epam.jmp.bank.model.dto">com.epam.jmp.bank.model.dto</a>
+<br>
+<a href="#package-com.epam.jmp.bank.services"><font color="#ff0000">com.epam.jmp.bank.services</font></a>
+<br>
+com.google.common.annotations
+<br>
+com.google.gson
+<br>
+java.lang
+<br>
+org.apache.log4j
+<br>
+org.springframework.beans.factory.annotation
+<br>
+org.springframework.stereotype
+
+</td></tr></tbody></table>
+<a name="package-com.epam.jmp.bank.springwebjaas"><h4>com.epam.jmp.bank.springwebjaas</h4></a>
+<table class=metrics width="100%" border="0"><colgroup span="5" width="20%"></colgroup><tbody><tr>
+<td>Afferent Couplings: 1</td>
+<td>Efferent Couplings: 6</td>
+<td>Abstractness: 0.0</td>
+<td>Instability: 0.86</td>
+<td>Distance: -0.14</td>
+</tr></tbody></table>
+<table class=details width="100%" border="0"><colgroup span="4" width="25%"></colgroup><thead><tr>
+<th>Abstract Classes</th>
+<th>Concrete Classes</th>
+<th>Referencing Packages</th>
+<th>Referenced Packages</th>
+</tr></thead><tbody><tr>
+<td>
+</td><td>
+<a href="#type-com.epam.jmp.bank.springwebjaas.EncodeDecode">com.epam.jmp.bank.springwebjaas.EncodeDecode</a>
+<br><a href="#type-com.epam.jmp.bank.springwebjaas.Login">com.epam.jmp.bank.springwebjaas.Login</a>
+<br><a href="#type-com.epam.jmp.bank.springwebjaas.LoginInitTest">com.epam.jmp.bank.springwebjaas.LoginInitTest</a>
+<br><a href="#type-com.epam.jmp.bank.springwebjaas.LoginTest">com.epam.jmp.bank.springwebjaas.LoginTest</a>
+<br><a href="#type-com.epam.jmp.bank.springwebjaas.RoleGranter">com.epam.jmp.bank.springwebjaas.RoleGranter</a>
+<br><a href="#type-com.epam.jmp.bank.springwebjaas.UserPrincipal">com.epam.jmp.bank.springwebjaas.UserPrincipal</a>
+</td><td>
+<a href="#package-com.epam.jmp.bank">com.epam.jmp.bank</a>
+
+</td><td>
+<a href="#package-com.epam.jmp.bank.model">com.epam.jmp.bank.model</a>
+<br>
+<a href="#package-com.epam.jmp.bank.services">com.epam.jmp.bank.services</a>
+<br>
+com.google.common.annotations
+<br>
+java.io
+<br>
+java.lang
+<br>
+java.security
+<br>
+java.security.spec
+<br>
+java.util
+<br>
+javax.crypto
+<br>
+javax.crypto.spec
+<br>
+javax.security.auth
+<br>
+javax.security.auth.callback
+<br>
+javax.security.auth.login
+<br>
+javax.security.auth.spi
+<br>
+org.apache.log4j
+<br>
+org.junit
+<br>
+org.mockito
+<br>
+org.springframework.beans
+<br>
+org.springframework.context
+<br>
+org.springframework.security.authentication.jaas
+<br>
+org.springframework.stereotype
+<br>
+sun.misc
+
+</td></tr></tbody></table>
+</blockquote>
+<table width="100%" border="0"><tr>
+<td><a name="explanationSection"><h2>Explanations</a></h2></td>
+<td class=navigation align="right">[<a href="#projectSection">projects</a>] [<a href="#packageSection">packages</a>] [<a href="#explanationSection">explanations</a>]
+</td></tr></table>
+<h3>Terms</h3>
+<blockquote>
+<p>
+The following are definitions of some of the terms used
+in this report. For the most part, these definitions
+are taken from the paper
+<a href="http://www.objectmentor.com/resources/articles/oodmetrc.pdf">OO Design Quality Metrics</a>
+by Robert Martin.
+</p>
+<dl>
+<dt><a name="term-scope"><b>Scope</b></a>
+<dd>
+Anything that can contain types; either a package or project.
+</dl>
+<dl>
+<dt><a name="term-numberOfTypes"><b>Number of Types</b></a>
+<dd>
+The total number of types defined within a scope.
+</dl>
+<dl>
+<dt><a name="term-afferentCoupling"><b>Afferent Coupling</b></a>
+<dd>
+The number of types outside a scope that depend on
+types defined in the scope. (Sometimes abreviated as
+<code>Ca</code>.)
+</dl>
+<dl>
+<dt><a name="term-efferentCoupling"><b>Efferent Coupling</b></a>
+<dd>
+The number of types in a scope that depend on types
+defined outside the scope. (Sometimes abreviated as
+<code>Ce</code>.)
+</dl>
+<dl>
+<dt><a name="term-abstractness"><b>Abstractness</b></a>
+<dd>
+The number of abstract types (abstract classes and
+interfaces) divided by the total number of types.
+It ranges between zero (0.0) and one (1.0),
+where zero indicates a completely concrete scope
+and one indicates a completely abstract scope.
+</dl>
+<dl>
+<dt><a name="term-instability"><b>Instability</b></a>
+<dd>
+The ratio of efferent coupling to the total coupling.
+This value is computed as <code>Ce / (Ca + Ce)</code>
+and represents the resiliance of the scope to change.
+It ranges between zero (0.0) and one (1.0),
+where zero indicates a maximally stable scope
+and one indicates a maximally instable scope.
+</dl>
+<dl>
+<dt><a name="term-distance"><b>Distance</b></a>
+<dd>
+The normalized distance of a scope (computed as
+<code>| A + I - 1 |</code>) from the main sequence
+(<code>A + I = 1</code>). This value represents the
+degree to which stability and abstractness are balanced.
+It ranges between zero (0.0) and one (1.0),
+where zero indicates a maximally balanced scope
+and one indicates a maximally unbalanced scope.
+</dl>
+</blockquote>
+
+</body>
+
+</html>
