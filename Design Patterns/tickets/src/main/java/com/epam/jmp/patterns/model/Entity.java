@@ -1,6 +1,6 @@
 package com.epam.jmp.patterns.model;
 
-public class Entity implements Persistable {
+public abstract class Entity {
 
 	private long id;
 
@@ -11,4 +11,8 @@ public class Entity implements Persistable {
 	public long getId() {
 		return this.id;
 	}
+
+	public abstract Entity copy();
+
+	public abstract void populate(Entity entity);
 }
