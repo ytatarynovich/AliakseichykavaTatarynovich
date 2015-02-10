@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.epam.jmp.patterns.model.Status;
 
-public abstract class CompositeTransaction extends Transaction {
+public class CompositeTransaction extends Transaction {
 
 	private List<Transaction> subTransactions;
 
@@ -50,5 +50,10 @@ public abstract class CompositeTransaction extends Transaction {
 			System.out.println("ERROR: " + e.getMessage());
 			setStatus(Status.FAIL);
 		}
+	}
+
+	@Override
+	protected void executeTx() {
+		throw new UnsupportedOperationException("Composite transaction does not support this operation");
 	}
 }

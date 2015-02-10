@@ -1,6 +1,5 @@
 package com.epam.jmp.patterns.tx;
 
-import java.util.List;
 
 import com.epam.jmp.patterns.model.Entity;
 import com.epam.jmp.patterns.model.Status;

@@ -15,3 +15,6 @@ transaction so that the composite transaction has the ACID properties.
 component transaction has completed it work successfully or not. If any of the component transactions complete unsuccessfully,
 then the coordinator causes all of the component transactions to abort. If all of the component transactions complete successfully,
 the coordinator causes all of the component transactions to commit their results.
+
+
+Make sure you have assertions enabled when you run (-ea at the command line)

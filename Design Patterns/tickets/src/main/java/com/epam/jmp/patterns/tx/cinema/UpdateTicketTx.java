@@ -5,15 +5,15 @@ import com.epam.jmp.patterns.tx.Transaction;
 
 public class UpdateTicketTx extends Transaction {
 
-	private int newPlace;
+	private double newPrice;
 
-	public UpdateTicketTx(Ticket ticket, int newPlace) {
+	public UpdateTicketTx(Ticket ticket, double newPrice) {
 		super(ticket);
-		this.newPlace = newPlace;
+		this.newPrice = newPrice;
 	}
 
 	@Override
 	protected void executeTx() {
-		((Ticket)getWorkEntity()).setPlace(newPlace);
+		((Ticket)getWorkEntity()).setPrice(newPrice);
 	}
 }

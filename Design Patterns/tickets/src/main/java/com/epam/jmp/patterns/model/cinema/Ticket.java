@@ -14,7 +14,7 @@ public class Ticket extends Entity implements Serializable {
 
 	public Ticket(long movieId, int place, double price, Date date) {
 		super();
-		validate(place);
+		validate(price);
 		this.movieId = movieId;
 		this.place = place;
 		this.price = price;
@@ -63,14 +63,17 @@ public class Ticket extends Entity implements Serializable {
 		return date;
 	}
 
-	public void setPlace(int place) {
-		validate(place);
-		this.place = place;
+	public void setPrice(double price) {
+		validate(price);
+		this.price = price;
 	}
 
-	private void validate(int place) {
-		if(place < 0 || place > 100) {
-			throw new RuntimeException("New place is not correct: " + place);
+	public static double MIN_PRICE = 1000D;
+	public static double MAX_PRICE = 100000D;
+
+	private void validate(double price) {
+		if(price < MIN_PRICE || price > MAX_PRICE) {
+			throw new RuntimeException("New price is not correct: " + price);
 		}
 	}
 }

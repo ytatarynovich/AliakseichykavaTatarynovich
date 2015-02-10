@@ -45,8 +45,11 @@ public class Movie extends Entity implements Serializable {
 		this.name = name;
 	}
 
+	public static int MIN_NAME_LENGTH = 1;
+	public static int MAX_NAME_LENGTH = 20;
+
 	public void validate (String name) {
-		if(name.length() < 1 || name.length() > 10) {
+		if(name.length() < MIN_NAME_LENGTH || name.length() > MAX_NAME_LENGTH) {
 			throw new RuntimeException("New name length is not correct: " + name.length());
 		}
 	}

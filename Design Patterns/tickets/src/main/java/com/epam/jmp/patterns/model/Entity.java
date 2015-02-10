@@ -1,7 +1,13 @@
 package com.epam.jmp.patterns.model;
 
+import java.util.Date;
+
 public abstract class Entity {
 
+	public Entity() {
+		setId(new Date().getTime());
+	}
+	
 	private long id;
 
 	public void setId(long id) {

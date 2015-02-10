@@ -3,11 +3,11 @@ package com.epam.jmp.patterns.tx.cinema;
 import com.epam.jmp.patterns.model.cinema.Movie;
 import com.epam.jmp.patterns.tx.Transaction;
 
-public class UpdateMovieTr extends Transaction {
+public class UpdateMovieTx extends Transaction {
 
 	private String newName;
 
-	public UpdateMovieTr(Movie movie, String newName) {
+	public UpdateMovieTx(Movie movie, String newName) {
 		super(movie);
 		this.newName = newName;
 	}
