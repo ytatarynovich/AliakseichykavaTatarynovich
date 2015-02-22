@@ -18,3 +18,8 @@ the coordinator causes all of the component transactions to commit their results
 
 
 Make sure you have assertions enabled when you run (-ea at the command line)
+
+
+2)
+
+http://javarevisited.blogspot.com/2012/02/producer-consumer-design-pattern-with.html

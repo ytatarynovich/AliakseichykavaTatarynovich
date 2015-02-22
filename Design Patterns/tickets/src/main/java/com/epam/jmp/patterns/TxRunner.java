@@ -8,7 +8,7 @@ import com.epam.jmp.patterns.model.cinema.*;
 import com.epam.jmp.patterns.tx.*;
 import com.epam.jmp.patterns.tx.cinema.*;
 
-public class Runner {
+public class TxRunner {
 
 	public static void main(String[] args) {
 
