@@ -10,12 +10,12 @@ import com.epam.jmp.patterns.tx.Transaction;
 import com.epam.jmp.patterns.tx.TxManager;
 import com.epam.jmp.patterns.tx.cinema.UpdateTicketTx;
 
-public class Consumer implements Runnable {
+public class MessageEndpoint implements Runnable {
 
 	private final BlockingQueue<TicketMsg> sharedQueue;
 	private final List<Ticket> tickets;
 
-	public Consumer(List<Ticket> tickets, BlockingQueue<TicketMsg> sharedQueue) {
+	public MessageEndpoint(List<Ticket> tickets, BlockingQueue<TicketMsg> sharedQueue) {
 		this.tickets = tickets;
 		this.sharedQueue = sharedQueue;
 	}

@@ -8,7 +8,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 import com.epam.jmp.patterns.model.cinema.Movie;
 import com.epam.jmp.patterns.model.cinema.Ticket;
-import com.epam.jmp.patterns.msg.Consumer;
+import com.epam.jmp.patterns.msg.MessageEndpoint;
 import com.epam.jmp.patterns.msg.ChannelAdapter;
 import com.epam.jmp.patterns.msg.model.TicketMsg;
 
@@ -21,7 +21,7 @@ public class MsgRunner {
 
 		// Creating Producer and Consumer Thread
 		Thread prodThread = new Thread(new ChannelAdapter(tickets, sharedQueue));
-		Thread consThread = new Thread(new Consumer(tickets, sharedQueue));
+		Thread consThread = new Thread(new MessageEndpoint(tickets, sharedQueue));
 
 		// Starting producer and Consumer thread
 		prodThread.start();
